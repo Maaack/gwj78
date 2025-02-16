@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=4 format=3 uid="uid://iedfoi6jhgvc"]
+
+[ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
+[ext_resource type="PackedScene" uid="uid://b3lt635no42c7" path="res://scenes/inbox_ui.tscn" id="1_w5aja"]
+[ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/document_base.tscn" id="2_ycayy"]
 
 [node name="GameScene" type="Node"]
+script = ExtResource("1_onqr8")
+document_scene = ExtResource("2_ycayy")
+documents = Array[String](["Everything is fine.", "There's nothing to worry about!", "It's okay to let the government handle it!", "We're living under a dictator. Revolt!", "Evidence of wrongdoing by members of current administration."])
+
+[node name="InboxUI" parent="." instance=ExtResource("1_w5aja")]
+
+[node name="Container" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="ActiveContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="InboxUI" to="." method="_on_inbox_ui_pressed"]
