@@ -18,8 +18,8 @@ func pickup_inbox_document():
 	var document_instance : DocumentBase = document_scene.instantiate()
 	document_instance.position = _last_mouse_position
 	document_instance.content = next_document.content
-	document_instance.mouse_entered.connect(_highlight_document.bind(document_instance))
-	document_instance.mouse_exited.connect(_unhighlight_document.bind(document_instance))
+	document_instance.mouse_entered.connect(_update_highlighted_document)
+	document_instance.mouse_exited.connect(_update_highlighted_document)
 	%ActiveContainer.add_child(document_instance)
 	_active_document = document_instance
 
@@ -50,12 +50,16 @@ func _ready():
 	_documents = documents.duplicate()
 	_documents.shuffle()
 
-func _highlight_document(document_node : Node2D):
-	_highlighted_document = document_node
-
-func _unhighlight_document(document_node : Node2D):
-	if _highlighted_document == document_node:
-		_highlighted_document = null
+func _update_highlighted_document():
+	var _first_doc_
+	var container_children : Array = %Container.get_children()
+	container_children.reverse()
+	for child in container_children:
+		if child is DocumentBase:
+			if child.is_mouse_over:
+				_highlighted_document = child
+				return
+	_highlighted_document = null
 
 func _input(event):
 	if event is InputEventMouseMotion:
