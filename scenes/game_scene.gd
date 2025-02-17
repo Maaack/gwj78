@@ -8,6 +8,11 @@ var _active_document : Node2D
 var _documents : Array[DocumentData]
 
 var _last_mouse_position : Vector2
+var points_scored : int = 0 :
+	set(value):
+		points_scored = value
+		if is_inside_tree():
+			%ScoreLabel.text = "%d" % points_scored
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
@@ -17,7 +22,7 @@ func pickup_inbox_document():
 	var next_document : DocumentData = _documents.pop_back()
 	var document_instance : DocumentBase = document_scene.instantiate()
 	document_instance.position = _last_mouse_position
-	document_instance.content = next_document.content
+	document_instance.document_data = next_document
 	document_instance.mouse_entered.connect(_update_highlighted_document)
 	document_instance.mouse_exited.connect(_update_highlighted_document)
 	%ActiveContainer.add_child(document_instance)
@@ -40,10 +45,15 @@ func _update_active_document_position():
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
-	if %Outbox2D.is_mouse_over:
-		_active_document.queue_free()
-		_active_document = null
-		return
+	if _active_document is DocumentBase:
+		if %Outbox2D.is_mouse_over or %Furnace2D.is_mouse_over:
+			if _active_document.document_data.is_dangerous == %Furnace2D.is_mouse_over:
+				points_scored += 1
+			else:
+				points_scored -= 1
+			_active_document.queue_free()
+			_active_document = null
+			return
 	_active_document.reparent(%Container)
 	_active_document = null
 

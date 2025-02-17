@@ -8,7 +8,6 @@ size = Vector2(182, 280)
 
 [node name="DocumentBase" type="Node2D"]
 script = ExtResource("1_xug0p")
-content = "Some Content for the reader"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_j1q8d")

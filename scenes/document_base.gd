@@ -2,17 +2,16 @@
 class_name DocumentBase
 extends Node2D
 
-
 signal mouse_entered
 signal mouse_exited
 
 var is_mouse_over : bool = false
 
-@export_multiline var content : String :
+@export var document_data : DocumentData :
 	set(value):
-		content = value
+		document_data = value
 		if is_inside_tree():
-			%DocumentBody.text = content
+			%DocumentBody.text = document_data.content
 
 func _on_area_2d_mouse_entered():
 	is_mouse_over = true
@@ -23,4 +22,4 @@ func _on_area_2d_mouse_exited():
 	mouse_exited.emit()
 
 func _ready():
-	content = content
+	document_data = document_data

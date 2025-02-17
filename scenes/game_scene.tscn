@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=12 format=3 uid="uid://iedfoi6jhgvc"]
 
 [ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://b3lt635no42c7" path="res://scenes/inbox_ui.tscn" id="1_w5aja"]
 [ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/document_base.tscn" id="2_ycayy"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://dwwdk70phcvu4" path="res://scenes/outbox_2d.tscn" id="5_y3j0m"]
+[ext_resource type="Texture2D" uid="uid://c4dcxp3wv4sfa" path="res://assets/images/furnace.png" id="6_rurhu"]
 
 [sub_resource type="Resource" id="Resource_y3j0m"]
 script = ExtResource("3_bw6k5")
@@ -50,7 +51,14 @@ documents = Array[ExtResource("3_bw6k5")]([SubResource("Resource_y3j0m"), SubRes
 
 [node name="Outbox2D" parent="." instance=ExtResource("5_y3j0m")]
 unique_name_in_owner = true
+position = Vector2(1088, 64)
+
+[node name="Furnace2D" parent="." instance=ExtResource("5_y3j0m")]
+unique_name_in_owner = true
 position = Vector2(1088, 584)
+
+[node name="Sprite2D" parent="Furnace2D" index="0"]
+texture = ExtResource("6_rurhu")
 
 [node name="Container" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -58,4 +66,19 @@ unique_name_in_owner = true
 [node name="ActiveContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="ScoreLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="InboxUI" to="." method="_on_inbox_ui_pressed"]
+
+[editable path="Furnace2D"]
