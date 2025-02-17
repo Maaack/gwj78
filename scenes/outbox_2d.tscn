@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwwdk70phcvu4"]
+
+[ext_resource type="Script" uid="uid://dxrfgtrywusmp" path="res://scenes/outbox_2d.gd" id="1_dak3g"]
+[ext_resource type="Texture2D" uid="uid://bm2k8irhtwwde" path="res://assets/images/bookshelf.png" id="1_hbljn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7457s"]
+size = Vector2(128, 128)
+
+[node name="Outbox2D" type="Node2D"]
+script = ExtResource("1_dak3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hbljn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7457s")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

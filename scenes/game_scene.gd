@@ -40,6 +40,10 @@ func _update_active_document_position():
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
+	if %Outbox2D.is_mouse_over:
+		_active_document.queue_free()
+		_active_document = null
+		return
 	_active_document.reparent(%Container)
 	_active_document = null
 
