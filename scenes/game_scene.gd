@@ -1,11 +1,11 @@
 extends Node
 
 @export var document_scene : PackedScene
-@export var documents : Array[String]
+@export var documents : Array[DocumentData]
 
 var _highlighted_document : Node2D
 var _active_document : Node2D
-var _documents : Array[String]
+var _documents : Array[DocumentData]
 
 var _last_mouse_position : Vector2
 
@@ -14,10 +14,10 @@ func pickup_inbox_document():
 		return
 	if _documents.is_empty():
 		return
-	var next_document = _documents.pop_back()
+	var next_document : DocumentData = _documents.pop_back()
 	var document_instance : DocumentBase = document_scene.instantiate()
 	document_instance.position = _last_mouse_position
-	document_instance.content = next_document
+	document_instance.content = next_document.content
 	document_instance.mouse_entered.connect(_highlight_document.bind(document_instance))
 	document_instance.mouse_exited.connect(_unhighlight_document.bind(document_instance))
 	%ActiveContainer.add_child(document_instance)

@@ -1,13 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=10 format=3 uid="uid://iedfoi6jhgvc"]
 
 [ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://b3lt635no42c7" path="res://scenes/inbox_ui.tscn" id="1_w5aja"]
 [ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/document_base.tscn" id="2_ycayy"]
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_bw6k5"]
+
+[sub_resource type="Resource" id="Resource_y3j0m"]
+script = ExtResource("3_bw6k5")
+is_dangerous = false
+is_special = false
+content = "Everything is fine."
+metadata/_custom_type_script = ExtResource("3_bw6k5")
+
+[sub_resource type="Resource" id="Resource_rurhu"]
+script = ExtResource("3_bw6k5")
+is_dangerous = false
+is_special = false
+content = "There's nothing to worry about!"
+metadata/_custom_type_script = ExtResource("3_bw6k5")
+
+[sub_resource type="Resource" id="Resource_kk2rg"]
+script = ExtResource("3_bw6k5")
+is_dangerous = false
+is_special = false
+content = "It's okay to let the government handle it!"
+metadata/_custom_type_script = ExtResource("3_bw6k5")
+
+[sub_resource type="Resource" id="Resource_b5spy"]
+script = ExtResource("3_bw6k5")
+is_dangerous = true
+is_special = false
+content = "We're living under a dictator. Revolt!"
+metadata/_custom_type_script = ExtResource("3_bw6k5")
+
+[sub_resource type="Resource" id="Resource_utbpp"]
+script = ExtResource("3_bw6k5")
+is_dangerous = true
+is_special = true
+content = "Evidence of wrongdoing by members of current administration."
+metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_onqr8")
 document_scene = ExtResource("2_ycayy")
-documents = Array[String](["Everything is fine.", "There's nothing to worry about!", "It's okay to let the government handle it!", "We're living under a dictator. Revolt!", "Evidence of wrongdoing by members of current administration."])
+documents = Array[ExtResource("3_bw6k5")]([SubResource("Resource_y3j0m"), SubResource("Resource_rurhu"), SubResource("Resource_kk2rg"), SubResource("Resource_b5spy"), SubResource("Resource_utbpp")])
 
 [node name="InboxUI" parent="." instance=ExtResource("1_w5aja")]
 
