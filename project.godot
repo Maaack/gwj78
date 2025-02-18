@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="gwj78"
-run/main_scene="uid://bq7dlaf5w70rh"
+run/main_scene="res://scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+AppConfig="*res://addons/maaacks_game_template/base/scenes/autoloads/app_config.tscn"
+SceneLoader="*res://addons/maaacks_game_template/base/scenes/autoloads/scene_loader.tscn"
+ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_music_controller.tscn"
+ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 
 [dialogue_manager]
 
@@ -25,11 +29,17 @@ runtime/balloon_path="res://scenes/dialogue_balloon/balloon.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
 
 [internationalization]
 
+locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
 locale/translations_pot_files=PackedStringArray("res://resources/dialogues/test.dialogue")
+
+[maaacks_game_template]
+
+disable_plugin_dialogues=true
+copy_path="res://"
 
 [rendering]
 
