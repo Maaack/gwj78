@@ -59,7 +59,7 @@ func _finish_level_if_complete():
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
-	if _active_document is DocumentBase:
+	if _active_document is DocumentBase and _active_document.document_data:
 		if %Outbox2D.is_mouse_over or %Furnace2D.is_mouse_over:
 			_processed_documents.append(_active_document.document_data)
 			if %Furnace2D.is_mouse_over:
@@ -81,9 +81,16 @@ func drop_document():
 func _on_inbox_ui_pressed():
 	pickup_inbox_document()
 
+func _connect_document_signals():
+	for child in %Container.get_children():
+		if child is DocumentBase:
+			child.mouse_entered.connect(_update_highlighted_document)
+			child.mouse_exited.connect(_update_highlighted_document)
+
 func _ready():
 	_documents = documents.duplicate()
 	_documents.shuffle()
+	_connect_document_signals()
 
 func _update_highlighted_document():
 	var _first_doc_

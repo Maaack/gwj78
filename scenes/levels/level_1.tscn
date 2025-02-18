@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq7dlaf5w70rh"]
+
+[ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_6iamk"]
+[ext_resource type="PackedScene" uid="uid://cdh6gnyum3slq" path="res://scenes/instructions.tscn" id="2_nsrm0"]
+
+[node name="GameScene" instance=ExtResource("1_6iamk")]
+
+[node name="Instructions" parent="Container" index="0" instance=ExtResource("2_nsrm0")]
+position = Vector2(201, 569)
+
+[editable path="Furnace2D"]
