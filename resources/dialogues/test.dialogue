@@ -1,0 +1,29 @@
+~ start
+New Boss: Welcome new Archivist.
+New Boss: I'm your new boss. Blessed be the administration.
+You: Blessed be-
+New Boss: You look smart. You smart?
+- You: Yes, Boss!
+- You: Yes, Sir!
+New Boss: That's Sir Boss Man, to you.
+New Boss: Now about the job.
+=> instructions
+
+~ instructions
+New Boss: You'll get documents in your inbox.
+New Boss: Then scan the contents manually.
+New Boss: You might have to read a little, but try not to read too much.
+New Boss: Confidentiality and all that.
+New Boss: You can read right?- Don't answer that.
+New Boss: Then sort the document to be either archived or redacted.
+New Boss: There's a manual that explains the details.
+New Boss: We may give you more specific instructions some days.
+New Boss: You catch all of that?
+- Say again
+	New Boss: Uhh... really? Ok.
+	=> instructions
+- Got it
+	New Boss: Well then, get to it!
+New Boss: Blessed be the administration.
+You: Blessed be the administration.
+=> END

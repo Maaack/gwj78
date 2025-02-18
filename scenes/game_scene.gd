@@ -4,6 +4,9 @@ signal level_complete
 
 @export var document_scene : PackedScene
 @export var documents : Array[DocumentData]
+@export var dialogue_balloon_scene : PackedScene
+@export var dialogue_resource : DialogueResource
+@export var opening_dialogue : StringName
 
 var _highlighted_document : DocumentBase
 var _active_document : DocumentBase
@@ -91,6 +94,7 @@ func _ready():
 	_documents = documents.duplicate()
 	_documents.shuffle()
 	_connect_document_signals()
+	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
 
 func _update_highlighted_document():
 	var _first_doc_
