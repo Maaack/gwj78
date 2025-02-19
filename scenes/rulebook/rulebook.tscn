@@ -32,11 +32,13 @@ grow_vertical = 2
 
 [node name="Header" type="Label" parent="MarginContainer/DocumentBody/Content" index="0"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Rulebook"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/DocumentBody/Content" index="1"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="RuleStack" type="VBoxContainer" parent="MarginContainer/DocumentBody/Content" index="2"]
 unique_name_in_owner = true

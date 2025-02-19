@@ -2,6 +2,9 @@ extends Node
 
 signal level_complete
 
+const INITIAL_PICKUP_OFFSET_FRACTION: float = 0.5
+const PICKUP_ROTATION : float = -5
+
 @export var document_scene : PackedScene
 @export var documents : Array[DocumentData]
 @export var dialogue_balloon_scene : PackedScene
@@ -15,6 +18,7 @@ var _archived_documents : Array[DocumentData]
 var _redacted_documents : Array[DocumentData]
 var _processed_documents : Array[DocumentData]
 
+var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
 var points_scored : int = 0 :
 	set(value):
@@ -29,7 +33,9 @@ func pickup_inbox_document():
 		return
 	var next_document : DocumentData = _documents.pop_back()
 	var document_instance : DocumentBase = document_scene.instantiate()
-	document_instance.position = _last_mouse_position
+	_pickup_offset = Vector2(0, (document_instance.get_bounds().size.y * 0.5) * INITIAL_PICKUP_OFFSET_FRACTION)
+	document_instance.rotation_degrees = PICKUP_ROTATION
+	document_instance.position = _last_mouse_position + _pickup_offset
 	document_instance.document_data = next_document
 	document_instance.mouse_entered.connect(_update_highlighted_document)
 	document_instance.mouse_exited.connect(_update_highlighted_document)
@@ -43,13 +49,16 @@ func pickup_highlighted_document():
 	if _active_document == null : 
 		return
 	_highlighted_document = null
+	_pickup_offset = -(_last_mouse_position - _active_document.position)
+	_active_document.rotation_degrees = PICKUP_ROTATION
 	_active_document.reparent(%ActiveContainer)
 	_update_active_document_position()
 
 func _update_active_document_position():
 	if not is_instance_valid(_active_document):
 		return
-	_active_document.position = _last_mouse_position
+	Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+	_active_document.position = _last_mouse_position + _pickup_offset
 
 func is_level_complete():
 	return _processed_documents.size() >= documents.size()
@@ -86,6 +95,7 @@ func drop_document():
 			_active_document = null
 			_finish_level_if_complete()
 			return
+	_active_document.rotation_degrees = 0
 	_active_document.reparent(%Container)
 	_highlighted_document = _active_document
 	_active_document = null
