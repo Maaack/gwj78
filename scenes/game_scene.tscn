@@ -56,15 +56,16 @@ unique_name_in_owner = true
 
 [node name="InboxUI" parent="." instance=ExtResource("1_w5aja")]
 
-[node name="Outbox2D" parent="." instance=ExtResource("5_y3j0m")]
+[node name="Outboxes" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Outbox2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 position = Vector2(1088, 64)
 
-[node name="Furnace2D" parent="." instance=ExtResource("5_y3j0m")]
-unique_name_in_owner = true
+[node name="Furnace2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 position = Vector2(1088, 584)
 
-[node name="Sprite2D" parent="Furnace2D" index="0"]
+[node name="Sprite2D" parent="Outboxes/Furnace2D" index="0"]
 texture = ExtResource("6_rurhu")
 
 [node name="Container" type="Node2D" parent="."]
@@ -87,5 +88,7 @@ text = "0"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="InboxUI" to="." method="_on_inbox_ui_pressed"]
+[connection signal="document_processed" from="Outboxes/Outbox2D" to="." method="_on_outbox_2d_document_processed"]
+[connection signal="document_processed" from="Outboxes/Furnace2D" to="." method="_on_furnace_2d_document_processed"]
 
-[editable path="Furnace2D"]
+[editable path="Outboxes/Furnace2D"]

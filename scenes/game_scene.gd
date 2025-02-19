@@ -68,30 +68,20 @@ func _finish_level_if_complete():
 		print("LEVEL COMPLETE")
 		level_complete.emit()
 
+func get_mouse_over_outbox() -> Outbox2D:
+	for child in %Outboxes.get_children():
+		if child is Outbox2D:
+			if child.is_mouse_over: 
+				return child
+	return null
+
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
 	if _active_document is DocumentBase and _active_document.document_data:
-		if %Outbox2D.is_mouse_over or %Furnace2D.is_mouse_over:
-			_processed_documents.append(_active_document.document_data)
-			
-			var should_redact := false
-			for rule in _find_rules():
-				if rule.should_redact(_active_document.document_data):
-					should_redact = true
-				if %Furnace2D.is_mouse_over:
-					rule.on_redacted(_active_document.document_data)
-				else:
-					rule.on_archived(_active_document.document_data)
-			
-			if %Furnace2D.is_mouse_over:
-				_redacted_documents.append(_active_document.document_data)
-				points_scored += 1 if should_redact else -1
-			else:
-				_archived_documents.append(_active_document.document_data)
-				points_scored += 1 if not should_redact else -1
-				
-			_active_document.queue_free()
+		var outbox := get_mouse_over_outbox()
+		if outbox is Outbox2D:
+			outbox.process_document(_active_document)
 			_active_document = null
 			_finish_level_if_complete()
 			return
@@ -99,6 +89,32 @@ func drop_document():
 	_active_document.reparent(%Container)
 	_highlighted_document = _active_document
 	_active_document = null
+
+func document_processed(document_data : DocumentData):
+	_processed_documents.append(document_data)
+	_finish_level_if_complete()
+
+func _should_document_be_redacted(document_data : DocumentData) -> bool:
+	for rule in _find_rules():
+		if rule.should_redact(document_data):
+			return true
+	return false
+
+func _on_document_archived(document_data : DocumentData):
+	_archived_documents.append(document_data)
+	var should_redact := _should_document_be_redacted(document_data)
+	points_scored += 1 if not should_redact else -1
+	for rule in _find_rules():
+		rule.on_archived(document_data)
+	document_processed(document_data)
+
+func _on_document_redacted(document_data : DocumentData):
+	_redacted_documents.append(document_data)
+	var should_redact := _should_document_be_redacted(document_data)
+	points_scored += 1 if should_redact else -1
+	for rule in _find_rules():
+		rule.on_redacted(document_data)
+	document_processed(document_data)
 
 func _on_inbox_ui_pressed():
 	pickup_inbox_document()
@@ -152,3 +168,9 @@ func _input(event):
 				drop_document()
 			else:
 				pickup_highlighted_document()
+
+func _on_outbox_2d_document_processed(document_data):
+	_on_document_archived(document_data)
+
+func _on_furnace_2d_document_processed(document_data):
+	_on_document_redacted(document_data)
