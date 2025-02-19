@@ -11,3 +11,6 @@ func get_current_level_id() -> int:
 func _advance_level():
 	super._advance_level()
 	GameState.set_current_level(current_level_id)
+
+func _connect_level_signals():
+	_try_connecting_signal_to_level(&"level_complete", _on_level_won)
