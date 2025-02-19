@@ -1,14 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq7dlaf5w70rh"]
+[gd_scene load_steps=10 format=3 uid="uid://bq7dlaf5w70rh"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://cdh6gnyum3slq" path="res://scenes/instructions.tscn" id="2_nsrm0"]
 [ext_resource type="Resource" uid="uid://den3tg6if71cc" path="res://resources/dialogues/test.dialogue" id="2_x42e6"]
+[ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="3_dga24"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/rulebook/rulebook.tscn" id="3_nsrm0"]
+[ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="4_qxy0u"]
+[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_qxy0u"]
+[ext_resource type="Texture2D" uid="uid://b7w8sjvxr73on" path="res://assets/images/book-pile.png" id="7_oc4kc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oc4kc"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [node name="GameScene" instance=ExtResource("1_6iamk")]
 dialogue_resource = ExtResource("2_x42e6")
 opening_dialogue = &"start"
 
+[node name="RedactDangerous" type="Node" parent="Rules" index="0"]
+script = ExtResource("3_dga24")
+instruction = "Redact any so-called \"evidence\" against our great administration."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="1"]
+script = ExtResource("6_qxy0u")
+instruction = "Archive all remaining documents."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="HiddenCollectEvidence" type="Node" parent="Rules" index="2"]
+script = ExtResource("4_qxy0u")
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
 [node name="Instructions" parent="Container" index="0" instance=ExtResource("2_nsrm0")]
 position = Vector2(201, 569)
+
+[node name="Rulebook" parent="Container" index="1" instance=ExtResource("3_nsrm0")]
+unique_name_in_owner = true
+position = Vector2(409, 312)
+
+[node name="EvidenceMarker" type="Sprite2D" parent="Container" index="2"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(45, 602)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_oc4kc")
+
+[node name="Label" type="Label" parent="Container/EvidenceMarker" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -93.0
+offset_right = -15.5
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "STASHED EVIDENCE"
+label_settings = SubResource("LabelSettings_oc4kc")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="evidence_collected" from="Rules/HiddenCollectEvidence" to="Container/EvidenceMarker" method="show"]
 
 [editable path="Furnace2D"]

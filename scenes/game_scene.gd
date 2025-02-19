@@ -65,14 +65,23 @@ func drop_document():
 	if _active_document is DocumentBase and _active_document.document_data:
 		if %Outbox2D.is_mouse_over or %Furnace2D.is_mouse_over:
 			_processed_documents.append(_active_document.document_data)
+			
+			var should_redact := false
+			for rule in _find_rules():
+				if rule.should_redact(_active_document.document_data):
+					should_redact = true
+				if %Furnace2D.is_mouse_over:
+					rule.on_redacted(_active_document.document_data)
+				else:
+					rule.on_archived(_active_document.document_data)
+			
 			if %Furnace2D.is_mouse_over:
 				_redacted_documents.append(_active_document.document_data)
+				points_scored += 1 if should_redact else -1
 			else:
 				_archived_documents.append(_active_document.document_data)
-			if _active_document.document_data.is_dangerous == %Furnace2D.is_mouse_over:
-				points_scored += 1
-			else:
-				points_scored -= 1
+				points_scored += 1 if not should_redact else -1
+				
 			_active_document.queue_free()
 			_active_document = null
 			_finish_level_if_complete()
@@ -90,11 +99,27 @@ func _connect_document_signals():
 			child.mouse_entered.connect(_update_highlighted_document)
 			child.mouse_exited.connect(_update_highlighted_document)
 
+func _find_rules() -> Array[Rule]:
+	var rules: Array[Rule] = []
+	for rule in %Rules.get_children():
+		if rule is Rule:
+			rules.append(rule)
+		#search one level deeper in case we want reusable rule "packs"
+		for inner_rule in rule.get_children():
+			if inner_rule is Rule:
+				rules.append(inner_rule)
+	return rules
+
 func _ready():
 	_documents = documents.duplicate()
 	_documents.shuffle()
 	_connect_document_signals()
 	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
+	
+	#pass rules to rulebook
+	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
+		var rulebook := %Rulebook as Rulebook
+		rulebook.setup_rules(_find_rules())
 
 func _update_highlighted_document():
 	var _first_doc_

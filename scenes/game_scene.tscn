@@ -40,7 +40,9 @@ metadata/_custom_type_script = ExtResource("3_bw6k5")
 script = ExtResource("3_bw6k5")
 is_dangerous = true
 is_special = true
-content = "Evidence of wrongdoing by members of current administration."
+content = "Evidence of wrongdoing by members of current administration.
+
+[Archive this if you dare.]"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [node name="GameScene" type="Node"]
@@ -48,6 +50,9 @@ script = ExtResource("1_onqr8")
 document_scene = ExtResource("2_ycayy")
 documents = Array[ExtResource("3_bw6k5")]([SubResource("Resource_y3j0m"), SubResource("Resource_rurhu"), SubResource("Resource_kk2rg"), SubResource("Resource_b5spy"), SubResource("Resource_utbpp")])
 dialogue_balloon_scene = ExtResource("4_kk2rg")
+
+[node name="Rules" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="InboxUI" parent="." instance=ExtResource("1_w5aja")]
 
