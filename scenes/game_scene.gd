@@ -1,3 +1,4 @@
+class_name GameScene
 extends Node
 
 signal level_complete
@@ -23,8 +24,11 @@ var _last_mouse_position : Vector2
 var points_scored : int = 0 :
 	set(value):
 		points_scored = value
-		if is_inside_tree():
-			%ScoreLabel.text = "%d" % points_scored
+		_update_score_label()
+
+func _update_score_label():
+	if is_inside_tree():
+		%ScoreLabel.text = "%d" % points_scored
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):

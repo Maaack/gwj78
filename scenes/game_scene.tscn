@@ -11,35 +11,40 @@
 [sub_resource type="Resource" id="Resource_y3j0m"]
 script = ExtResource("3_bw6k5")
 is_dangerous = false
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "Everything is fine."
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_rurhu"]
 script = ExtResource("3_bw6k5")
 is_dangerous = false
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "There's nothing to worry about!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_kk2rg"]
 script = ExtResource("3_bw6k5")
 is_dangerous = false
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "It's okay to let the government handle it!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_b5spy"]
 script = ExtResource("3_bw6k5")
 is_dangerous = true
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "We're living under a dictator. Revolt!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_utbpp"]
 script = ExtResource("3_bw6k5")
 is_dangerous = true
-is_special = true
+is_important_to_message = false
+is_important_to_keep = false
 content = "Evidence of wrongdoing by members of current administration.
 
 [Archive this if you dare.]"
