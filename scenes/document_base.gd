@@ -13,6 +13,10 @@ var is_mouse_over : bool = false
 		if is_inside_tree() and document_data:
 			%DocumentBody.text = document_data.content
 
+func get_bounds() -> RectangleShape2D:
+	var rect = %CollisionShape2D.shape as RectangleShape2D
+	return rect
+
 func _on_area_2d_mouse_entered():
 	is_mouse_over = true
 	mouse_entered.emit()
