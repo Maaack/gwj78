@@ -1,0 +1,16 @@
+~ start
+Boss McBosstonson: So...
+- Skip => END
+- Continue
+Boss McBosstonson: Your previous boss was sacked.
+Boss McBosstonson: I'm taking over your department.
+Boss McBosstonson: I heard you are good at doing what you are told, so keep doing that.
+=> END
+
+~ alternate_start
+Young New Boss: So...
+- Skip => END
+- Continue
+Young New Boss: I'm your new boss. Your previous boss threw someone under the bus and took their job.
+Young New Boss: He says thanks for everything.
+=> END

@@ -19,16 +19,22 @@ var _archived_documents : Array[DocumentData]
 var _redacted_documents : Array[DocumentData]
 var _processed_documents : Array[DocumentData]
 
+var level_state : LevelState
 var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
 var points_scored : int = 0 :
 	set(value):
 		points_scored = value
+		_update_level_data()
 		_update_score_label()
 
 func _update_score_label():
 	if is_inside_tree():
 		%ScoreLabel.text = "%d" % points_scored
+
+func _update_level_data():
+	if level_state:
+		level_state.points = points_scored
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
@@ -69,7 +75,6 @@ func is_level_complete():
 
 func _finish_level_if_complete():
 	if is_level_complete():
-		print("LEVEL COMPLETE")
 		level_complete.emit()
 
 func get_mouse_over_outbox() -> Outbox2D:
@@ -140,16 +145,20 @@ func _find_rules() -> Array[Rule]:
 				rules.append(inner_rule)
 	return rules
 
+func _play_opening_dialogue():
+	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
+
 func _ready():
 	_documents = documents.duplicate()
 	_documents.shuffle()
 	_connect_document_signals()
-	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
-	
+	_play_opening_dialogue()
 	#pass rules to rulebook
 	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
 		var rulebook := %Rulebook as Rulebook
 		rulebook.setup_rules(_find_rules())
+
+	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
 
 func _update_highlighted_document():
 	var _first_doc_
