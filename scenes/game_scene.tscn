@@ -11,35 +11,40 @@
 [sub_resource type="Resource" id="Resource_y3j0m"]
 script = ExtResource("3_bw6k5")
 is_dangerous = false
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "Everything is fine."
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_rurhu"]
 script = ExtResource("3_bw6k5")
 is_dangerous = false
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "There's nothing to worry about!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_kk2rg"]
 script = ExtResource("3_bw6k5")
 is_dangerous = false
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "It's okay to let the government handle it!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_b5spy"]
 script = ExtResource("3_bw6k5")
 is_dangerous = true
-is_special = false
+is_important_to_message = false
+is_important_to_keep = false
 content = "We're living under a dictator. Revolt!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_utbpp"]
 script = ExtResource("3_bw6k5")
 is_dangerous = true
-is_special = true
+is_important_to_message = false
+is_important_to_keep = false
 content = "Evidence of wrongdoing by members of current administration.
 
 [Archive this if you dare.]"
@@ -56,15 +61,16 @@ unique_name_in_owner = true
 
 [node name="InboxUI" parent="." instance=ExtResource("1_w5aja")]
 
-[node name="Outbox2D" parent="." instance=ExtResource("5_y3j0m")]
+[node name="Outboxes" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Outbox2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 position = Vector2(1088, 64)
 
-[node name="Furnace2D" parent="." instance=ExtResource("5_y3j0m")]
-unique_name_in_owner = true
+[node name="Furnace2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 position = Vector2(1088, 584)
 
-[node name="Sprite2D" parent="Furnace2D" index="0"]
+[node name="Sprite2D" parent="Outboxes/Furnace2D" index="0"]
 texture = ExtResource("6_rurhu")
 
 [node name="Container" type="Node2D" parent="."]
@@ -87,5 +93,7 @@ text = "0"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="InboxUI" to="." method="_on_inbox_ui_pressed"]
+[connection signal="document_processed" from="Outboxes/Outbox2D" to="." method="_on_outbox_2d_document_processed"]
+[connection signal="document_processed" from="Outboxes/Furnace2D" to="." method="_on_furnace_2d_document_processed"]
 
-[editable path="Furnace2D"]
+[editable path="Outboxes/Furnace2D"]

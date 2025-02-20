@@ -1,0 +1,8 @@
+~ start
+New Boss: I need you to do me a favor.
+- Skip => END
+- Continue
+New Boss: Find documents about my boss, Bossy McBosstonson.
+New Boss: I think he's been up to some no good.
+New Boss: Don't burn- eh. -redact those like normal. Instead, put it in the pneumatic tube to send to me. 
+=> END

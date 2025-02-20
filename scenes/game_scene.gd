@@ -1,3 +1,4 @@
+class_name GameScene
 extends Node
 
 signal level_complete
@@ -18,13 +19,22 @@ var _archived_documents : Array[DocumentData]
 var _redacted_documents : Array[DocumentData]
 var _processed_documents : Array[DocumentData]
 
+var level_state : LevelState
 var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
 var points_scored : int = 0 :
 	set(value):
 		points_scored = value
-		if is_inside_tree():
-			%ScoreLabel.text = "%d" % points_scored
+		_update_level_data()
+		_update_score_label()
+
+func _update_score_label():
+	if is_inside_tree():
+		%ScoreLabel.text = "%d" % points_scored
+
+func _update_level_data():
+	if level_state:
+		level_state.points = points_scored
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
@@ -65,33 +75,22 @@ func is_level_complete():
 
 func _finish_level_if_complete():
 	if is_level_complete():
-		print("LEVEL COMPLETE")
 		level_complete.emit()
+
+func get_mouse_over_outbox() -> Outbox2D:
+	for child in %Outboxes.get_children():
+		if child is Outbox2D:
+			if child.is_mouse_over: 
+				return child
+	return null
 
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
 	if _active_document is DocumentBase and _active_document.document_data:
-		if %Outbox2D.is_mouse_over or %Furnace2D.is_mouse_over:
-			_processed_documents.append(_active_document.document_data)
-			
-			var should_redact := false
-			for rule in _find_rules():
-				if rule.should_redact(_active_document.document_data):
-					should_redact = true
-				if %Furnace2D.is_mouse_over:
-					rule.on_redacted(_active_document.document_data)
-				else:
-					rule.on_archived(_active_document.document_data)
-			
-			if %Furnace2D.is_mouse_over:
-				_redacted_documents.append(_active_document.document_data)
-				points_scored += 1 if should_redact else -1
-			else:
-				_archived_documents.append(_active_document.document_data)
-				points_scored += 1 if not should_redact else -1
-				
-			_active_document.queue_free()
+		var outbox := get_mouse_over_outbox()
+		if outbox is Outbox2D:
+			outbox.process_document(_active_document)
 			_active_document = null
 			_finish_level_if_complete()
 			return
@@ -99,6 +98,32 @@ func drop_document():
 	_active_document.reparent(%Container)
 	_highlighted_document = _active_document
 	_active_document = null
+
+func document_processed(document_data : DocumentData):
+	_processed_documents.append(document_data)
+	_finish_level_if_complete()
+
+func _should_document_be_redacted(document_data : DocumentData) -> bool:
+	for rule in _find_rules():
+		if rule.should_redact(document_data):
+			return true
+	return false
+
+func _on_document_archived(document_data : DocumentData):
+	_archived_documents.append(document_data)
+	var should_redact := _should_document_be_redacted(document_data)
+	points_scored += 1 if not should_redact else -1
+	for rule in _find_rules():
+		rule.on_archived(document_data)
+	document_processed(document_data)
+
+func _on_document_redacted(document_data : DocumentData):
+	_redacted_documents.append(document_data)
+	var should_redact := _should_document_be_redacted(document_data)
+	points_scored += 1 if should_redact else -1
+	for rule in _find_rules():
+		rule.on_redacted(document_data)
+	document_processed(document_data)
 
 func _on_inbox_ui_pressed():
 	pickup_inbox_document()
@@ -120,16 +145,20 @@ func _find_rules() -> Array[Rule]:
 				rules.append(inner_rule)
 	return rules
 
+func _play_opening_dialogue():
+	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
+
 func _ready():
 	_documents = documents.duplicate()
 	_documents.shuffle()
 	_connect_document_signals()
-	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
-	
+	_play_opening_dialogue()
 	#pass rules to rulebook
 	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
 		var rulebook := %Rulebook as Rulebook
 		rulebook.setup_rules(_find_rules())
+
+	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
 
 func _update_highlighted_document():
 	var _first_doc_
@@ -152,3 +181,9 @@ func _input(event):
 				drop_document()
 			else:
 				pickup_highlighted_document()
+
+func _on_outbox_2d_document_processed(document_data):
+	_on_document_archived(document_data)
+
+func _on_furnace_2d_document_processed(document_data):
+	_on_document_redacted(document_data)

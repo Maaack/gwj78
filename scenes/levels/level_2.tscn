@@ -1,0 +1,89 @@
+[gd_scene load_steps=16 format=3 uid="uid://cqwllk37ecnrb"]
+
+[ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ibugp"]
+[ext_resource type="Script" uid="uid://dm0l2acavcb8u" path="res://scenes/levels/level_2.gd" id="2_qsp8v"]
+[ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="3_3p04p"]
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_nt80m"]
+[ext_resource type="Resource" uid="uid://b2qs4jnuy0nn4" path="res://resources/dialogues/level_2.dialogue" id="3_qsp8v"]
+[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="4_qsp8v"]
+[ext_resource type="PackedScene" uid="uid://dwwdk70phcvu4" path="res://scenes/outbox_2d.tscn" id="6_3p04p"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/rulebook/rulebook.tscn" id="6_brxtv"]
+[ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="6_qsp8v"]
+[ext_resource type="Texture2D" uid="uid://bo7tvg063ojd5" path="res://assets/images/warp-pipe.png" id="7_qsp8v"]
+
+[sub_resource type="Resource" id="Resource_brxtv"]
+script = ExtResource("3_nt80m")
+is_dangerous = false
+is_important_to_message = false
+is_important_to_keep = false
+content = "Direct Order:
+Archivists, do not take special requests from your direct superiors. Follow the rules of your most superior leader."
+metadata/_custom_type_script = ExtResource("3_nt80m")
+
+[sub_resource type="Resource" id="Resource_rurhu"]
+script = ExtResource("3_nt80m")
+is_dangerous = false
+is_important_to_message = false
+is_important_to_keep = false
+content = "There's nothing to worry about!"
+metadata/_custom_type_script = ExtResource("3_nt80m")
+
+[sub_resource type="Resource" id="Resource_kk2rg"]
+script = ExtResource("3_nt80m")
+is_dangerous = false
+is_important_to_message = false
+is_important_to_keep = false
+content = "It's okay to let the government handle it!"
+metadata/_custom_type_script = ExtResource("3_nt80m")
+
+[sub_resource type="Resource" id="Resource_b5spy"]
+script = ExtResource("3_nt80m")
+is_dangerous = true
+is_important_to_message = false
+is_important_to_keep = false
+content = "We're living under a dictator. Revolt!"
+metadata/_custom_type_script = ExtResource("3_nt80m")
+
+[sub_resource type="Resource" id="Resource_tv7cl"]
+script = ExtResource("3_nt80m")
+is_dangerous = true
+is_important_to_message = true
+is_important_to_keep = false
+content = "Evidence of wrongdoing by Bossy McBosstonson."
+metadata/_custom_type_script = ExtResource("3_nt80m")
+
+[node name="GameScene" instance=ExtResource("1_ibugp")]
+script = ExtResource("2_qsp8v")
+documents = Array[ExtResource("3_nt80m")]([SubResource("Resource_brxtv"), SubResource("Resource_rurhu"), SubResource("Resource_kk2rg"), SubResource("Resource_b5spy"), SubResource("Resource_tv7cl")])
+dialogue_resource = ExtResource("3_qsp8v")
+opening_dialogue = &"start"
+
+[node name="RedactDangerous" type="Node" parent="Rules" index="0"]
+script = ExtResource("3_3p04p")
+instruction = "Redact any so-called \"evidence\" against our great administration."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="1"]
+script = ExtResource("4_qsp8v")
+instruction = "Archive all remaining documents."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="MessageBoss" type="Node" parent="Rules" index="2"]
+script = ExtResource("6_qsp8v")
+
+[node name="MessagePipe2D" parent="Outboxes" index="2" instance=ExtResource("6_3p04p")]
+position = Vector2(1088, 328)
+
+[node name="Sprite2D" parent="Outboxes/MessagePipe2D" index="0"]
+texture = ExtResource("7_qsp8v")
+flip_v = true
+
+[node name="Rulebook" parent="Container" index="0" instance=ExtResource("6_brxtv")]
+unique_name_in_owner = true
+position = Vector2(409, 312)
+disabled = false
+
+[connection signal="document_processed" from="Outboxes/MessagePipe2D" to="." method="_on_message_pipe_2d_document_processed"]
+
+[editable path="Outboxes/Furnace2D"]
+[editable path="Outboxes/MessagePipe2D"]
