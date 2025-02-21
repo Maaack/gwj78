@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6a02131hj2mc"]
+[gd_scene load_steps=7 format=3 uid="uid://b6a02131hj2mc"]
 
 [ext_resource type="PackedScene" uid="uid://sikc02ddepyt" path="res://addons/maaacks_game_template/base/scenes/opening/opening.tscn" id="1_w60c0"]
 [ext_resource type="Script" uid="uid://4d5d5xtdts1t" path="res://scenes/opening/opening.gd" id="2_ynkyy"]
 [ext_resource type="Texture2D" uid="uid://b3lt37o3v2xxi" path="res://assets/images/GWJ-Full-Logo-tag-Orange2.svg" id="3_kt5v3"]
 [ext_resource type="Texture2D" uid="uid://bdm6w1sshpisa" path="res://assets/images/ThemeBanner.png" id="4_u58oj"]
 [ext_resource type="Texture2D" uid="uid://ble5nljg8sdtf" path="res://assets/images/WildcardsBanner.png" id="5_qie0p"]
+[ext_resource type="AudioStream" uid="uid://b0ki2ombw6lla" path="res://assets/music/Ambient Vol5 String Theory Cut 60.ogg" id="6_ynkyy"]
 
 [node name="Opening" instance=ExtResource("1_w60c0")]
 script = ExtResource("2_ynkyy")
 next_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
 images = Array[Texture2D]([ExtResource("3_kt5v3"), ExtResource("4_u58oj"), ExtResource("5_qie0p")])
+
+[node name="BackgroundMusicPlayer" parent="." index="0"]
+stream = ExtResource("6_ynkyy")
+parameters/looping = true
