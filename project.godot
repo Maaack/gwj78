@@ -27,6 +27,12 @@ ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autolo
 
 runtime/balloon_path="res://scenes/dialogue_balloon/balloon.tscn"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
