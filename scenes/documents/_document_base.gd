@@ -15,9 +15,15 @@ var is_mouse_over : bool = false
 
 @export var disabled : bool = false
 
+func _ready():
+	document_data = document_data
+	
 func get_bounds() -> RectangleShape2D:
 	var rect = %CollisionShape2D.shape as RectangleShape2D
 	return rect
+	
+func play_pickup_sound() -> void:
+	%OnMoveShuffleSound.play()
 
 func _on_area_2d_mouse_entered():
 	if disabled: return
@@ -28,6 +34,3 @@ func _on_area_2d_mouse_exited():
 	if disabled: return
 	is_mouse_over = false
 	mouse_exited.emit()
-
-func _ready():
-	document_data = document_data

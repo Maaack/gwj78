@@ -100,6 +100,7 @@ func _load_win_screen_or_ending():
 func _load_level_complete_screen_or_next_level():
 	if level_won_scene:
 		var instance = level_won_scene.instantiate()
+		instance.level = current_level
 		get_tree().current_scene.add_child(instance)
 		_try_connecting_signal_to_node(instance, &"continue_pressed", _load_next_level)
 		_try_connecting_signal_to_node(instance, &"restart_pressed", _advance_and_reload)
