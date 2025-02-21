@@ -4,7 +4,7 @@ extends Resource
 const STATE_NAME : String = "GameState"
 const FILE_PATH = "res://scripts/game_state.gd"
 
-@export var level_states : Dictionary = {}
+@export var level_states : Dictionary [String, LevelState] = {}
 @export var max_level_reached : int
 @export var current_level : int
 @export var times_played : int

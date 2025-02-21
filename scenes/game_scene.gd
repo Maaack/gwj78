@@ -22,19 +22,21 @@ var _processed_documents : Array[DocumentData]
 var level_state : LevelState
 var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
-var points_scored : int = 0 :
-	set(value):
-		points_scored = value
-		_update_level_data()
-		_update_score_label()
 
+func _ready():
+	_documents = documents.duplicate()
+	_documents.shuffle()
+	_connect_document_signals()
+	_play_opening_dialogue()
+	#pass rules to rulebook
+	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
+		var rulebook := %Rulebook as Rulebook
+		rulebook.setup_rules(_find_rules())
+	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
+	
 func _update_score_label():
 	if is_inside_tree():
-		%ScoreLabel.text = "%d" % points_scored
-
-func _update_level_data():
-	if level_state:
-		level_state.points = points_scored
+		%ScoreLabel.text = "%d" % level_state.points_total
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
@@ -72,7 +74,11 @@ func _update_active_document_position():
 	_active_document.position = _last_mouse_position + _pickup_offset
 
 func is_level_complete():
-	return _processed_documents.size() >= documents.size()
+	var unprocessable_documents = 0
+	for document in documents:
+		if not document.processable:
+			unprocessable_documents += 1
+	return _processed_documents.size() >= (documents.size() - unprocessable_documents)
 
 func _finish_level_if_complete():
 	if is_level_complete():
@@ -88,7 +94,7 @@ func get_mouse_over_outbox() -> Outbox2D:
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
-	if _active_document is DocumentBase and _active_document.document_data:
+	if _active_document is DocumentBase and _active_document.document_data and _active_document.document_data.processable:
 		var outbox := get_mouse_over_outbox()
 		if outbox is Outbox2D:
 			outbox.process_document(_active_document)
@@ -102,6 +108,11 @@ func drop_document():
 
 func document_processed(document_data : DocumentData):
 	_processed_documents.append(document_data)
+	if document_data.is_dangerous:
+		level_state.documents_intended_redacted += 1
+	else:
+		level_state.documents_intended_archived += 1
+	_update_score_label()
 	_finish_level_if_complete()
 
 func _should_document_be_redacted(document_data : DocumentData) -> bool:
@@ -112,8 +123,9 @@ func _should_document_be_redacted(document_data : DocumentData) -> bool:
 
 func _on_document_archived(document_data : DocumentData):
 	_archived_documents.append(document_data)
-	var should_redact := _should_document_be_redacted(document_data)
-	points_scored += 1 if not should_redact else -1
+	var should_archive := not _should_document_be_redacted(document_data)
+	level_state.points_total += 1 if should_archive else -1
+	level_state.documents_archived += 1
 	for rule in _find_rules():
 		rule.on_archived(document_data)
 	document_processed(document_data)
@@ -121,7 +133,8 @@ func _on_document_archived(document_data : DocumentData):
 func _on_document_redacted(document_data : DocumentData):
 	_redacted_documents.append(document_data)
 	var should_redact := _should_document_be_redacted(document_data)
-	points_scored += 1 if should_redact else -1
+	level_state.points_total += 1 if should_redact else -1
+	level_state.documents_redacted += 1
 	for rule in _find_rules():
 		rule.on_redacted(document_data)
 	document_processed(document_data)
@@ -150,17 +163,6 @@ func _play_opening_dialogue():
 	if dialogue_resource and opening_dialogue:
 		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
 
-func _ready():
-	_documents = documents.duplicate()
-	_documents.shuffle()
-	_connect_document_signals()
-	_play_opening_dialogue()
-	#pass rules to rulebook
-	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
-		var rulebook := %Rulebook as Rulebook
-		rulebook.setup_rules(_find_rules())
-
-	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
 
 func _update_highlighted_document():
 	var _first_doc_

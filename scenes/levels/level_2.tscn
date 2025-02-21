@@ -13,6 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_brxtv"]
 script = ExtResource("3_nt80m")
+processable = false
 is_dangerous = false
 is_important_to_message = false
 is_important_to_keep = false
@@ -22,6 +23,7 @@ metadata/_custom_type_script = ExtResource("3_nt80m")
 
 [sub_resource type="Resource" id="Resource_rurhu"]
 script = ExtResource("3_nt80m")
+processable = true
 is_dangerous = false
 is_important_to_message = false
 is_important_to_keep = false
@@ -30,6 +32,7 @@ metadata/_custom_type_script = ExtResource("3_nt80m")
 
 [sub_resource type="Resource" id="Resource_kk2rg"]
 script = ExtResource("3_nt80m")
+processable = true
 is_dangerous = false
 is_important_to_message = false
 is_important_to_keep = false
@@ -38,6 +41,7 @@ metadata/_custom_type_script = ExtResource("3_nt80m")
 
 [sub_resource type="Resource" id="Resource_b5spy"]
 script = ExtResource("3_nt80m")
+processable = true
 is_dangerous = true
 is_important_to_message = false
 is_important_to_keep = false
@@ -46,6 +50,7 @@ metadata/_custom_type_script = ExtResource("3_nt80m")
 
 [sub_resource type="Resource" id="Resource_tv7cl"]
 script = ExtResource("3_nt80m")
+processable = true
 is_dangerous = true
 is_important_to_message = true
 is_important_to_keep = false
@@ -83,7 +88,6 @@ flip_v = true
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("6_brxtv")]
 unique_name_in_owner = true
 position = Vector2(125, 140)
-disabled = false
 
 [connection signal="document_processed" from="Outboxes/MessagePipe2D" to="." method="_on_message_pipe_2d_document_processed"]
 
