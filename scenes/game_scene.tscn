@@ -50,7 +50,14 @@ is_messageable = false
 is_dangerous = true
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
-content = "We're living under a dictator. Revolt!"
+content = "2023-04-30
+Federal Intelligence Gathering Service (FIGS)
+
+	Report of security incident AX28-C
+ 
+During the evening of 2023-04-21 President Jean Allen was seen going with his secretary at Restaurant Gris after work. By chance, Agent Donald Dunham was also dining there. He observed their state as, quoting, “positively drunk af”. By due diligence, Hamilton followed them to ensure that secrets of the state shall not be divulged to unauthorized parties. 
+
+Some of the details of the events are REDACTED FOR NATIONAL SECURITY and known only to the discretion of a few."
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_utbpp"]

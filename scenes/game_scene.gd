@@ -29,7 +29,7 @@ func _ready():
 	_documents.shuffle()
 	if len(_documents) > 0 and _documents.any(func(document: DocumentData): return document.is_processable):
 		while not _documents[len(_documents) - 1].is_processable:
-			_documents.shuffle() #quick hack to make sure last document to draw isnt just a note
+			_documents.shuffle() #quick hack to make last document to draw not just a note
 	_connect_document_signals()
 	_play_opening_dialogue()
 	#pass rules to rulebook

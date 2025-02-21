@@ -28,6 +28,6 @@ active = false
 unique_name_in_owner = true
 position = Vector2(125, 140)
 
-[editable path="Outboxes/ArchiveHole"]
 [editable path="Outboxes/Furnace"]
+[editable path="Outboxes/ArchiveHole"]
 [editable path="Outboxes/MessagePipe"]
