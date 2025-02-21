@@ -11,10 +11,12 @@ size = Vector2(162, 56)
 script = ExtResource("1_fubrp")
 
 [node name="DrawerSprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_7457s")
 
 [node name="FilesSprite2D" type="Sprite2D" parent="DrawerSprite2D"]
 unique_name_in_owner = true
+texture_filter = 1
 position = Vector2(0, -6)
 texture = ExtResource("2_fubrp")
 

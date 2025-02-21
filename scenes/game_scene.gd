@@ -147,7 +147,8 @@ func _find_rules() -> Array[Rule]:
 	return rules
 
 func _play_opening_dialogue():
-	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
+	if dialogue_resource and opening_dialogue:
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
 
 func _ready():
 	_documents = documents.duplicate()

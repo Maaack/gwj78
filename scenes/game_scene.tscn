@@ -61,6 +61,7 @@ dialogue_balloon_scene = ExtResource("4_kk2rg")
 unique_name_in_owner = true
 
 [node name="Desk" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("5_b5spy")
 centered = false
 
