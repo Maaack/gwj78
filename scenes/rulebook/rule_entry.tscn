@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn3wnoubxbk6p"]
+[gd_scene load_steps=4 format=3 uid="uid://dn3wnoubxbk6p"]
 
 [ext_resource type="Script" uid="uid://c205q8teud4in" path="res://scenes/rulebook/rule_entry.gd" id="1_ceabb"]
+[ext_resource type="FontFile" uid="uid://dsrd48vqxljye" path="res://assets/fonts/Match 7p.ttf" id="2_dd4cn"]
+[ext_resource type="FontFile" uid="uid://bgx7d575fvt8c" path="res://assets/fonts/Match 7h.ttf" id="3_2xfji"]
 
 [node name="RuleEntry" type="MarginContainer"]
 anchors_preset = 15
@@ -15,4 +17,6 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_dd4cn")
+theme_override_fonts/bold_font = ExtResource("3_2xfji")
 fit_content = true
