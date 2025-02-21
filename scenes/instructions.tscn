@@ -10,15 +10,5 @@ size = Vector2(348, 68)
 [node name="Sprite2D" parent="." index="0"]
 region_rect = Rect2(32, 320, 348, 68)
 
-[node name="MarginContainer" parent="." index="1"]
-custom_minimum_size = Vector2(173, 49)
-offset_left = -174.0
-offset_top = -34.0
-offset_right = 174.0
-offset_bottom = 34.0
-
-[node name="DocumentBody" parent="MarginContainer" index="0"]
-text = "Redact any so-called \"evidence\" against our great administration."
-
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("RectangleShape2D_nisbi")

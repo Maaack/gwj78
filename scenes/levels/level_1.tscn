@@ -20,8 +20,13 @@ script = ExtResource("6_qxy0u")
 instruction = "Archive all remaining documents."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
+[node name="MessagePipe" parent="Outboxes" index="2"]
+visible = false
+active = false
+
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("3_nsrm0")]
 unique_name_in_owner = true
 position = Vector2(125, 140)
 
-[editable path="Outboxes/Furnace2D"]
+[editable path="Outboxes/Furnace"]
+[editable path="Outboxes/MessagePipe"]

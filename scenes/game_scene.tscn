@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=16 format=3 uid="uid://iedfoi6jhgvc"]
 
 [ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/document_base.tscn" id="2_ycayy"]
@@ -8,48 +8,55 @@
 [ext_resource type="PackedScene" uid="uid://dwwdk70phcvu4" path="res://scenes/outbox_2d.tscn" id="5_y3j0m"]
 [ext_resource type="Texture2D" uid="uid://c4dcxp3wv4sfa" path="res://assets/images/furnace.png" id="6_rurhu"]
 [ext_resource type="PackedScene" uid="uid://3t8lt7eqxsm3" path="res://scenes/inbox_2d.tscn" id="7_utbpp"]
+[ext_resource type="Texture2D" uid="uid://bo7tvg063ojd5" path="res://assets/images/warp-pipe.png" id="9_utbpp"]
 
 [sub_resource type="Resource" id="Resource_y3j0m"]
 script = ExtResource("3_bw6k5")
+is_processable = true
+is_messageable = false
 is_dangerous = false
-is_important_to_message = false
-is_important_to_keep = false
+special_flags = Array[String]([])
 content = "Everything is fine."
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_rurhu"]
 script = ExtResource("3_bw6k5")
+is_processable = true
+is_messageable = false
 is_dangerous = false
-is_important_to_message = false
-is_important_to_keep = false
+special_flags = Array[String]([])
 content = "There's nothing to worry about!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_kk2rg"]
 script = ExtResource("3_bw6k5")
+is_processable = true
+is_messageable = false
 is_dangerous = false
-is_important_to_message = false
-is_important_to_keep = false
+special_flags = Array[String]([])
 content = "It's okay to let the government handle it!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_b5spy"]
 script = ExtResource("3_bw6k5")
+is_processable = true
+is_messageable = false
 is_dangerous = true
-is_important_to_message = false
-is_important_to_keep = false
+special_flags = Array[String]([])
 content = "We're living under a dictator. Revolt!"
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
 [sub_resource type="Resource" id="Resource_utbpp"]
 script = ExtResource("3_bw6k5")
+is_processable = true
+is_messageable = false
 is_dangerous = true
-is_important_to_message = false
-is_important_to_keep = false
-content = "Evidence of wrongdoing by members of current administration.
-
-[Archive this if you dare.]"
+special_flags = Array[String]([])
+content = "Evidence of wrongdoing by members of current administration."
 metadata/_custom_type_script = ExtResource("3_bw6k5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utbpp"]
+size = Vector2(128, 128)
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_onqr8")
@@ -72,15 +79,29 @@ position = Vector2(87, 332)
 [node name="Outboxes" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Outbox2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
-position = Vector2(553, 263)
+[node name="ArchiveHole" parent="Outboxes" instance=ExtResource("5_y3j0m")]
+unique_name_in_owner = true
+position = Vector2(553, 227)
 
-[node name="Furnace2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
+[node name="Furnace" parent="Outboxes" instance=ExtResource("5_y3j0m")]
+unique_name_in_owner = true
 position = Vector2(575, 64)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" parent="Outboxes/Furnace2D" index="0"]
+[node name="Sprite2D" parent="Outboxes/Furnace" index="0"]
 texture = ExtResource("6_rurhu")
+
+[node name="MessagePipe" parent="Outboxes" instance=ExtResource("5_y3j0m")]
+unique_name_in_owner = true
+position = Vector2(339, 64)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Outboxes/MessagePipe" index="0"]
+visible = true
+texture = ExtResource("9_utbpp")
+
+[node name="CollisionShape2D" parent="Outboxes/MessagePipe/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_utbpp")
 
 [node name="Container" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -101,7 +122,17 @@ theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 
-[connection signal="document_processed" from="Outboxes/Outbox2D" to="." method="_on_outbox_2d_document_processed"]
-[connection signal="document_processed" from="Outboxes/Furnace2D" to="." method="_on_furnace_2d_document_processed"]
+[node name="CheatSkipLevel" type="Button" parent="."]
+offset_left = 539.0
+offset_top = 321.0
+offset_right = 631.0
+offset_bottom = 352.0
+text = "SKIP LEVEL"
 
-[editable path="Outboxes/Furnace2D"]
+[connection signal="document_processed" from="Outboxes/ArchiveHole" to="." method="_on_outbox_2d_document_processed"]
+[connection signal="document_processed" from="Outboxes/Furnace" to="." method="_on_furnace_2d_document_processed"]
+[connection signal="document_processed" from="Outboxes/MessagePipe" to="." method="_on_message_pipe_document_processed"]
+[connection signal="pressed" from="CheatSkipLevel" to="." method="_on_cheat_skip_level_pressed"]
+
+[editable path="Outboxes/Furnace"]
+[editable path="Outboxes/MessagePipe"]

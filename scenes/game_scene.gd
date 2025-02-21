@@ -17,6 +17,7 @@ var _active_document : DocumentBase
 var _documents : Array[DocumentData]
 var _archived_documents : Array[DocumentData]
 var _redacted_documents : Array[DocumentData]
+var _messaged_documents : Array[DocumentData]
 var _processed_documents : Array[DocumentData]
 
 var level_state : LevelState
@@ -26,6 +27,9 @@ var _last_mouse_position : Vector2
 func _ready():
 	_documents = documents.duplicate()
 	_documents.shuffle()
+	if len(_documents) > 0 and _documents.any(func(document: DocumentData): return document.is_processable):
+		while not _documents[len(_documents) - 1].is_processable:
+			_documents.shuffle() #quick hack to make sure last document to draw isnt just a note
 	_connect_document_signals()
 	_play_opening_dialogue()
 	#pass rules to rulebook
@@ -33,6 +37,9 @@ func _ready():
 		var rulebook := %Rulebook as Rulebook
 		rulebook.setup_rules(_find_rules())
 	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
+	#pass level state to rules
+	for rule in _find_rules():
+		rule.level_state = level_state
 	
 func _update_score_label():
 	if is_inside_tree():
@@ -76,7 +83,7 @@ func _update_active_document_position():
 func is_level_complete():
 	var unprocessable_documents = 0
 	for document in documents:
-		if not document.processable:
+		if not document.is_processable:
 			unprocessable_documents += 1
 	return _processed_documents.size() >= (documents.size() - unprocessable_documents)
 
@@ -94,9 +101,10 @@ func get_mouse_over_outbox() -> Outbox2D:
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
-	if _active_document is DocumentBase and _active_document.document_data and _active_document.document_data.processable:
-		var outbox := get_mouse_over_outbox()
-		if outbox is Outbox2D:
+	var document_data := _active_document.document_data
+	var outbox := get_mouse_over_outbox()
+	if _active_document is DocumentBase and document_data and outbox is Outbox2D and outbox.active:
+		if (outbox == %MessagePipe and document_data.is_messageable) or (outbox != %MessagePipe and document_data.is_processable):
 			outbox.process_document(_active_document)
 			_active_document = null
 			_finish_level_if_complete()
@@ -137,6 +145,13 @@ func _on_document_redacted(document_data : DocumentData):
 	level_state.documents_redacted += 1
 	for rule in _find_rules():
 		rule.on_redacted(document_data)
+	document_processed(document_data)
+
+func _on_document_messaged(document_data : DocumentData):
+	_messaged_documents.append(document_data)
+	level_state.documents_messaged += 1
+	for rule in _find_rules():
+		rule.on_messaged(document_data)
 	document_processed(document_data)
 
 func _on_inbox_ui_pressed():
@@ -188,8 +203,14 @@ func _input(event):
 			elif %Inbox2D.is_mouse_over:
 				pickup_inbox_document()
 
-func _on_outbox_2d_document_processed(document_data):
+func _on_outbox_2d_document_processed(document_data: DocumentData) -> void:
 	_on_document_archived(document_data)
 
-func _on_furnace_2d_document_processed(document_data):
+func _on_furnace_2d_document_processed(document_data: DocumentData) -> void:
 	_on_document_redacted(document_data)
+
+func _on_message_pipe_document_processed(document_data: DocumentData) -> void:
+	_on_document_messaged(document_data)
+
+func _on_cheat_skip_level_pressed() -> void:
+	level_complete.emit()

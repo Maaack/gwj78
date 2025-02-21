@@ -3,6 +3,8 @@ extends Node2D
 
 signal document_processed(document_data: DocumentData)
 
+@export var active: bool = true
+
 var is_mouse_over : bool = false
 
 func process_document(document_base : DocumentBase):
