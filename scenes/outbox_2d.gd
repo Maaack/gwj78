@@ -12,6 +12,8 @@ func process_document(document_base : DocumentBase):
 	# Run any animation of the document getting processed
 	var document_data = document_base.document_data
 	document_base.queue_free()
+	%OnProcessSound.play()
+	%OnProcessParticles.restart()
 	await get_tree().create_timer(0.5).timeout
 	document_processed.emit(document_data)
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_6iamk"]
 [ext_resource type="Resource" uid="uid://den3tg6if71cc" path="res://resources/dialogues/test.dialogue" id="2_x42e6"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="3_dga24"]
-[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/rulebook/rulebook.tscn" id="3_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="3_nsrm0"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_qxy0u"]
 
 [node name="GameScene" instance=ExtResource("1_6iamk")]
@@ -28,5 +28,6 @@ active = false
 unique_name_in_owner = true
 position = Vector2(125, 140)
 
+[editable path="Outboxes/ArchiveHole"]
 [editable path="Outboxes/Furnace"]
 [editable path="Outboxes/MessagePipe"]

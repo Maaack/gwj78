@@ -36,6 +36,8 @@ func _ready():
 	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
 		var rulebook := %Rulebook as Rulebook
 		rulebook.setup_rules(_find_rules())
+	#reset state in case of level restart
+	GameState.clear_level_state(scene_file_path.get_file().get_basename())
 	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
 	#pass level state to rules
 	for rule in _find_rules():
@@ -50,8 +52,11 @@ func pickup_inbox_document():
 		return
 	if _documents.is_empty():
 		return
-	var next_document : DocumentData = _documents.pop_back()
-	var document_instance : DocumentBase = document_scene.instantiate()
+	var next_document : DocumentData = _documents.pop_back() as DocumentData
+	var picked_document_scene = document_scene
+	if len(next_document.document_scenes) > 0:
+		picked_document_scene = next_document.document_scenes.pick_random()
+	var document_instance : DocumentBase = picked_document_scene.instantiate() as DocumentBase
 	_pickup_offset = Vector2(0, (document_instance.get_bounds().size.y * 0.5) * INITIAL_PICKUP_OFFSET_FRACTION)
 	document_instance.rotation_degrees = PICKUP_ROTATION
 	document_instance.position = _last_mouse_position + _pickup_offset
@@ -81,11 +86,16 @@ func _update_active_document_position():
 	_active_document.position = _last_mouse_position + _pickup_offset
 
 func is_level_complete():
-	var unprocessable_documents = 0
+	#to account for messageable but not processable documents
+	var processable_documents = 0
 	for document in documents:
-		if not document.is_processable:
-			unprocessable_documents += 1
-	return _processed_documents.size() >= (documents.size() - unprocessable_documents)
+		if document.is_processable:
+			processable_documents += 1
+	var processed_documents = 0
+	for document in _processed_documents:
+		if document.is_processable:
+			processed_documents += 1
+	return processed_documents >= processable_documents
 
 func _finish_level_if_complete():
 	if is_level_complete():
@@ -116,10 +126,11 @@ func drop_document():
 
 func document_processed(document_data : DocumentData):
 	_processed_documents.append(document_data)
-	if document_data.is_dangerous:
-		level_state.documents_intended_redacted += 1
-	else:
-		level_state.documents_intended_archived += 1
+	if document_data.is_processable:
+		if document_data.is_dangerous:
+			level_state.documents_intended_redacted += 1
+		else:
+			level_state.documents_intended_archived += 1
 	_update_score_label()
 	_finish_level_if_complete()
 

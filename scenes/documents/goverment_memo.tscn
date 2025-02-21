@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsss7fycbbuij"]
+
+[ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/documents/_document_base.tscn" id="1_ox452"]
+[ext_resource type="Texture2D" uid="uid://dd3y1qdq1agw5" path="res://assets/artwork/paper_sheet_2.png" id="2_rgc13"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjlo5"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_rgc13")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 16.0
+texture_margin_bottom = 26.0
+
+[node name="DocumentBase" instance=ExtResource("1_ox452")]
+
+[node name="PanelContainer" parent="." index="1"]
+theme_override_styles/panel = SubResource("StyleBoxTexture_mjlo5")

@@ -19,6 +19,12 @@ static func get_level_state(level_state_key : String) -> LevelState:
 		game_state.level_states[level_state_key] = new_level_state
 		return new_level_state
 
+static func clear_level_state(level_state_key : String) -> void:
+	var game_state = get_game_state()
+	if level_state_key.is_empty() : return
+	if level_state_key in game_state.level_states:
+		game_state.level_states.erase(level_state_key)
+
 static func has_game_state() -> bool:
 	return GlobalState.has_state(STATE_NAME)
 
