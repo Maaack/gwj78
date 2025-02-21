@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqwllk37ecnrb"]
+[gd_scene load_steps=14 format=3 uid="uid://cqwllk37ecnrb"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ibugp"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="3_3p04p"]
 [ext_resource type="PackedScene" uid="uid://dsss7fycbbuij" path="res://scenes/documents/goverment_memo_mini.tscn" id="3_ibugp"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_nt80m"]
+[ext_resource type="Resource" uid="uid://b2qs4jnuy0nn4" path="res://resources/dialogues/level_2.dialogue" id="4_8qukl"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="4_qsp8v"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="6_brxtv"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="6_qsp8v"]
@@ -61,7 +62,8 @@ metadata/_custom_type_script = "uid://v65pvda1q6en"
 
 [node name="GameScene" instance=ExtResource("1_ibugp")]
 documents = Array[ExtResource("3_nt80m")]([SubResource("Resource_qpwj6"), SubResource("Resource_ibugp"), SubResource("Resource_8qukl"), SubResource("Resource_3p04p"), SubResource("Resource_nt80m")])
-dialogue_balloon_scene = null
+dialogue_resource = ExtResource("4_8qukl")
+opening_dialogue = &"start"
 
 [node name="RedactDangerous" type="Node" parent="Rules" index="0"]
 script = ExtResource("3_3p04p")
