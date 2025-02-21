@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=14 format=3 uid="uid://iedfoi6jhgvc"]
 
 [ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
-[ext_resource type="PackedScene" uid="uid://b3lt635no42c7" path="res://scenes/inbox_ui.tscn" id="1_w5aja"]
 [ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/document_base.tscn" id="2_ycayy"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://dvny075pwvmg2" path="res://scenes/dialogue_balloon/balloon.tscn" id="4_kk2rg"]
+[ext_resource type="Texture2D" uid="uid://bktbekrb2qic4" path="res://assets/artwork/desk.png" id="5_b5spy"]
 [ext_resource type="PackedScene" uid="uid://dwwdk70phcvu4" path="res://scenes/outbox_2d.tscn" id="5_y3j0m"]
 [ext_resource type="Texture2D" uid="uid://c4dcxp3wv4sfa" path="res://assets/images/furnace.png" id="6_rurhu"]
+[ext_resource type="PackedScene" uid="uid://3t8lt7eqxsm3" path="res://scenes/inbox_2d.tscn" id="7_utbpp"]
 
 [sub_resource type="Resource" id="Resource_y3j0m"]
 script = ExtResource("3_bw6k5")
@@ -59,16 +60,24 @@ dialogue_balloon_scene = ExtResource("4_kk2rg")
 [node name="Rules" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="InboxUI" parent="." instance=ExtResource("1_w5aja")]
+[node name="Desk" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("5_b5spy")
+centered = false
+
+[node name="Inbox2D" parent="." instance=ExtResource("7_utbpp")]
+unique_name_in_owner = true
+position = Vector2(87, 332)
 
 [node name="Outboxes" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Outbox2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
-position = Vector2(1088, 64)
+position = Vector2(553, 263)
 
 [node name="Furnace2D" parent="Outboxes" instance=ExtResource("5_y3j0m")]
-position = Vector2(1088, 584)
+position = Vector2(575, 64)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Outboxes/Furnace2D" index="0"]
 texture = ExtResource("6_rurhu")
@@ -92,7 +101,6 @@ theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="InboxUI" to="." method="_on_inbox_ui_pressed"]
 [connection signal="document_processed" from="Outboxes/Outbox2D" to="." method="_on_outbox_2d_document_processed"]
 [connection signal="document_processed" from="Outboxes/Furnace2D" to="." method="_on_furnace_2d_document_processed"]
 

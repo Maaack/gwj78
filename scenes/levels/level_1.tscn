@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("3_nsrm0")]
 unique_name_in_owner = true
-position = Vector2(409, 312)
+position = Vector2(125, 140)
 disabled = false
 
 [node name="EvidenceMarker" type="Sprite2D" parent="Container" index="1"]

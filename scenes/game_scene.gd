@@ -51,6 +51,7 @@ func pickup_inbox_document():
 	document_instance.mouse_exited.connect(_update_highlighted_document)
 	%ActiveContainer.add_child(document_instance)
 	_active_document = document_instance
+	%Inbox2D.has_documents = !(_documents.is_empty())
 
 func pickup_highlighted_document():
 	if is_instance_valid(_active_document):
@@ -67,7 +68,7 @@ func pickup_highlighted_document():
 func _update_active_document_position():
 	if not is_instance_valid(_active_document):
 		return
-	Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+	#Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 	_active_document.position = _last_mouse_position + _pickup_offset
 
 func is_level_complete():
@@ -146,7 +147,8 @@ func _find_rules() -> Array[Rule]:
 	return rules
 
 func _play_opening_dialogue():
-	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
+	if dialogue_resource and opening_dialogue:
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
 
 func _ready():
 	_documents = documents.duplicate()
@@ -179,8 +181,10 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if _active_document:
 				drop_document()
-			else:
+			elif _highlighted_document:
 				pickup_highlighted_document()
+			elif %Inbox2D.is_mouse_over:
+				pickup_inbox_document()
 
 func _on_outbox_2d_document_processed(document_data):
 	_on_document_archived(document_data)
