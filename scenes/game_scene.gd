@@ -64,8 +64,9 @@ func pickup_inbox_document():
 	document_instance.mouse_entered.connect(_update_highlighted_document)
 	document_instance.mouse_exited.connect(_update_highlighted_document)
 	%ActiveContainer.add_child(document_instance)
+	document_instance.play_pickup_sound()
 	_active_document = document_instance
-	%Inbox2D.has_documents = !(_documents.is_empty())
+	%Inbox2D.has_documents = not _documents.is_empty()
 
 func pickup_highlighted_document():
 	if is_instance_valid(_active_document):
@@ -77,6 +78,7 @@ func pickup_highlighted_document():
 	_pickup_offset = -(_last_mouse_position - _active_document.position)
 	_active_document.rotation_degrees = PICKUP_ROTATION
 	_active_document.reparent(%ActiveContainer)
+	_active_document.play_pickup_sound()
 	_update_active_document_position()
 
 func _update_active_document_position():

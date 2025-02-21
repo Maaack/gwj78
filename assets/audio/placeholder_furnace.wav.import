@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b8rx6ntfvccv1"
-path="res://.godot/imported/placeholder_2.wav-68cc12071a7e47688ec51a2728bddaf2.sample"
+path="res://.godot/imported/placeholder_furnace.wav-daea7068be0bd5a78479718cf839cc94.sample"
 
 [deps]
 
-source_file="res://assets/audio/placeholder_2.wav"
-dest_files=["res://.godot/imported/placeholder_2.wav-68cc12071a7e47688ec51a2728bddaf2.sample"]
+source_file="res://assets/audio/placeholder_furnace.wav"
+dest_files=["res://.godot/imported/placeholder_furnace.wav-daea7068be0bd5a78479718cf839cc94.sample"]
 
 [params]
 
