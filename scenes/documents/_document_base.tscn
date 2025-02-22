@@ -1,6 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://bx5l6q5outjxn"]
 
 [ext_resource type="Script" uid="uid://cj1ficr38vxnw" path="res://scenes/documents/_document_base.gd" id="1_2eha8"]
+[ext_resource type="Texture2D" uid="uid://b1dllgjdww5sn" path="res://assets/images/Humble Gift - v1.3/PNG/SpriteSheet.png" id="2_tyhhf"]
 [ext_resource type="AudioStream" uid="uid://cfm0dl2dsvi5u" path="res://assets/audio/ovani/Flip Page Journal A.wav" id="3_aayc2"]
 [ext_resource type="Texture2D" uid="uid://cnqds56km6bcr" path="res://assets/artwork/paper_sheet_1.png" id="3_kcaub"]
 [ext_resource type="FontFile" uid="uid://dsrd48vqxljye" path="res://assets/fonts/Match 7p.ttf" id="4_s665b"]

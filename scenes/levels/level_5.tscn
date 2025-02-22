@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://el8enlw50nny"]
+
+[ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_mxx4w"]
+[ext_resource type="Script" uid="uid://bsi8itgwtjkhw" path="res://scenes/levels/level_3.gd" id="2_vvoq0"]
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_dwyms"]
+[ext_resource type="Resource" uid="uid://dkjduvug35748" path="res://scenes/documents/day5/figs_election_tampering.tres" id="4_6xwso"]
+[ext_resource type="AudioStream" uid="uid://iv226rii6bx7" path="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg" id="4_dwyms"]
+[ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_6xwso"]
+[ext_resource type="Resource" uid="uid://crhi7xbd50pxk" path="res://resources/dialogues/level_5.dialogue" id="5_tqnj0"]
+[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_5ke18"]
+[ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_j14br"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="8_0y7y4"]
+
+[node name="GameScene" instance=ExtResource("1_mxx4w")]
+script = ExtResource("2_vvoq0")
+helped_boss_dialogue = &"alternate_start"
+documents = Array[ExtResource("3_dwyms")]([ExtResource("4_6xwso")])
+dialogue_resource = ExtResource("5_tqnj0")
+opening_dialogue = &"start"
+
+[node name="BackgroundMusicPlayer" parent="." index="0"]
+stream = ExtResource("4_dwyms")
+
+[node name="RedactDangerous" type="Node" parent="Rules" index="0"]
+script = ExtResource("5_6xwso")
+instruction = "Redact any so-called \"evidence\" against our great administration."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="1"]
+script = ExtResource("6_5ke18")
+instruction = "Archive all remaining documents."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="MessageBoss" type="Node" parent="Rules" index="2"]
+script = ExtResource("7_j14br")
+
+[node name="Rulebook" parent="Container" index="0" instance=ExtResource("8_0y7y4")]
+unique_name_in_owner = true
+position = Vector2(125, 140)
+
+[editable path="Outboxes/Furnace"]
+[editable path="Outboxes/ArchiveHole"]
+[editable path="Outboxes/MessagePipe"]

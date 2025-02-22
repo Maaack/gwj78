@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://b222gjr6do5qt"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_6l3aa"]
+
+[resource]
+script = ExtResource("1_6l3aa")
+is_processable = true
+is_messageable = false
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[b]Budget Report 2024 Quarter 5[/b]
+
+[right][b]C[/b]entral [b]U[/b]nified [b]N[/b]ational [b]T[/b]reasury[/right]
+
+[table={4}]
+[cell][center]Spending[/center][/cell]
+[cell][center]Amount ($)[/center][/cell]
+[cell][center]Dept.[/center][/cell]
+[cell][center]Notes[/center][/cell]
+[cell border=black]Figs[/cell]
+[cell border=black][left]1 093.52[/left][/cell]
+[cell border=black][center]FIGS[/center][/cell]
+[cell border=black]Hamilton says they tasted wrong.[/cell]
+[cell border=black]Papier[/cell]
+[cell border=black][right]18 721.04[/right][/cell]
+[cell border=black][center]AIR[/center][/cell]
+[cell border=black]They need papier for an A.I??[/cell]
+[cell border=black]Ministres vacation[/cell]
+[cell border=black][right]20 435 093.52[/right][/cell]
+[cell border=black][center]PMC[/center][/cell]
+[cell border=black][b]Thankfully[/b], the cocktails were on the house.[/cell]
+[/table]
+"
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

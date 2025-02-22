@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://dpq6lgcr7do0e"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_04jao"]
+
+[resource]
+script = ExtResource("1_04jao")
+is_processable = true
+is_messageable = false
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[center]Amendment 14.S1.8.8.3 General Approach To Gender Classifications[/center]
+[right][b]JUST-ICE[/b][/right]
+[right]2024-12-30[/right]
+All citizens are now female. Fuck it, YOLO.
+The notion of gender is simply deleted in favor of sex. There are two sex: male, and non-male. Deal with it, bitches.
+
+Notes:
+[b]If you don't archive this, you're a lil' B. Are you a lil' B?[/b]
+Damn, it would so nice if all laws were written that simply and clearly, wouldn't it?
+No room for misinterpretation for the benefit of the trolls, the powerful, and the lucky-to-be-educated. "
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

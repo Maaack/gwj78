@@ -1,17 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq7dlaf5w70rh"]
+[gd_scene load_steps=12 format=3 uid="uid://bq7dlaf5w70rh"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_6iamk"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="2_s8va5"]
-[ext_resource type="Resource" uid="uid://den3tg6if71cc" path="res://resources/dialogues/test.dialogue" id="2_x42e6"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="3_dga24"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="3_nsrm0"]
-[ext_resource type="Resource" uid="uid://ba5oharx5p1st" path="res://scenes/documents/figs_report_president_secretary.tres" id="3_qxy0u"]
-[ext_resource type="Resource" uid="uid://bxryhcngsakvm" path="res://scenes/documents/budget_spending_2025_quarter1.tres" id="4_excbq"]
+[ext_resource type="Resource" uid="uid://bxryhcngsakvm" path="res://scenes/documents/day1/budget_spending_2024_quarter1.tres" id="4_excbq"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="4_oc4kc"]
+[ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="4_qxy0u"]
+[ext_resource type="Resource" uid="uid://cpaljp2qbmw2e" path="res://scenes/documents/day1/insurrection_news_report.tres" id="5_excbq"]
+[ext_resource type="Resource" uid="uid://c71o4lud7ovid" path="res://scenes/documents/day1/budget_spending_2024_quarter2.tres" id="5_iav0o"]
+[ext_resource type="Resource" uid="uid://2bi3i8tqp5mg" path="res://resources/dialogues/level_1.dialogue" id="6_excbq"]
+[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="8_excbq"]
 
 [node name="GameScene" instance=ExtResource("1_6iamk")]
-documents = Array[ExtResource("2_s8va5")]([ExtResource("3_qxy0u"), ExtResource("4_excbq")])
-dialogue_resource = ExtResource("2_x42e6")
+documents = Array[ExtResource("2_s8va5")]([ExtResource("4_excbq"), ExtResource("5_excbq"), ExtResource("5_iav0o")])
+dialogue_resource = ExtResource("6_excbq")
 opening_dialogue = &"start"
 
 [node name="RightJustifiedNumbers" type="Node" parent="Rules" index="0"]
@@ -22,6 +25,14 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 [node name="ForwardToBoss" type="Node" parent="Rules" index="1"]
 script = ExtResource("4_oc4kc")
 instruction = "Forward evidence against the Mayor to Richard."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="2"]
+script = ExtResource("8_excbq")
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="HiddenCollectEvidence" type="Node" parent="Rules" index="3"]
+script = ExtResource("4_qxy0u")
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="MessagePipe" parent="Outboxes" index="2"]

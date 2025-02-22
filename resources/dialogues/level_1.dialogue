@@ -1,0 +1,32 @@
+~ start
+???: So you're the new blood. Sorry what's your name again?
+- My name is Jeffrey, sir!
+	???: No, don't tell me. I don't care. You guys come and go all the time, I can't keep up.
+- I have no name, only a job.
+	???: Perfect, one less thing to pretend I care about. You guys come and go all the time, I can't keep up.
+
+???: At least, *I* am skilled enough to secure my position as Assistant to the Presidential Manager. Welcome to the Department of Information, or DIC for short.
+Richard Boss: I'm Richard Boss, your new boss. Blessed be L'Administration.
+You: Blessed be-
+Richard Boss: You look smart. You smart?
+- Yes, Boss!
+- Yes, Sir!
+Richard Boss: That's Sir Boss to you, capiche? Anyway, about the job.
+=> instructions
+
+~ instructions
+Richard Boss: You have a rulebook. Each new day, you'll get documents in your inbox drawer.
+Richard Boss: You scan the contents of the documents and process them according to the rules in the rulebook.
+Richard Boss: Try not to read too carefully, confidentiality and all that.
+Richard Boss: I mean your clearance level isn't that high, and we, at The Administration, never fuck up. So there's no risk, really.
+Richard Boss: So, if the document matches a rule, it tells you to burn OR to archive the document.
+Richard Boss: The rules might change on some days, or we might give you spéciales instructions.
+Richard Boss: You catch all of that?
+- Say again
+	Richard Boss: Uhh... really? Ok.
+	=> instructions
+- Got it
+	Richard Boss: Well then, get to it! Our duty is to ensure Nationale Sécurité™️ after all.
+Richard Boss: Blessed be L'Administration.
+You: Blessed be L'Administration.
+=> END

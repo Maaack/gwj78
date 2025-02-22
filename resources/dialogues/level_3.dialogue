@@ -1,16 +1,10 @@
 ~ start
-Boss McBosstonson: So...
-- Skip => END
-- Continue
-Boss McBosstonson: Your previous boss was sacked.
-Boss McBosstonson: I'm taking over your department.
-Boss McBosstonson: I heard you are good at doing what you are told, so keep doing that.
-=> END
-
-~ alternate_start
-Young New Boss: So...
-- Skip => END
-- Continue
-Young New Boss: I'm your new boss. Your previous boss threw someone under the bus and took their job.
-Young New Boss: He says thanks for everything.
-=> END
+Richard : Hey there. We got new rules today. By the way I must say I'm impressed by your performance.
+Richard: No really, the previous schmucks at your position didn't last as long as you.
+Richard: There would always be some nonsensical documents passing through to the archives.
+Richard: So if it hasn't happened already, burn it or report it. It's up to your judgement, depending on the dangerosity.
+Richard: You can call me Dick by the way. It's my nickname. Dick from DIC! Sounds great doesn't it?
+- Uh yeaaah, it sure does Dick!
+	Dick from DIC: Great. Back to it. 
+- Whatever you say, Sir Boss!
+	Sir Boss The Dick: Oh you. You're growing on me, idiot. Now work.
