@@ -24,10 +24,12 @@ texture = ExtResource("1_hbljn")
 
 [node name="OnProcessSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 bus = &"SFX"
 
 [node name="OnProcessParticles" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 texture = SubResource("GradientTexture2D_b7aci")
 
 [node name="Area2D" type="Area2D" parent="."]
