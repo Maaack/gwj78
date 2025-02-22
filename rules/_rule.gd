@@ -10,6 +10,9 @@ func should_redact(document_data: DocumentData) -> bool:
 
 func should_message(document_data: DocumentData) -> bool:
 	return false
+	
+func is_messaging_legal(document_data: DocumentData) -> bool:
+	return false
 
 func on_redacted(document_data: DocumentData) -> void:
 	pass

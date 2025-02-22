@@ -6,6 +6,11 @@ signal level_complete
 const INITIAL_PICKUP_OFFSET_FRACTION: float = 0.5
 const PICKUP_ROTATION : float = -5
 
+const MONEY_CORRECT_PROCESS: int = 10
+const MONEY_INCORRECT_ARCHIVAL: int = -5
+const MONEY_INCORRECT_REDACTION: int = -15
+const MONEY_INCORRECT_MESSAGED: int = -5
+
 @export var document_scene : PackedScene
 @export var documents : Array[DocumentData]
 @export var dialogue_balloon_scene : PackedScene
@@ -44,13 +49,21 @@ func _ready():
 	#reset state in case of level restart
 	GameState.clear_level_state(scene_file_path.get_file().get_basename())
 	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
+	var previous_level_states = GameState.get_level_states_before(scene_file_path.get_file().get_basename())
+	for previous_state in previous_level_states:
+		level_state.money_total += previous_state.money_total
 	#pass level state to rules
 	for rule in _find_rules():
 		rule.level_state = level_state
+	_update_money_label()
 	
 func _update_score_label():
 	if is_inside_tree():
 		%ScoreLabel.text = "%d" % level_state.points_total
+		
+func _update_money_label():
+	if is_inside_tree():
+		%MoneyLabel.text = "%d$" % level_state.money_total
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
@@ -140,6 +153,7 @@ func document_processed(document_data : DocumentData):
 		else:
 			level_state.documents_intended_archived += 1
 	_update_score_label()
+	_update_money_label()
 	_finish_level_if_complete()
 
 func _should_document_be_redacted(document_data : DocumentData) -> bool:
@@ -147,27 +161,41 @@ func _should_document_be_redacted(document_data : DocumentData) -> bool:
 		if rule.should_redact(document_data):
 			return true
 	return false
+	
+func _is_messaging_document_legal(document_data : DocumentData) -> bool:
+	for rule in _find_rules():
+		if rule.is_messaging_legal(document_data):
+			return true
+	return false
 
 func _on_document_archived(document_data : DocumentData):
 	_archived_documents.append(document_data)
-	var should_archive := not _should_document_be_redacted(document_data)
-	level_state.points_total += 1 if should_archive else -1
-	level_state.documents_archived += 1
 	for rule in _find_rules():
 		rule.on_archived(document_data)
-	if not should_archive:
+	if not _should_document_be_redacted(document_data):
+		level_state.points_total += 1
+		level_state.money_total += MONEY_CORRECT_PROCESS
+		level_state.documents_archived_correctly += 1
+	else:
+		level_state.points_total -= 1
+		level_state.money_total += MONEY_INCORRECT_REDACTION
+		level_state.documents_archived_incorrectly += 1
 		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_misarchival)
 	#dialogue manager call_deffered's the dialogue start, so to wait for it...
 	document_processed.call_deferred(document_data)
 
 func _on_document_redacted(document_data : DocumentData):
 	_redacted_documents.append(document_data)
-	var should_redact := _should_document_be_redacted(document_data)
-	level_state.points_total += 1 if should_redact else -1
-	level_state.documents_redacted += 1
 	for rule in _find_rules():
 		rule.on_redacted(document_data)
-	if not should_redact:
+	if _should_document_be_redacted(document_data):
+		level_state.points_total += 1
+		level_state.money_total += MONEY_CORRECT_PROCESS
+		level_state.documents_redacted_correctly += 1
+	else:
+		level_state.points_total -= 1
+		level_state.money_total += MONEY_INCORRECT_REDACTION
+		level_state.documents_redacted_incorrectly += 1
 		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_misredaction)
 	#dialogue manager call_deffered's the dialogue start, so to wait for it...
 	document_processed.call_deferred(document_data)
@@ -175,6 +203,8 @@ func _on_document_redacted(document_data : DocumentData):
 func _on_document_messaged(document_data : DocumentData):
 	_messaged_documents.append(document_data)
 	level_state.documents_messaged += 1
+	if not _is_messaging_document_legal(document_data):
+		level_state.money_total += MONEY_INCORRECT_MESSAGED
 	for rule in _find_rules():
 		rule.on_messaged(document_data)
 	#dialogue manager call_deffered's the dialogue start, so to wait for it...

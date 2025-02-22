@@ -19,6 +19,19 @@ static func get_level_state(level_state_key : String) -> LevelState:
 		game_state.level_states[level_state_key] = new_level_state
 		return new_level_state
 
+static func get_level_states_before(level_state_key : String) -> Array[LevelState]:
+	var game_state = get_game_state()
+	if not game_state.level_states.has(level_state_key):
+		return []
+	var keys = game_state.level_states.keys()
+	var states: Array[LevelState] = []
+	for key in keys:
+		if key == level_state_key:
+			break
+		states.append(game_state.level_states[key])
+	return states
+	
+
 static func clear_level_state(level_state_key : String) -> void:
 	var game_state = get_game_state()
 	if level_state_key.is_empty() : return

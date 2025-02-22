@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ykwboaiox3l8"]
+[gd_scene load_steps=8 format=3 uid="uid://ykwboaiox3l8"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_2bnyt"]
 [ext_resource type="Script" uid="uid://bsi8itgwtjkhw" path="res://scenes/levels/level_3.gd" id="2_ugcn1"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://iv226rii6bx7" path="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg" id="4_ugcn1"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_t4txi"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_apo5x"]
-[ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_josfm"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="10_vmg1d"]
 
 [node name="GameScene" instance=ExtResource("1_2bnyt")]
@@ -27,9 +26,6 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 script = ExtResource("6_apo5x")
 instruction = "Archive all remaining documents."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
-
-[node name="MessageBoss" type="Node" parent="Rules" index="2"]
-script = ExtResource("7_josfm")
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("10_vmg1d")]
 unique_name_in_owner = true
