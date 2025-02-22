@@ -11,6 +11,9 @@ summary_entry_scene = ExtResource("3_02k76")
 [node name="MenuPanelContainer" parent="." index="1"]
 custom_minimum_size = Vector2(410, 300)
 
+[node name="PanelColor" parent="MenuPanelContainer" index="0"]
+visible = false
+
 [node name="Contents" type="VBoxContainer" parent="MenuPanelContainer/MarginContainer/BoxContainer/DescriptionMargin" index="0"]
 layout_mode = 2
 

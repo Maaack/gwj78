@@ -16,5 +16,5 @@ texture_margin_bottom = 26.0
 
 [node name="DocumentBase" instance=ExtResource("1_e4mxa")]
 
-[node name="PanelContainer" parent="." index="1"]
+[node name="PanelContainer" parent="." index="2"]
 theme_override_styles/panel = SubResource("StyleBoxTexture_mjlo5")

@@ -12,7 +12,10 @@ size = Vector2(200, 250)
 script = ExtResource("2_orn1x")
 rule_entry_scene = ExtResource("3_veaqi")
 
-[node name="PanelContainer" parent="." index="1"]
+[node name="OpenedStreamPlayer2D" parent="." index="1"]
+autoplay = false
+
+[node name="PanelContainer" parent="." index="2"]
 offset_left = -100.0
 offset_top = -125.0
 offset_right = 100.0
@@ -42,6 +45,3 @@ text = ""
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_nisbi")
-
-[node name="OpenedStreamPlayer2D" parent="." index="3"]
-autoplay = false
