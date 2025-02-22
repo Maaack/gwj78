@@ -2,7 +2,7 @@
 ## Collaborators
 
 ### Programmers
-Maack
+Marek Belski
 PeteTimesSix
 
 ### Artist
@@ -12,11 +12,6 @@ Kaishido
 Vikfro
 
 ## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
 
 ### Godot Wild Jam Logos
 Author: [Dawk](https://coreyaroberts.com/)  
