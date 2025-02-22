@@ -1,11 +1,15 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+### Programmers
+Maack
+PeteTimesSix
 
+### Artist
+Kaishido
+
+### Writer
+Vikfro
 
 ## Sourced / Unaffiliated
 ### Asset Type
@@ -18,6 +22,11 @@ License: [License]()
 Author: [Dawk](https://coreyaroberts.com/)  
 Source: [godotwildjam.com](https://godotwildjam.com/branding/)  
 License: Copyrighted
+
+#### Dialogue Manager
+Author: [Nathan Load](https://nathanhoad.net/)  
+Source: [github.com](https://github.com/nathanhoad/godot_dialogue_manager)  
+License: [MIT](https://github.com/nathanhoad/godot_dialogue_manager/blob/main/LICENSE)
 
 ## Tools
 #### Godot
