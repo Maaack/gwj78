@@ -6,20 +6,17 @@
 [ext_resource type="FontFile" uid="uid://bgx7d575fvt8c" path="res://assets/fonts/Match 7h.ttf" id="4_orn1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nisbi"]
-size = Vector2(230, 277)
+size = Vector2(200, 250)
 
 [node name="Rulebook" instance=ExtResource("1_xom3s")]
 script = ExtResource("2_orn1x")
 rule_entry_scene = ExtResource("3_veaqi")
 
-[node name="Sprite2D" parent="." index="0"]
-region_rect = Rect2(38, 1666, 249, 281)
-
-[node name="PanelContainer" parent="." index="2"]
-offset_left = -115.0
-offset_top = -138.0
-offset_right = 115.0
-offset_bottom = 139.0
+[node name="PanelContainer" parent="." index="1"]
+offset_left = -100.0
+offset_top = -125.0
+offset_right = 100.0
+offset_bottom = 125.0
 
 [node name="DocumentBody" parent="PanelContainer/MarginContainer" index="0"]
 text = ""
@@ -51,5 +48,5 @@ layout_mode = 2
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_nisbi")
 
-[node name="OpenedStreamPlayer2D" parent="." index="4"]
+[node name="OpenedStreamPlayer2D" parent="." index="3"]
 autoplay = false

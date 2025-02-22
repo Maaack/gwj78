@@ -83,6 +83,8 @@ theme_override_fonts/normal_font = ExtResource("4_s665b")
 theme_override_fonts/bold_font = ExtResource("5_5n1x4")
 bbcode_enabled = true
 text = "Content"
+fit_content = true
+scroll_active = false
 
 [node name="Area2D" type="Area2D" parent="."]
 monitorable = false
