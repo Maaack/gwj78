@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=30 format=3 uid="uid://iedfoi6jhgvc"]
 
 [ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/documents/_document_base.tscn" id="2_ycayy"]
@@ -90,6 +90,9 @@ height = 2
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwyo0"]
+size = Vector2(116, 72)
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_liy57"]
 random_pitch = 1.2
 streams_count = 1
@@ -151,9 +154,13 @@ one_shot = true
 explosiveness = 0.5
 process_material = ExtResource("12_mwyo0")
 
+[node name="CollisionShape2D" parent="Outboxes/Furnace/Area2D" index="0"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_mwyo0")
+
 [node name="ArchivePipe" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 unique_name_in_owner = true
-position = Vector2(592, 42)
+position = Vector2(592, 44)
 
 [node name="OnProcessSound" parent="Outboxes/ArchivePipe" index="1"]
 stream = SubResource("AudioStreamRandomizer_liy57")
@@ -217,10 +224,10 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="CheatSkipLevel" type="Button" parent="."]
-offset_left = 539.0
-offset_top = 321.0
-offset_right = 631.0
-offset_bottom = 352.0
+offset_left = 271.0
+offset_top = 315.0
+offset_right = 363.0
+offset_bottom = 351.0
 text = "SKIP LEVEL"
 
 [connection signal="document_processed" from="Outboxes/Furnace" to="." method="_on_furnace_2d_document_processed"]
