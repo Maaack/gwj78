@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://buudygv5qaylk"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_7fyc3"]
+
+[resource]
+script = ExtResource("1_7fyc3")
+is_dangerous = false
+is_important_to_message = false
+is_important_to_keep = false
+content = "LONG. LIVE. CHAOS.
+[center]
+Do not eat your food, drench it in bleach and throw it in the woods.
+Not a word to your family or friends they don’t deserve you.
+Believe in yourself even though you are an asshole.
+Your financial freedom is only attainable through gambling.
+Boss baby boss.
+They are destroying the world and so are all of us, doing nothing about it.
+Will you marry me?
+Erase your bad habits and your good drugs.
+You are pretty tonight, mon chéri.
+[/center]"
+metadata/_custom_type_script = "uid://v65pvda1q6en"

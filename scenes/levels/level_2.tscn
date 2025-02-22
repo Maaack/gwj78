@@ -83,7 +83,6 @@ flip_v = true
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("6_brxtv")]
 unique_name_in_owner = true
 position = Vector2(125, 140)
-disabled = false
 
 [connection signal="document_processed" from="Outboxes/MessagePipe2D" to="." method="_on_message_pipe_2d_document_processed"]
 

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://bxryhcngsakvm"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_jpc0n"]
+
+[resource]
+script = ExtResource("1_jpc0n")
+is_dangerous = false
+is_important_to_message = false
+is_important_to_keep = false
+content = "[right]Government Spendings 2024  Quarter 1[/right]
+
+[table={4}]
+[cell]Spending[/cell]
+[cell]Amount ($)[/cell]
+[cell]Department[/cell]
+[cell]Notes[/cell]
+[cell border=black]Salaires[/cell]
+[cell border=black][right]2 511 403.34[/right][/cell]
+[cell border=black][center]DIC[/center][/cell]
+[cell border=black]Where's MY raise?[/cell]
+[cell border=black]Decks of papier cards[/cell]
+[cell border=black][right]20 019.24[/right][/cell]
+[cell border=black][center]BALS[/center][/cell]
+[cell border=black]Patrick is satisfied with his castle.[/cell]
+[cell border=black]Data for B.A.R.F.I.S.[/cell]
+[cell border=black][right]123 456 789 000.00[/right][/cell]
+[cell border=black][center]AIR[/center][/cell]
+[cell border=black]Just routine.[/cell]
+[cell border=black]Caviar-covered bananas[/cell]
+[cell border=black]50 343.88[/cell]
+[cell border=black][center]PMC[/center][/cell]
+[cell border=black]They grew bored of the Wagyu beef.[/cell]
+[/table]
+"
+metadata/_custom_type_script = "uid://v65pvda1q6en"
