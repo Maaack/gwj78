@@ -6,6 +6,7 @@ signal mouse_entered
 signal mouse_exited
 
 var is_mouse_over : bool = false
+var modulate_tween: Tween
 
 @export var document_data : DocumentData :
 	set(value):
@@ -35,6 +36,10 @@ func play_pickup_sound(from_inbox: bool) -> void:
 	else:
 		if not %OpenedStreamPlayer2D.playing:
 			%OnMoveShuffleSound.play()
+
+func modulate_state(state_key: String) -> void:
+	var state_machine = %HoverModulationTree["parameters/playback"] as AnimationNodeStateMachinePlayback
+	state_machine.travel(state_key)
 
 func _on_area_2d_mouse_entered():
 	if disabled: return
