@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bc87mbdm46m0e"]
 
-[ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/document_base.tscn" id="1_xom3s"]
-[ext_resource type="Script" uid="uid://c3vl6577osphh" path="res://scenes/rulebook/rulebook.gd" id="2_orn1x"]
-[ext_resource type="PackedScene" uid="uid://dn3wnoubxbk6p" path="res://scenes/rulebook/rule_entry.tscn" id="3_veaqi"]
+[ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/documents/_document_base.tscn" id="1_xom3s"]
+[ext_resource type="Script" uid="uid://c3vl6577osphh" path="res://scenes/documents/rulebook/rulebook.gd" id="2_orn1x"]
+[ext_resource type="PackedScene" uid="uid://dn3wnoubxbk6p" path="res://scenes/documents/rulebook/rule_entry.tscn" id="3_veaqi"]
 [ext_resource type="FontFile" uid="uid://bgx7d575fvt8c" path="res://assets/fonts/Match 7h.ttf" id="4_orn1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nisbi"]

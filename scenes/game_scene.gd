@@ -17,32 +17,46 @@ var _active_document : DocumentBase
 var _documents : Array[DocumentData]
 var _archived_documents : Array[DocumentData]
 var _redacted_documents : Array[DocumentData]
+var _messaged_documents : Array[DocumentData]
 var _processed_documents : Array[DocumentData]
 
 var level_state : LevelState
 var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
-var points_scored : int = 0 :
-	set(value):
-		points_scored = value
-		_update_level_data()
-		_update_score_label()
 
+func _ready():
+	_documents = documents.duplicate()
+	_documents.shuffle()
+	if len(_documents) > 0 and _documents.any(func(document: DocumentData): return document.is_processable):
+		while not _documents[len(_documents) - 1].is_processable:
+			_documents.shuffle() #quick hack to make last document to draw not just a note
+	_connect_document_signals()
+	_play_opening_dialogue()
+	#pass rules to rulebook
+	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
+		var rulebook := %Rulebook as Rulebook
+		rulebook.setup_rules(_find_rules())
+	#reset state in case of level restart
+	GameState.clear_level_state(scene_file_path.get_file().get_basename())
+	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
+	#pass level state to rules
+	for rule in _find_rules():
+		rule.level_state = level_state
+	
 func _update_score_label():
 	if is_inside_tree():
-		%ScoreLabel.text = "%d" % points_scored
-
-func _update_level_data():
-	if level_state:
-		level_state.points = points_scored
+		%ScoreLabel.text = "%d" % level_state.points_total
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
 		return
 	if _documents.is_empty():
 		return
-	var next_document : DocumentData = _documents.pop_back()
-	var document_instance : DocumentBase = document_scene.instantiate()
+	var next_document : DocumentData = _documents.pop_back() as DocumentData
+	var picked_document_scene = document_scene
+	if len(next_document.document_scenes) > 0:
+		picked_document_scene = next_document.document_scenes.pick_random()
+	var document_instance : DocumentBase = picked_document_scene.instantiate() as DocumentBase
 	_pickup_offset = Vector2(0, (document_instance.get_bounds().size.y * 0.5) * INITIAL_PICKUP_OFFSET_FRACTION)
 	document_instance.rotation_degrees = PICKUP_ROTATION
 	document_instance.position = _last_mouse_position + _pickup_offset
@@ -50,8 +64,9 @@ func pickup_inbox_document():
 	document_instance.mouse_entered.connect(_update_highlighted_document)
 	document_instance.mouse_exited.connect(_update_highlighted_document)
 	%ActiveContainer.add_child(document_instance)
+	document_instance.play_pickup_sound()
 	_active_document = document_instance
-	%Inbox2D.has_documents = !(_documents.is_empty())
+	%Inbox2D.has_documents = not _documents.is_empty()
 
 func pickup_highlighted_document():
 	if is_instance_valid(_active_document):
@@ -63,6 +78,7 @@ func pickup_highlighted_document():
 	_pickup_offset = -(_last_mouse_position - _active_document.position)
 	_active_document.rotation_degrees = PICKUP_ROTATION
 	_active_document.reparent(%ActiveContainer)
+	_active_document.play_pickup_sound()
 	_update_active_document_position()
 
 func _update_active_document_position():
@@ -72,7 +88,16 @@ func _update_active_document_position():
 	_active_document.position = _last_mouse_position + _pickup_offset
 
 func is_level_complete():
-	return _processed_documents.size() >= documents.size()
+	#to account for messageable but not processable documents
+	var processable_documents = 0
+	for document in documents:
+		if document.is_processable:
+			processable_documents += 1
+	var processed_documents = 0
+	for document in _processed_documents:
+		if document.is_processable:
+			processed_documents += 1
+	return processed_documents >= processable_documents
 
 func _finish_level_if_complete():
 	if is_level_complete():
@@ -88,9 +113,10 @@ func get_mouse_over_outbox() -> Outbox2D:
 func drop_document():
 	if not is_instance_valid(_active_document):
 		return
-	if _active_document is DocumentBase and _active_document.document_data:
-		var outbox := get_mouse_over_outbox()
-		if outbox is Outbox2D:
+	var document_data := _active_document.document_data
+	var outbox := get_mouse_over_outbox()
+	if _active_document is DocumentBase and document_data and outbox is Outbox2D and outbox.active:
+		if (outbox == %MessagePipe and document_data.is_messageable) or (outbox != %MessagePipe and document_data.is_processable):
 			outbox.process_document(_active_document)
 			_active_document = null
 			_finish_level_if_complete()
@@ -102,6 +128,12 @@ func drop_document():
 
 func document_processed(document_data : DocumentData):
 	_processed_documents.append(document_data)
+	if document_data.is_processable:
+		if document_data.is_dangerous:
+			level_state.documents_intended_redacted += 1
+		else:
+			level_state.documents_intended_archived += 1
+	_update_score_label()
 	_finish_level_if_complete()
 
 func _should_document_be_redacted(document_data : DocumentData) -> bool:
@@ -112,8 +144,9 @@ func _should_document_be_redacted(document_data : DocumentData) -> bool:
 
 func _on_document_archived(document_data : DocumentData):
 	_archived_documents.append(document_data)
-	var should_redact := _should_document_be_redacted(document_data)
-	points_scored += 1 if not should_redact else -1
+	var should_archive := not _should_document_be_redacted(document_data)
+	level_state.points_total += 1 if should_archive else -1
+	level_state.documents_archived += 1
 	for rule in _find_rules():
 		rule.on_archived(document_data)
 	document_processed(document_data)
@@ -121,9 +154,17 @@ func _on_document_archived(document_data : DocumentData):
 func _on_document_redacted(document_data : DocumentData):
 	_redacted_documents.append(document_data)
 	var should_redact := _should_document_be_redacted(document_data)
-	points_scored += 1 if should_redact else -1
+	level_state.points_total += 1 if should_redact else -1
+	level_state.documents_redacted += 1
 	for rule in _find_rules():
 		rule.on_redacted(document_data)
+	document_processed(document_data)
+
+func _on_document_messaged(document_data : DocumentData):
+	_messaged_documents.append(document_data)
+	level_state.documents_messaged += 1
+	for rule in _find_rules():
+		rule.on_messaged(document_data)
 	document_processed(document_data)
 
 func _on_inbox_ui_pressed():
@@ -150,17 +191,6 @@ func _play_opening_dialogue():
 	if dialogue_resource and opening_dialogue:
 		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, opening_dialogue)
 
-func _ready():
-	_documents = documents.duplicate()
-	_documents.shuffle()
-	_connect_document_signals()
-	_play_opening_dialogue()
-	#pass rules to rulebook
-	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
-		var rulebook := %Rulebook as Rulebook
-		rulebook.setup_rules(_find_rules())
-
-	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
 
 func _update_highlighted_document():
 	var _first_doc_
@@ -186,8 +216,14 @@ func _input(event):
 			elif %Inbox2D.is_mouse_over:
 				pickup_inbox_document()
 
-func _on_outbox_2d_document_processed(document_data):
+func _on_outbox_2d_document_processed(document_data: DocumentData) -> void:
 	_on_document_archived(document_data)
 
-func _on_furnace_2d_document_processed(document_data):
+func _on_furnace_2d_document_processed(document_data: DocumentData) -> void:
 	_on_document_redacted(document_data)
+
+func _on_message_pipe_document_processed(document_data: DocumentData) -> void:
+	_on_document_messaged(document_data)
+
+func _on_cheat_skip_level_pressed() -> void:
+	level_complete.emit()

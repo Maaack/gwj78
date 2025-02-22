@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn3wnoubxbk6p"]
 
-[ext_resource type="Script" uid="uid://c205q8teud4in" path="res://scenes/rulebook/rule_entry.gd" id="1_ceabb"]
+[ext_resource type="Script" uid="uid://c205q8teud4in" path="res://scenes/documents/rulebook/rule_entry.gd" id="1_ceabb"]
 [ext_resource type="FontFile" uid="uid://dsrd48vqxljye" path="res://assets/fonts/Match 7p.ttf" id="2_dd4cn"]
 [ext_resource type="FontFile" uid="uid://bgx7d575fvt8c" path="res://assets/fonts/Match 7h.ttf" id="3_2xfji"]
 

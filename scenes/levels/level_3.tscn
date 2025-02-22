@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ykwboaiox3l8"]
+[gd_scene load_steps=8 format=3 uid="uid://ykwboaiox3l8"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_2bnyt"]
 [ext_resource type="Script" uid="uid://bsi8itgwtjkhw" path="res://scenes/levels/level_3.gd" id="2_ugcn1"]
@@ -6,9 +6,7 @@
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_t4txi"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_apo5x"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_josfm"]
-[ext_resource type="PackedScene" uid="uid://dwwdk70phcvu4" path="res://scenes/outbox_2d.tscn" id="8_lgrx1"]
-[ext_resource type="Texture2D" uid="uid://bo7tvg063ojd5" path="res://assets/images/warp-pipe.png" id="9_fhpes"]
-[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/rulebook/rulebook.tscn" id="10_vmg1d"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="10_vmg1d"]
 
 [node name="GameScene" instance=ExtResource("1_2bnyt")]
 script = ExtResource("2_ugcn1")
@@ -29,19 +27,10 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 [node name="MessageBoss" type="Node" parent="Rules" index="2"]
 script = ExtResource("7_josfm")
 
-[node name="MessagePipe2D" parent="Outboxes" index="2" instance=ExtResource("8_lgrx1")]
-position = Vector2(1088, 328)
-
-[node name="Sprite2D" parent="Outboxes/MessagePipe2D" index="0"]
-texture = ExtResource("9_fhpes")
-flip_v = true
-
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("10_vmg1d")]
 unique_name_in_owner = true
 position = Vector2(125, 140)
-disabled = false
 
-[connection signal="document_processed" from="Outboxes/MessagePipe2D" to="." method="_on_message_pipe_2d_document_processed"]
-
-[editable path="Outboxes/Furnace2D"]
-[editable path="Outboxes/MessagePipe2D"]
+[editable path="Outboxes/ArchiveHole"]
+[editable path="Outboxes/Furnace"]
+[editable path="Outboxes/MessagePipe"]

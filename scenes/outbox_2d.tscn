@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwwdk70phcvu4"]
+[gd_scene load_steps=6 format=3 uid="uid://dwwdk70phcvu4"]
 
 [ext_resource type="Script" uid="uid://dxrfgtrywusmp" path="res://scenes/outbox_2d.gd" id="1_dak3g"]
 [ext_resource type="Texture2D" uid="uid://bm2k8irhtwwde" path="res://assets/images/bookshelf.png" id="1_hbljn"]
+
+[sub_resource type="Gradient" id="Gradient_dak3g"]
+interpolation_mode = 1
+colors = PackedColorArray(0.595237, 0.579594, 0.550802, 1, 0.746446, 0.709232, 0.725673, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b7aci"]
+gradient = SubResource("Gradient_dak3g")
+width = 2
+height = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7457s"]
 size = Vector2(128, 128)
@@ -12,6 +21,13 @@ script = ExtResource("1_dak3g")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("1_hbljn")
+
+[node name="OnProcessSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
+[node name="OnProcessParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("GradientTexture2D_b7aci")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -38,35 +38,14 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 [node name="HiddenCollectEvidence" type="Node" parent="Rules" index="3"]
 script = ExtResource("4_qxy0u")
 metadata/_custom_type_script = "uid://dpad5op2xmung"
+[node name="MessagePipe" parent="Outboxes" index="2"]
+visible = false
+active = false
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("3_nsrm0")]
 unique_name_in_owner = true
 position = Vector2(125, 140)
 
-[node name="EvidenceMarker" type="Sprite2D" parent="Container" index="1"]
-unique_name_in_owner = true
-visible = false
-position = Vector2(45, 602)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_oc4kc")
-
-[node name="Label" type="Label" parent="Container/EvidenceMarker" index="0"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -111.5
-offset_top = -93.0
-offset_right = -15.5
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "STASHED EVIDENCE"
-label_settings = SubResource("LabelSettings_oc4kc")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[connection signal="evidence_collected" from="Rules/HiddenCollectEvidence" to="Container/EvidenceMarker" method="show"]
-
-[editable path="Outboxes/Furnace2D"]
+[editable path="Outboxes/Furnace"]
+[editable path="Outboxes/ArchiveHole"]
+[editable path="Outboxes/MessagePipe"]
