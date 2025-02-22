@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://c1uhtsc1mibie"
+path="res://.godot/imported/misredaction_generic.dialogue-5763da08eb0a64c9f4ee9984bcea4039.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/misredaction_generic.dialogue"
+dest_files=["res://.godot/imported/misredaction_generic.dialogue-5763da08eb0a64c9f4ee9984bcea4039.tres"]
+
+[params]
+
+defaults=true

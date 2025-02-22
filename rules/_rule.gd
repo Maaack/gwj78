@@ -1,7 +1,7 @@
 class_name Rule extends Node
 
 #rules with no instruction will not be listed in the rulebook
-@export var instruction: String
+@export_multiline var instruction: String
 
 var level_state: LevelState
 
@@ -9,6 +9,9 @@ func should_redact(document_data: DocumentData) -> bool:
 	return false
 
 func should_message(document_data: DocumentData) -> bool:
+	return false
+	
+func is_messaging_legal(document_data: DocumentData) -> bool:
 	return false
 
 func on_redacted(document_data: DocumentData) -> void:

@@ -5,3 +5,9 @@
 
 [node name="LevelLostMenu" instance=ExtResource("1_wvmyj")]
 script = ExtResource("2_v0vqr")
+
+[node name="MenuPanelContainer" parent="." index="1"]
+theme_type_variation = &"DefeatPanel"
+
+[node name="PanelColor" parent="MenuPanelContainer" index="0"]
+visible = false

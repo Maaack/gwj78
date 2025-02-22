@@ -1,0 +1,95 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cnpludepdo06k"]
+
+[ext_resource type="Texture2D" uid="uid://bpwp5mcvbo6od" path="res://assets/art/ui_button_normal.png" id="1_vnc4k"]
+[ext_resource type="Texture2D" uid="uid://csfrupvgma7f5" path="res://assets/art/ui_button_hover.png" id="2_x127s"]
+[ext_resource type="Texture2D" uid="uid://djminu4vl16vm" path="res://assets/art/ui_button_pressed.png" id="3_qjhx0"]
+[ext_resource type="Texture2D" uid="uid://n0hfgcjr2uhk" path="res://assets/art/panel_defeat.png" id="4_qjhx0"]
+[ext_resource type="Texture2D" uid="uid://d3t3ygp401jsj" path="res://assets/art/panel_normal.png" id="4_x127s"]
+[ext_resource type="Texture2D" uid="uid://b7ty2r6a3wjtv" path="res://assets/art/panel_victory.png" id="6_u427p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u427p"]
+texture = ExtResource("1_vnc4k")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(0.29109, 0.283894, 0.274072, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rtxy"]
+texture = ExtResource("2_x127s")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hofdy"]
+texture = ExtResource("1_vnc4k")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ahyh"]
+texture = ExtResource("3_qjhx0")
+texture_margin_left = 3.0
+texture_margin_top = 10.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83bj2"]
+texture = ExtResource("4_qjhx0")
+texture_margin_left = 7.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 9.0
+expand_margin_left = 5.0
+expand_margin_top = 7.0
+expand_margin_right = 5.0
+expand_margin_bottom = 7.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qjhx0"]
+texture = ExtResource("4_x127s")
+texture_margin_left = 7.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 9.0
+expand_margin_left = 5.0
+expand_margin_top = 7.0
+expand_margin_right = 5.0
+expand_margin_bottom = 7.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bjb6u"]
+texture = ExtResource("6_u427p")
+texture_margin_left = 7.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 9.0
+expand_margin_left = 5.0
+expand_margin_top = 7.0
+expand_margin_right = 5.0
+expand_margin_bottom = 7.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_u427p")
+Button/styles/hover = SubResource("StyleBoxTexture_7rtxy")
+Button/styles/normal = SubResource("StyleBoxTexture_hofdy")
+Button/styles/pressed = SubResource("StyleBoxTexture_0ahyh")
+DefeatPanel/base_type = &"PanelContainer"
+DefeatPanel/styles/panel = SubResource("StyleBoxTexture_83bj2")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_qjhx0")
+VictoryPanel/base_type = &"PanelContainer"
+VictoryPanel/styles/panel = SubResource("StyleBoxTexture_bjb6u")

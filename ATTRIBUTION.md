@@ -1,23 +1,27 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+### Programmers
+Marek Belski
+PeteTimesSix
 
+### Artist
+Kaishido
+
+### Writer
+Vikfro
 
 ## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
 
 ### Godot Wild Jam Logos
 Author: [Dawk](https://coreyaroberts.com/)  
 Source: [godotwildjam.com](https://godotwildjam.com/branding/)  
 License: Copyrighted
+
+#### Dialogue Manager
+Author: [Nathan Load](https://nathanhoad.net/)  
+Source: [github.com](https://github.com/nathanhoad/godot_dialogue_manager)  
+License: [MIT](https://github.com/nathanhoad/godot_dialogue_manager/blob/main/LICENSE)
 
 ## Tools
 #### Godot

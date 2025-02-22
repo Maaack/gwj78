@@ -6,50 +6,42 @@
 [ext_resource type="FontFile" uid="uid://bgx7d575fvt8c" path="res://assets/fonts/Match 7h.ttf" id="4_orn1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nisbi"]
-size = Vector2(230, 277)
+size = Vector2(200, 250)
 
 [node name="Rulebook" instance=ExtResource("1_xom3s")]
 script = ExtResource("2_orn1x")
 rule_entry_scene = ExtResource("3_veaqi")
 
-[node name="Sprite2D" parent="." index="0"]
-region_rect = Rect2(38, 1666, 249, 281)
+[node name="OpenedStreamPlayer2D" parent="." index="1"]
+autoplay = false
 
-[node name="PanelContainer" parent="." index="1"]
-offset_left = -115.0
-offset_top = -138.0
-offset_right = 115.0
-offset_bottom = 139.0
+[node name="PanelContainer" parent="." index="2"]
+offset_left = -100.0
+offset_top = -125.0
+offset_right = 100.0
+offset_bottom = 125.0
 
-[node name="DocumentBody" parent="PanelContainer/MarginContainer" index="0"]
-text = ""
+[node name="Content" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
 
-[node name="Content" type="VBoxContainer" parent="PanelContainer/MarginContainer/DocumentBody" index="1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Header" type="Label" parent="PanelContainer/MarginContainer/DocumentBody/Content" index="0"]
+[node name="Header" type="Label" parent="PanelContainer/MarginContainer/Content" index="0"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_orn1x")
 text = "Rulebook"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/DocumentBody/Content" index="1"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Content" index="1"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="RuleStack" type="VBoxContainer" parent="PanelContainer/MarginContainer/DocumentBody/Content" index="2"]
+[node name="RuleStack" type="VBoxContainer" parent="PanelContainer/MarginContainer/Content" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="DocumentBody" parent="PanelContainer/MarginContainer" index="1"]
+text = ""
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_nisbi")
-
-[node name="OpenedStreamPlayer2D" parent="." index="4"]
-autoplay = false

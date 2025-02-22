@@ -41,8 +41,8 @@ active = false
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("3_nsrm0")]
 unique_name_in_owner = true
-position = Vector2(125, 140)
+position = Vector2(204, 140)
 
 [editable path="Outboxes/Furnace"]
-[editable path="Outboxes/ArchiveHole"]
+[editable path="Outboxes/ArchivePipe"]
 [editable path="Outboxes/MessagePipe"]

@@ -6,12 +6,19 @@ signal level_complete
 const INITIAL_PICKUP_OFFSET_FRACTION: float = 0.5
 const PICKUP_ROTATION : float = -5
 
+const MONEY_CORRECT_PROCESS: int = 10
+const MONEY_INCORRECT_ARCHIVAL: int = -5
+const MONEY_INCORRECT_REDACTION: int = -15
+const MONEY_INCORRECT_MESSAGED: int = -5
+
 @export var document_scene : PackedScene
 @export var resistance_document_scene : PackedScene
 @export var documents : Array[DocumentData]
 @export var dialogue_balloon_scene : PackedScene
 @export var dialogue_resource : DialogueResource
 @export var opening_dialogue : StringName
+@export var dialogue_misarchival: DialogueResource
+@export var dialogue_misredaction: DialogueResource
 
 var _highlighted_document : DocumentBase
 var _active_document : DocumentBase
@@ -24,10 +31,13 @@ var _processed_documents : Array[DocumentData]
 var level_state : LevelState
 var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
+var _in_dialogues: int = 0
 
 func _ready():
 	_documents = documents.duplicate()
 	_connect_document_signals()
+	DialogueManager.dialogue_started.connect(_on_dialogue_started)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	_play_opening_dialogue()
 	#pass rules to rulebook
 	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
@@ -36,15 +46,21 @@ func _ready():
 	#reset state in case of level restart
 	GameState.clear_level_state(scene_file_path.get_file().get_basename())
 	level_state = GameState.get_level_state(scene_file_path.get_file().get_basename())
+	var previous_level_states = GameState.get_level_states_before(scene_file_path.get_file().get_basename())
+	for previous_state in previous_level_states:
+		level_state.money_total += previous_state.money_total
 	#pass level state to rules
 	for rule in _find_rules():
 		rule.level_state = level_state
-
-
+	_update_money_label()
+	
 func _update_score_label():
 	if is_inside_tree():
 		%ScoreLabel.text = "%d" % level_state.points_total
-
+		
+func _update_money_label():
+	if is_inside_tree():
+		%MoneyLabel.text = "%d$" % level_state.money_total
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
@@ -65,7 +81,7 @@ func pickup_inbox_document():
 	document_instance.mouse_entered.connect(_update_highlighted_document)
 	document_instance.mouse_exited.connect(_update_highlighted_document)
 	%ActiveContainer.add_child(document_instance)
-	document_instance.play_pickup_sound()
+	document_instance.play_pickup_sound(true)
 	_active_document = document_instance
 	%Inbox2D.has_documents = not _documents.is_empty()
 
@@ -79,7 +95,7 @@ func pickup_highlighted_document():
 	_pickup_offset = -(_last_mouse_position - _active_document.position)
 	_active_document.rotation_degrees = PICKUP_ROTATION
 	_active_document.reparent(%ActiveContainer)
-	_active_document.play_pickup_sound()
+	_active_document.play_pickup_sound(false)
 	_update_active_document_position()
 
 func _update_active_document_position():
@@ -87,6 +103,22 @@ func _update_active_document_position():
 		return
 	#Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 	_active_document.position = _last_mouse_position + _pickup_offset
+	var document_data := _active_document.document_data
+	var outbox := get_mouse_over_outbox()
+	if _active_document is DocumentBase and document_data and outbox is Outbox2D and outbox.active:
+		if (outbox == %MessagePipe and document_data.is_messageable) or (outbox != %MessagePipe and document_data.is_processable):
+			if outbox == %Furnace:
+				_active_document.modulate_state("furnace")
+			elif outbox == %ArchivePipe:
+				_active_document.modulate_state("archive")
+			elif outbox == %MessagePipe:
+				_active_document.modulate_state("message")
+			if is_instance_valid(CursorFollower.instance):
+				CursorFollower.instance.set_text(outbox.hover_label)
+			return
+	#else:
+	CursorFollower.instance.clear_text()
+	_active_document.modulate_state("normal")
 
 func is_level_complete():
 	#to account for messageable but not processable documents
@@ -102,6 +134,8 @@ func is_level_complete():
 
 func _finish_level_if_complete():
 	if is_level_complete():
+		while _in_dialogues > 0:
+			await DialogueManager.dialogue_ended
 		level_complete.emit()
 
 func get_mouse_over_outbox() -> Outbox2D:
@@ -121,7 +155,6 @@ func drop_document():
 		if (outbox == %MessagePipe and document_data.is_messageable) or (outbox != %MessagePipe and document_data.is_processable):
 			outbox.process_document(_active_document)
 			_active_document = null
-			_finish_level_if_complete()
 			return
 	_active_document.rotation_degrees = 0
 	_active_document.reparent(%Container)
@@ -136,6 +169,7 @@ func document_processed(document_data : DocumentData):
 		else:
 			level_state.documents_intended_archived += 1
 	_update_score_label()
+	_update_money_label()
 	_finish_level_if_complete()
 
 func _should_document_be_redacted(document_data : DocumentData) -> bool:
@@ -143,31 +177,54 @@ func _should_document_be_redacted(document_data : DocumentData) -> bool:
 		if rule.should_redact(document_data):
 			return true
 	return false
+	
+func _is_messaging_document_legal(document_data : DocumentData) -> bool:
+	for rule in _find_rules():
+		if rule.is_messaging_legal(document_data):
+			return true
+	return false
 
 func _on_document_archived(document_data : DocumentData):
 	_archived_documents.append(document_data)
-	var should_archive := not _should_document_be_redacted(document_data)
-	level_state.points_total += 1 if should_archive else -1
-	level_state.documents_archived += 1
 	for rule in _find_rules():
 		rule.on_archived(document_data)
-	document_processed(document_data)
+	if not _should_document_be_redacted(document_data):
+		level_state.points_total += 1
+		level_state.money_total += MONEY_CORRECT_PROCESS
+		level_state.documents_archived_correctly += 1
+	else:
+		level_state.points_total -= 1
+		level_state.money_total += MONEY_INCORRECT_REDACTION
+		level_state.documents_archived_incorrectly += 1
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_misarchival)
+	#dialogue manager call_deffered's the dialogue start, so to wait for it...
+	document_processed.call_deferred(document_data)
 
 func _on_document_redacted(document_data : DocumentData):
 	_redacted_documents.append(document_data)
-	var should_redact := _should_document_be_redacted(document_data)
-	level_state.points_total += 1 if should_redact else -1
-	level_state.documents_redacted += 1
 	for rule in _find_rules():
 		rule.on_redacted(document_data)
-	document_processed(document_data)
+	if _should_document_be_redacted(document_data):
+		level_state.points_total += 1
+		level_state.money_total += MONEY_CORRECT_PROCESS
+		level_state.documents_redacted_correctly += 1
+	else:
+		level_state.points_total -= 1
+		level_state.money_total += MONEY_INCORRECT_REDACTION
+		level_state.documents_redacted_incorrectly += 1
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_misredaction)
+	#dialogue manager call_deffered's the dialogue start, so to wait for it...
+	document_processed.call_deferred(document_data)
 
 func _on_document_messaged(document_data : DocumentData):
 	_messaged_documents.append(document_data)
 	level_state.documents_messaged += 1
+	if not _is_messaging_document_legal(document_data):
+		level_state.money_total += MONEY_INCORRECT_MESSAGED
 	for rule in _find_rules():
 		rule.on_messaged(document_data)
-	document_processed(document_data)
+	#dialogue manager call_deffered's the dialogue start, so to wait for it...
+	document_processed.call_deferred(document_data)
 
 func _on_inbox_ui_pressed():
 	pickup_inbox_document()
@@ -233,3 +290,9 @@ func _on_message_pipe_document_processed(document_data: DocumentData) -> void:
 
 func _on_cheat_skip_level_pressed() -> void:
 	level_complete.emit()
+
+func _on_dialogue_started(resource: DialogueResource) -> void:
+	_in_dialogues += 1
+	
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	_in_dialogues -= 1
