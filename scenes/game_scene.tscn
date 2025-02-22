@@ -136,6 +136,7 @@ unique_name_in_owner = true
 [node name="Furnace" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 unique_name_in_owner = true
 position = Vector2(553, 230)
+hover_label = "Redact"
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Outboxes/Furnace" index="0"]
@@ -161,6 +162,7 @@ shape = SubResource("RectangleShape2D_mwyo0")
 [node name="ArchivePipe" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 unique_name_in_owner = true
 position = Vector2(592, 44)
+hover_label = "Archive"
 
 [node name="OnProcessSound" parent="Outboxes/ArchivePipe" index="1"]
 stream = SubResource("AudioStreamRandomizer_liy57")
@@ -177,6 +179,7 @@ process_material = ExtResource("14_s76x2")
 [node name="MessagePipe" parent="Outboxes" instance=ExtResource("5_y3j0m")]
 unique_name_in_owner = true
 position = Vector2(49, 44)
+hover_label = "Message"
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Outboxes/MessagePipe" index="0"]

@@ -100,10 +100,17 @@ func pickup_highlighted_document():
 	_update_active_document_position()
 
 func _update_active_document_position():
+	CursorFollower.instance.clear_text()
 	if not is_instance_valid(_active_document):
 		return
 	#Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 	_active_document.position = _last_mouse_position + _pickup_offset
+	var document_data := _active_document.document_data
+	var outbox := get_mouse_over_outbox()
+	if _active_document is DocumentBase and document_data and outbox is Outbox2D and outbox.active:
+		if (outbox == %MessagePipe and document_data.is_messageable) or (outbox != %MessagePipe and document_data.is_processable):
+			if is_instance_valid(CursorFollower.instance):
+				CursorFollower.instance.set_text(outbox.hover_label)
 
 func is_level_complete():
 	#to account for messageable but not processable documents

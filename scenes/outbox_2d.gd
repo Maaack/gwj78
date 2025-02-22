@@ -4,6 +4,7 @@ extends Node2D
 signal document_processed(document_data: DocumentData)
 
 @export var active: bool = true
+@export var hover_label: String
 
 var is_mouse_over : bool = false
 
