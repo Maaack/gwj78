@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dg3ipm747o6md"
+path="res://.godot/imported/Spray Paint Hiss.wav-c4f4a3126d835d0f0389a58de981da56.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Spray Paint Hiss.wav"
+dest_files=["res://.godot/imported/Spray Paint Hiss.wav-c4f4a3126d835d0f0389a58de981da56.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

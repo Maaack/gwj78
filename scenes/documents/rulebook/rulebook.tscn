@@ -50,3 +50,6 @@ layout_mode = 2
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_nisbi")
+
+[node name="OpenedStreamPlayer2D" parent="." index="4"]
+autoplay = false
