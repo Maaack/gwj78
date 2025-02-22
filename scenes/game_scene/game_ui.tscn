@@ -72,6 +72,7 @@ script = ExtResource("11_8qp3c")
 
 [node name="CursorHintPanel" type="PanelContainer" parent="CursorFollower"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -84,7 +85,6 @@ grow_horizontal = 2
 [node name="CursorHint" type="Label" parent="CursorFollower/CursorHintPanel"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "testeets"
 horizontal_alignment = 1
 vertical_alignment = 1
 

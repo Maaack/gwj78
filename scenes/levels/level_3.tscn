@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("10_vmg1d")]
 unique_name_in_owner = true
-position = Vector2(125, 140)
+position = Vector2(204, 140)
 
 [editable path="Outboxes/Furnace"]
 [editable path="Outboxes/ArchivePipe"]

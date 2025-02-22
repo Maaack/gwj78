@@ -80,7 +80,7 @@ script = ExtResource("6_qsp8v")
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("6_brxtv")]
 unique_name_in_owner = true
-position = Vector2(125, 140)
+position = Vector2(204, 140)
 
 [editable path="Outboxes/Furnace"]
 [editable path="Outboxes/ArchivePipe"]
