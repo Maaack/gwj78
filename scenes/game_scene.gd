@@ -11,6 +11,8 @@ const PICKUP_ROTATION : float = -5
 @export var dialogue_balloon_scene : PackedScene
 @export var dialogue_resource : DialogueResource
 @export var opening_dialogue : StringName
+@export var dialogue_misarchival: DialogueResource
+@export var dialogue_misredaction: DialogueResource
 
 var _highlighted_document : DocumentBase
 var _active_document : DocumentBase
@@ -23,6 +25,7 @@ var _processed_documents : Array[DocumentData]
 var level_state : LevelState
 var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
+var _in_dialogues: int = 0
 
 func _ready():
 	_documents = documents.duplicate()
@@ -31,6 +34,8 @@ func _ready():
 		while not _documents[len(_documents) - 1].is_processable:
 			_documents.shuffle() #quick hack to make last document to draw not just a note
 	_connect_document_signals()
+	DialogueManager.dialogue_started.connect(_on_dialogue_started)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	_play_opening_dialogue()
 	#pass rules to rulebook
 	if is_instance_valid(%Rulebook) and %Rulebook is Rulebook:
@@ -101,6 +106,8 @@ func is_level_complete():
 
 func _finish_level_if_complete():
 	if is_level_complete():
+		while _in_dialogues > 0:
+			await DialogueManager.dialogue_ended
 		level_complete.emit()
 
 func get_mouse_over_outbox() -> Outbox2D:
@@ -119,7 +126,6 @@ func drop_document():
 		if (outbox == %MessagePipe and document_data.is_messageable) or (outbox != %MessagePipe and document_data.is_processable):
 			outbox.process_document(_active_document)
 			_active_document = null
-			_finish_level_if_complete()
 			return
 	_active_document.rotation_degrees = 0
 	_active_document.reparent(%Container)
@@ -149,7 +155,10 @@ func _on_document_archived(document_data : DocumentData):
 	level_state.documents_archived += 1
 	for rule in _find_rules():
 		rule.on_archived(document_data)
-	document_processed(document_data)
+	if not should_archive:
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_misarchival)
+	#dialogue manager call_deffered's the dialogue start, so to wait for it...
+	document_processed.call_deferred(document_data)
 
 func _on_document_redacted(document_data : DocumentData):
 	_redacted_documents.append(document_data)
@@ -158,14 +167,18 @@ func _on_document_redacted(document_data : DocumentData):
 	level_state.documents_redacted += 1
 	for rule in _find_rules():
 		rule.on_redacted(document_data)
-	document_processed(document_data)
+	if not should_redact:
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_misredaction)
+	#dialogue manager call_deffered's the dialogue start, so to wait for it...
+	document_processed.call_deferred(document_data)
 
 func _on_document_messaged(document_data : DocumentData):
 	_messaged_documents.append(document_data)
 	level_state.documents_messaged += 1
 	for rule in _find_rules():
 		rule.on_messaged(document_data)
-	document_processed(document_data)
+	#dialogue manager call_deffered's the dialogue start, so to wait for it...
+	document_processed.call_deferred(document_data)
 
 func _on_inbox_ui_pressed():
 	pickup_inbox_document()
@@ -227,3 +240,9 @@ func _on_message_pipe_document_processed(document_data: DocumentData) -> void:
 
 func _on_cheat_skip_level_pressed() -> void:
 	level_complete.emit()
+
+func _on_dialogue_started(resource: DialogueResource) -> void:
+	_in_dialogues += 1
+	
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	_in_dialogues -= 1

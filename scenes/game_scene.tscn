@@ -1,13 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=29 format=3 uid="uid://iedfoi6jhgvc"]
 
 [ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/documents/_document_base.tscn" id="2_ycayy"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://dvny075pwvmg2" path="res://scenes/dialogue_balloon/balloon.tscn" id="4_kk2rg"]
+[ext_resource type="Resource" uid="uid://dtcy44oabsik7" path="res://resources/dialogues/misarchival_generic.dialogue" id="5_mwyo0"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="5_tqxxy"]
 [ext_resource type="PackedScene" uid="uid://dwwdk70phcvu4" path="res://scenes/outbox_2d.tscn" id="5_y3j0m"]
 [ext_resource type="AudioStream" uid="uid://cwiuunq7tey4k" path="res://assets/music/Horror Vol5 Stalked Intensity 1.ogg" id="6_5ay1a"]
 [ext_resource type="Texture2D" uid="uid://c4dcxp3wv4sfa" path="res://assets/images/furnace.png" id="6_rurhu"]
+[ext_resource type="Resource" uid="uid://c1uhtsc1mibie" path="res://resources/dialogues/misredaction_generic.dialogue" id="6_s76x2"]
 [ext_resource type="Texture2D" uid="uid://6lumhs3ks7gr" path="res://assets/art/desk.png" id="7_liy57"]
 [ext_resource type="PackedScene" uid="uid://3t8lt7eqxsm3" path="res://scenes/inbox_2d.tscn" id="7_utbpp"]
 [ext_resource type="Texture2D" uid="uid://bo7tvg063ojd5" path="res://assets/images/warp-pipe.png" id="9_utbpp"]
@@ -106,6 +108,8 @@ script = ExtResource("1_onqr8")
 document_scene = ExtResource("2_ycayy")
 documents = Array[ExtResource("3_bw6k5")]([SubResource("Resource_y3j0m"), SubResource("Resource_rurhu"), SubResource("Resource_kk2rg"), SubResource("Resource_b5spy"), SubResource("Resource_utbpp")])
 dialogue_balloon_scene = ExtResource("4_kk2rg")
+dialogue_misarchival = ExtResource("5_mwyo0")
+dialogue_misredaction = ExtResource("6_s76x2")
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("5_tqxxy")]
 stream = ExtResource("6_5ay1a")

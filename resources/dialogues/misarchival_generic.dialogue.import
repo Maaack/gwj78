@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dtcy44oabsik7"
+path="res://.godot/imported/misarchival_generic.dialogue-2e5cabd1b79cf5d04cb6e21b8a18e954.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/misarchival_generic.dialogue"
+dest_files=["res://.godot/imported/misarchival_generic.dialogue-2e5cabd1b79cf5d04cb6e21b8a18e954.tres"]
+
+[params]
+
+defaults=true
