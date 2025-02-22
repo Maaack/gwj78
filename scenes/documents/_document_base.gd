@@ -29,9 +29,12 @@ func get_bounds() -> RectangleShape2D:
 	var collider = %CollisionShape2D.shape as RectangleShape2D
 	return collider
 	
-func play_pickup_sound() -> void:
-	if %OpenedStreamPlayer2D.playing : return
-	%OnMoveShuffleSound.play()
+func play_pickup_sound(from_inbox: bool) -> void:
+	if from_inbox:
+		%OpenedStreamPlayer2D.play()
+	else:
+		if not %OpenedStreamPlayer2D.playing:
+			%OnMoveShuffleSound.play()
 
 func _on_area_2d_mouse_entered():
 	if disabled: return
