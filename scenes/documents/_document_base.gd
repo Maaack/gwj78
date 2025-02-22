@@ -23,6 +23,7 @@ func get_bounds() -> RectangleShape2D:
 	return rect
 	
 func play_pickup_sound() -> void:
+	if %OpenedStreamPlayer2D.playing : return
 	%OnMoveShuffleSound.play()
 
 func _on_area_2d_mouse_entered():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://iedfoi6jhgvc"]
+[gd_scene load_steps=37 format=3 uid="uid://iedfoi6jhgvc"]
 
 [ext_resource type="Script" uid="uid://cjv26wst4cbfc" path="res://scenes/game_scene.gd" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://bx5l6q5outjxn" path="res://scenes/documents/_document_base.tscn" id="2_ycayy"]
@@ -10,10 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://cwiuunq7tey4k" path="res://assets/music/Horror Vol5 Stalked Intensity 1.ogg" id="6_5ay1a"]
 [ext_resource type="Texture2D" uid="uid://c4dcxp3wv4sfa" path="res://assets/images/furnace.png" id="6_rurhu"]
 [ext_resource type="PackedScene" uid="uid://3t8lt7eqxsm3" path="res://scenes/inbox_2d.tscn" id="7_utbpp"]
-[ext_resource type="AudioStream" uid="uid://dj8j2v0fqi4nw" path="res://assets/audio/placeholder_archive.wav" id="8_rvs2r"]
 [ext_resource type="Texture2D" uid="uid://bo7tvg063ojd5" path="res://assets/images/warp-pipe.png" id="9_utbpp"]
-[ext_resource type="AudioStream" uid="uid://b8rx6ntfvccv1" path="res://assets/audio/placeholder_furnace.wav" id="10_tqxxy"]
 [ext_resource type="AudioStream" uid="uid://do2ume7b43hhn" path="res://assets/audio/placeholder_messagetube.wav" id="12_5ay1a"]
+[ext_resource type="AudioStream" uid="uid://dgmup0uqe4lxe" path="res://assets/audio/pixabay/release_air_pffft-90813.mp3" id="12_ldkr4"]
+[ext_resource type="AudioStream" uid="uid://duip54yy7rnir" path="res://assets/audio/pixabay/fire-whoosh-85834.mp3" id="12_liy57"]
 
 [sub_resource type="Resource" id="Resource_y3j0m"]
 script = ExtResource("3_bw6k5")
@@ -72,6 +72,11 @@ document_scenes = Array[PackedScene]([])
 content = "Evidence of wrongdoing by members of current administration."
 metadata/_custom_type_script = ExtResource("3_bw6k5")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tqxxy"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("12_ldkr4")
+
 [sub_resource type="Gradient" id="Gradient_tqxxy"]
 colors = PackedColorArray(0.867863, 0.376483, 1.92523e-07, 1, 1, 0.634676, 0.174915, 1)
 
@@ -118,6 +123,11 @@ gravity = Vector3(0, -10, 0)
 color_ramp = SubResource("GradientTexture1D_mwyo0")
 alpha_curve = SubResource("CurveTexture_ldkr4")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_liy57"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("12_liy57")
+
 [sub_resource type="Curve" id="Curve_tqxxy"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0575221, 1), 0.0, 0.0, 0, 0, Vector2(0.495575, 1), 0.0, 0.0, 0, 0, Vector2(0.836283, 0), 0.0, 0.0, 0, 0]
 point_count = 4
@@ -153,7 +163,7 @@ alpha_curve = SubResource("CurveTexture_5ay1a")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utbpp"]
 size = Vector2(128, 128)
 
-[node name="GameScene2" type="Node"]
+[node name="GameScene" type="Node"]
 script = ExtResource("1_onqr8")
 document_scene = ExtResource("2_ycayy")
 documents = Array[ExtResource("3_bw6k5")]([SubResource("Resource_y3j0m"), SubResource("Resource_rurhu"), SubResource("Resource_kk2rg"), SubResource("Resource_b5spy"), SubResource("Resource_utbpp")])
@@ -187,7 +197,7 @@ metadata/_edit_group_ = true
 texture = ExtResource("6_rurhu")
 
 [node name="OnProcessSound" parent="Outboxes/Furnace" index="1"]
-stream = ExtResource("10_tqxxy")
+stream = SubResource("AudioStreamRandomizer_tqxxy")
 
 [node name="OnProcessParticles" parent="Outboxes/Furnace" index="2"]
 emitting = false
@@ -202,7 +212,7 @@ unique_name_in_owner = true
 position = Vector2(553, 229)
 
 [node name="OnProcessSound" parent="Outboxes/ArchiveHole" index="1"]
-stream = ExtResource("8_rvs2r")
+stream = SubResource("AudioStreamRandomizer_liy57")
 
 [node name="OnProcessParticles" parent="Outboxes/ArchiveHole" index="2"]
 emitting = false

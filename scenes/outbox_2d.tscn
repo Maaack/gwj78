@@ -24,6 +24,7 @@ texture = ExtResource("1_hbljn")
 
 [node name="OnProcessSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
+bus = &"SFX"
 
 [node name="OnProcessParticles" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
