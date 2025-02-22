@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b0ki2ombw6lla"
+path="res://.godot/imported/Ambient Vol5 String Theory Cut 60.ogg-53cafc08eca40010a19b07a2d049d51f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Ambient Vol5 String Theory Cut 60.ogg"
+dest_files=["res://.godot/imported/Ambient Vol5 String Theory Cut 60.ogg-53cafc08eca40010a19b07a2d049d51f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

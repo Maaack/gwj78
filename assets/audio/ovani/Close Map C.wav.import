@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnktnkw806a6y"
+path="res://.godot/imported/Close Map C.wav-253edb621673d9cf51062f446400acde.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Close Map C.wav"
+dest_files=["res://.godot/imported/Close Map C.wav-253edb621673d9cf51062f446400acde.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

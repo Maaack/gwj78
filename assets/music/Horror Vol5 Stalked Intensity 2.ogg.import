@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://iv226rii6bx7"
+path="res://.godot/imported/Horror Vol5 Stalked Intensity 2.ogg-b5b5a3dd424ae1538764e171e7a14d8a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg"
+dest_files=["res://.godot/imported/Horror Vol5 Stalked Intensity 2.ogg-b5b5a3dd424ae1538764e171e7a14d8a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

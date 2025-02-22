@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://pvbp8wc4y11e"
+path="res://.godot/imported/Open Map B.wav-be79bc5932d674f94fc027efb1a6ba60.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Open Map B.wav"
+dest_files=["res://.godot/imported/Open Map B.wav-be79bc5932d674f94fc027efb1a6ba60.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
