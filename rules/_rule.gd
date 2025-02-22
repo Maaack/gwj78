@@ -1,7 +1,7 @@
 class_name Rule extends Node
 
 #rules with no instruction will not be listed in the rulebook
-@export var instruction: String
+@export_multiline var instruction: String
 
 var level_state: LevelState
 

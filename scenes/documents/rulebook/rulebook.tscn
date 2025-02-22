@@ -18,31 +18,26 @@ offset_top = -125.0
 offset_right = 100.0
 offset_bottom = 125.0
 
-[node name="DocumentBody" parent="PanelContainer/MarginContainer" index="0"]
-text = ""
+[node name="Content" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
 
-[node name="Content" type="VBoxContainer" parent="PanelContainer/MarginContainer/DocumentBody" index="1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Header" type="Label" parent="PanelContainer/MarginContainer/DocumentBody/Content" index="0"]
+[node name="Header" type="Label" parent="PanelContainer/MarginContainer/Content" index="0"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_orn1x")
 text = "Rulebook"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/DocumentBody/Content" index="1"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Content" index="1"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="RuleStack" type="VBoxContainer" parent="PanelContainer/MarginContainer/DocumentBody/Content" index="2"]
+[node name="RuleStack" type="VBoxContainer" parent="PanelContainer/MarginContainer/Content" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="DocumentBody" parent="PanelContainer/MarginContainer" index="1"]
+text = ""
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0)
