@@ -180,11 +180,13 @@ script = ExtResource("1_2eha8")
 [node name="OnMoveShuffleSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_cvic1")
+pitch_scale = 0.84
 bus = &"SFX"
 
 [node name="OpenedStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_a75p4")
+pitch_scale = 0.95
 autoplay = true
 bus = &"SFX"
 
