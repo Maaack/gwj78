@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://buudygv5qaylk"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_kg8mv"]
+
+[resource]
+script = ExtResource("1_kg8mv")
+is_processable = true
+is_messageable = false
+is_dangerous = true
+is_resistance = true
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[center][b] LONG. LIVE. CHAOS. [/b][/center]
+
+[b]DO[/b] not eat your food, drench it in bleach.
+[b]NOT[/b] a word to your family or friends.
+[b]BELIEVE[/b] in yourself even though you're (an) ass.
+[b]YOUR[/b] freedom is attainable by gambling.
+[b]BOSS[/b], you're a baby my sir, my boss.
+[b]THEY[/b] are destroying the world and so we all are.
+[b]WILL[/b] you marry me?
+[b]ERASE[/b] your bad habits and take your good drugs.
+[b]YOU[/b] are pretty tonight, mon chéri.
+[b]ARCHIVE[/b] your mémoires into a constellation.
+[b]THIS[/b] life is not next to the next.
+[b]TO BURN THE WORLD. TOGETHER.[/b]
+
+[center][b]LONG. LIVE. CHAOS.[/b][/center]"
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

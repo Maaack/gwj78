@@ -7,6 +7,7 @@ const INITIAL_PICKUP_OFFSET_FRACTION: float = 0.5
 const PICKUP_ROTATION : float = -5
 
 @export var document_scene : PackedScene
+@export var resistance_document_scene : PackedScene
 @export var documents : Array[DocumentData]
 @export var dialogue_balloon_scene : PackedScene
 @export var dialogue_resource : DialogueResource
@@ -26,10 +27,6 @@ var _last_mouse_position : Vector2
 
 func _ready():
 	_documents = documents.duplicate()
-	_documents.shuffle()
-	if len(_documents) > 0 and _documents.any(func(document: DocumentData): return document.is_processable):
-		while not _documents[len(_documents) - 1].is_processable:
-			_documents.shuffle() #quick hack to make last document to draw not just a note
 	_connect_document_signals()
 	_play_opening_dialogue()
 	#pass rules to rulebook
@@ -42,20 +39,24 @@ func _ready():
 	#pass level state to rules
 	for rule in _find_rules():
 		rule.level_state = level_state
-	
+
+
 func _update_score_label():
 	if is_inside_tree():
 		%ScoreLabel.text = "%d" % level_state.points_total
+
 
 func pickup_inbox_document():
 	if is_instance_valid(_active_document):
 		return
 	if _documents.is_empty():
 		return
-	var next_document : DocumentData = _documents.pop_back() as DocumentData
+	var next_document : DocumentData = _documents.pop_front() as DocumentData
 	var picked_document_scene = document_scene
 	if len(next_document.document_scenes) > 0:
 		picked_document_scene = next_document.document_scenes.pick_random()
+	elif next_document.is_resistance:
+		picked_document_scene = resistance_document_scene
 	var document_instance : DocumentBase = picked_document_scene.instantiate() as DocumentBase
 	_pickup_offset = Vector2(0, (document_instance.get_bounds().size.y * 0.5) * INITIAL_PICKUP_OFFSET_FRACTION)
 	document_instance.rotation_degrees = PICKUP_ROTATION
@@ -109,6 +110,7 @@ func get_mouse_over_outbox() -> Outbox2D:
 			if child.is_mouse_over: 
 				return child
 	return null
+
 
 func drop_document():
 	if not is_instance_valid(_active_document):
@@ -210,7 +212,11 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if _active_document:
-				drop_document()
+				if _active_document.has_second_page():
+					_active_document.turn_page()
+					drop_document()
+				else:
+					drop_document()
 			elif _highlighted_document:
 				pickup_highlighted_document()
 			elif %Inbox2D.is_mouse_over:

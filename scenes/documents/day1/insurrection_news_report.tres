@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://cpaljp2qbmw2e"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_vpk3k"]
+
+[resource]
+script = ExtResource("1_vpk3k")
+is_processable = true
+is_messageable = false
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "WIP
+
+[b]B[/b]ig [b]D[/b]. [b]N[/b]ews
+Today, people tried to get inside the Gray House.
+Journalists claim this insurrection was instilled by candidate to the Présidence D. Duck Confit."
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"
