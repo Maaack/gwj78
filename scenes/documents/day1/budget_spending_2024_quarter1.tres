@@ -7,9 +7,12 @@ script = ExtResource("1_jpc0n")
 is_processable = true
 is_messageable = false
 is_dangerous = false
+is_resistance = false
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
-content = "[center][b]Government Spendings 2024  Quarter 1[/b][/center]
+content = "[b]Budget Report 2024 Quarter 1[/b]
+
+[right][b]C[/b]entral [b]U[/b]nified [b]N[/b]ational [b]T[/b]reasury[/right]
 
 [table={4}]
 [cell][center]Spending[/center][/cell]
@@ -19,15 +22,16 @@ content = "[center][b]Government Spendings 2024  Quarter 1[/b][/center]
 [cell border=black]Salaires[/cell]
 [cell border=black][right]2 511 403.34[/right][/cell]
 [cell border=black][center]DIC[/center][/cell]
-[cell border=black]Where's MY raise?[/cell]
+[cell border=black]Where's [b]MY[/b] raise?[/cell]
 [cell border=black]Data for B.A.R.F.I.S.[/cell]
 [cell border=black][right]123 456 789 000.00[/right][/cell]
 [cell border=black][center]AIR[/center][/cell]
 [cell border=black]Just routine.[/cell]
-[cell border=black]Caviar-covered bananas[/cell]
+[cell border=black]Bananes au Caviar[/cell]
 [cell border=black][right]50 343.88[/right][/cell]
 [cell border=black][center]PMC[/center][/cell]
 [cell border=black]They grew bored of the Wagyu beef.[/cell]
 [/table]
 "
+triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"

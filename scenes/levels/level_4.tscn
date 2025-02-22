@@ -1,0 +1,44 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcbxhhdmtusgi"]
+
+[ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ts8eg"]
+[ext_resource type="Script" uid="uid://bsi8itgwtjkhw" path="res://scenes/levels/level_3.gd" id="2_um320"]
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_4wsov"]
+[ext_resource type="AudioStream" uid="uid://iv226rii6bx7" path="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg" id="4_4wsov"]
+[ext_resource type="Resource" uid="uid://dpq6lgcr7do0e" path="res://scenes/documents/day4/gender_law_bill.tres" id="4_qvnao"]
+[ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day4/internal_correspondance_michel_roger.tres" id="5_hsvsk"]
+[ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_qvnao"]
+[ext_resource type="Resource" uid="uid://c5qcsmqk7oy2g" path="res://resources/dialogues/level_4.dialogue" id="6_4wsov"]
+[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_hsvsk"]
+[ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_fcb7b"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="8_ov8fk"]
+
+[node name="GameScene" instance=ExtResource("1_ts8eg")]
+script = ExtResource("2_um320")
+helped_boss_dialogue = &"alternate_start"
+documents = Array[ExtResource("3_4wsov")]([ExtResource("4_qvnao"), ExtResource("5_hsvsk")])
+dialogue_resource = ExtResource("6_4wsov")
+opening_dialogue = &"start"
+
+[node name="BackgroundMusicPlayer" parent="." index="0"]
+stream = ExtResource("4_4wsov")
+
+[node name="RedactDangerous" type="Node" parent="Rules" index="0"]
+script = ExtResource("5_qvnao")
+instruction = "Redact any so-called \"evidence\" against our great administration."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="1"]
+script = ExtResource("6_hsvsk")
+instruction = "Archive all remaining documents."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="MessageBoss" type="Node" parent="Rules" index="2"]
+script = ExtResource("7_fcb7b")
+
+[node name="Rulebook" parent="Container" index="0" instance=ExtResource("8_ov8fk")]
+unique_name_in_owner = true
+position = Vector2(125, 140)
+
+[editable path="Outboxes/Furnace"]
+[editable path="Outboxes/ArchiveHole"]
+[editable path="Outboxes/MessagePipe"]

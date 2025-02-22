@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://c71o4lud7ovid"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_pspmi"]
+
+[resource]
+script = ExtResource("1_pspmi")
+is_processable = true
+is_messageable = false
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[b]Budget Report 2024 Quarter 2[/b]
+
+[right][b]C[/b]entral [b]U[/b]nified [b]N[/b]ational [b]T[/b]reasury[/right]
+
+[table={4}]
+[cell][center]Spending[/center][/cell]
+[cell][center]Amount ($)[/center][/cell]
+[cell][center]Dept.[/center][/cell]
+[cell][center]Notes[/center][/cell]
+[cell border=black]Transports[/cell]
+[cell border=black][right]63 050 243 123.16[/right][/cell]
+[cell border=black][center]TRANS[/center][/cell]
+[cell border=black]The coal-fueled planes are so efficient![/cell]
+[cell border=black]Data for B.A.R.F.I.S.[/cell]
+[cell border=black][right]112 358 132 134.01[/right][/cell]
+[cell border=black][center]AIR[/center][/cell]
+[cell border=black][/cell]
+[cell border=black]Decks of papier cards[/cell]
+[cell border=black]3 023.32[/cell]
+[cell border=black][center]BALS[/center][/cell]
+[cell border=black]Patrick is satisfied with his castle.[/cell]
+[/table]
+"
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"
