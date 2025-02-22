@@ -31,6 +31,9 @@ func play_pickup_sound() -> void:
 
 
 func has_second_page() -> bool:
+	if not document_data:
+		return false
+	
 	return document_data.content_page_2 != null and not document_data.content_page_2.is_empty()
 
 
