@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjs0htfljo1bs"]
+
+[ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ueq8l"]
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="2_4h3kw"]
+[ext_resource type="Resource" uid="uid://ba5oharx5p1st" path="res://scenes/documents/figs_report_president_secretary.tres" id="3_j8s21"]
+[ext_resource type="Resource" uid="uid://bxryhcngsakvm" path="res://scenes/documents/budget_spending_2025_quarter1.tres" id="4_7ab3o"]
+[ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="6_fq2by"]
+[ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_14v1m"]
+[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="7_ueq8l"]
+[ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="8_o634j"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/rulebook/rulebook.tscn" id="9_gp0hq"]
+[ext_resource type="Texture2D" uid="uid://b7w8sjvxr73on" path="res://assets/images/book-pile.png" id="10_712of"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oc4kc"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameScene" instance=ExtResource("1_ueq8l")]
+documents = Array[ExtResource("2_4h3kw")]([ExtResource("3_j8s21"), ExtResource("4_7ab3o")])
+dialogue_balloon_scene = null
+
+[node name="RightJustifiedNumbers" type="Node" parent="Rules" index="0"]
+script = ExtResource("6_fq2by")
+instruction = "Burn documents where the numbers are not right-aligned."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ForwardToBoss" type="Node" parent="Rules" index="1"]
+script = ExtResource("7_14v1m")
+instruction = "Forward evidence against the Président to Richard."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="2"]
+script = ExtResource("7_ueq8l")
+instruction = "Archivez all remaining documents."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="HiddenCollectEvidence" type="Node" parent="Rules" index="3"]
+script = ExtResource("8_o634j")
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="Rulebook" parent="Container" index="0" instance=ExtResource("9_gp0hq")]
+unique_name_in_owner = true
+position = Vector2(117, 143)
+
+[node name="EvidenceMarker" type="Sprite2D" parent="Container" index="1"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(45, 602)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_712of")
+
+[node name="Label" type="Label" parent="Container/EvidenceMarker" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -93.0
+offset_right = -15.5
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "STASHED EVIDENCE"
+label_settings = SubResource("LabelSettings_oc4kc")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="evidence_collected" from="Rules/HiddenCollectEvidence" to="Container/EvidenceMarker" method="show"]
+
+[editable path="Outboxes/Furnace2D"]
