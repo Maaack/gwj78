@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://d34866atpohd6" path="res://scenes/levels/level_4.gd" id="2_4wsov"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_4wsov"]
 [ext_resource type="AudioStream" uid="uid://iv226rii6bx7" path="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg" id="4_4wsov"]
+[ext_resource type="Resource" uid="uid://cs7d76lbqwmbk" path="res://scenes/documents/day4/outsider_doc.tres" id="4_fcb7b"]
 [ext_resource type="Resource" uid="uid://dpq6lgcr7do0e" path="res://scenes/documents/day4/gender_law_bill.tres" id="4_qvnao"]
-[ext_resource type="Resource" uid="uid://ckh7sesx4475l" path="res://scenes/documents/day5/outsider_doc2.tres" id="5_fcb7b"]
-[ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day5/internal_correspondance_michel_roger.tres" id="5_hsvsk"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_qvnao"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_hsvsk"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_fcb7b"]
+[ext_resource type="Resource" uid="uid://gojwfpqpr0ek" path="res://scenes/documents/day4/news_evidence_current_president.tres" id="8_1bx01"]
 [ext_resource type="Resource" uid="uid://c5qcsmqk7oy2g" path="res://resources/dialogues/level_4.dialogue" id="8_hsvsk"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="8_ov8fk"]
 [ext_resource type="Resource" uid="uid://b805g7uqabku" path="res://scenes/documents/day4/resistance_tabula_rasa.tres" id="8_pmra4"]
@@ -17,7 +17,7 @@
 
 [node name="GameScene2" instance=ExtResource("1_ts8eg")]
 script = ExtResource("2_4wsov")
-documents = Array[ExtResource("3_4wsov")]([ExtResource("5_fcb7b"), ExtResource("5_hsvsk"), ExtResource("4_qvnao"), ExtResource("8_pmra4")])
+documents = Array[ExtResource("3_4wsov")]([ExtResource("4_fcb7b"), ExtResource("8_pmra4"), ExtResource("4_qvnao"), ExtResource("8_1bx01")])
 dialogue_resource = ExtResource("8_hsvsk")
 opening_dialogue = &"start"
 

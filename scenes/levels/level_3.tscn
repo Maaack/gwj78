@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ykwboaiox3l8"]
+[gd_scene load_steps=15 format=3 uid="uid://ykwboaiox3l8"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_2bnyt"]
 [ext_resource type="Script" uid="uid://bsi8itgwtjkhw" path="res://scenes/levels/level_3.gd" id="2_ugcn1"]
@@ -9,14 +9,15 @@
 [ext_resource type="Resource" uid="uid://buudygv5qaylk" path="res://scenes/documents/day3/resistance_chaos_copypasta.tres" id="5_f6egh"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_t4txi"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_apo5x"]
-[ext_resource type="Resource" uid="uid://egvjqisveq4q" path="res://scenes/documents/day2/news_outside_tensions.tres" id="6_qi5uv"]
+[ext_resource type="Resource" uid="uid://darn87r521fuy" path="res://scenes/documents/day3/figs_president_iq_test.tres" id="7_t4txi"]
+[ext_resource type="Resource" uid="uid://bx6jteonyqw3g" path="res://scenes/documents/day3/bfis_news.tres" id="8_apo5x"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="9_n6eey"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="10_vmg1d"]
 [ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="11_f6egh"]
 
 [node name="GameScene2" instance=ExtResource("1_2bnyt")]
 script = ExtResource("2_ugcn1")
-documents = Array[ExtResource("3_n6eey")]([ExtResource("4_qi5uv"), ExtResource("5_f6egh"), ExtResource("6_qi5uv")])
+documents = Array[ExtResource("3_n6eey")]([ExtResource("8_apo5x"), ExtResource("4_qi5uv"), ExtResource("5_f6egh"), ExtResource("7_t4txi")])
 dialogue_resource = ExtResource("3_pimnq")
 opening_dialogue = &"start"
 

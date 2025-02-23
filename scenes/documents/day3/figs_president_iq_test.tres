@@ -12,12 +12,12 @@ special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
 content = "[b]F[/b]ederal [b]I[/b]ntelligence [b]G[/b]athering [b]S[/b]ervice
 [center][b]Presidents IQ Test RapportP[/b][/center]
-[right]2023-08-03[/right]
+
 Undercover FIGS Agents have conducted IQ tests unbeknownst to the current president and candidate.
 
-The résultats do not look great. The IQ of the current president is way too high. Incontrovertible consensus is that such a high number is deemed dangerous, when so far from the of the citizens.
+The résultats do not look great. The IQ of the current president is way too high.  Consensus is that such a high number is deemed dangerous, when so far from the average citizen.
 
-Immediate action is to be taken to ensure a much more suitable Président  takes over. The other IQ résultats suggest the former president and current candidate ████. 
+Immediate action is to be taken to ensure a much more suitable Président takes over. The other IQ résultats suggest the former president and current candidate ████. 
 
 [right]Agent Hamilton[/right]"
 content_page_2 = ""

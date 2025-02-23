@@ -6,7 +6,7 @@
 script = ExtResource("1_fpg68")
 is_processable = true
 is_messageable = false
-is_dangerous = false
+is_dangerous = true
 is_resistance = false
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])

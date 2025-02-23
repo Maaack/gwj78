@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cgeo21ddlcxlt" path="res://scenes/levels/level_5.gd" id="2_hldbq"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_5ke18"]
 [ext_resource type="AudioStream" uid="uid://iv226rii6bx7" path="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg" id="4_dwyms"]
-[ext_resource type="Resource" uid="uid://ckh7sesx4475l" path="res://scenes/documents/day5/outsider_doc2.tres" id="4_j14br"]
 [ext_resource type="Resource" uid="uid://dg5y74bin163q" path="res://scenes/documents/day5/resistance_report.tres" id="5_0y7y4"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_6xwso"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_5ke18"]
@@ -12,12 +11,13 @@
 [ext_resource type="Resource" uid="uid://kt2v56sldete" path="res://scenes/documents/day5/budget_spending_2024_quarter3.tres" id="7_h717f"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_j14br"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="8_0y7y4"]
+[ext_resource type="Resource" uid="uid://ckh7sesx4475l" path="res://scenes/documents/day4/outsider_doc2.tres" id="8_j14br"]
 [ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day5/internal_correspondance_michel_roger.tres" id="8_l8eod"]
 [ext_resource type="Resource" uid="uid://crhi7xbd50pxk" path="res://resources/dialogues/level_5.dialogue" id="9_j14br"]
 
 [node name="GameScene" instance=ExtResource("1_mxx4w")]
 script = ExtResource("2_hldbq")
-documents = Array[ExtResource("3_5ke18")]([ExtResource("6_gruok"), ExtResource("4_j14br"), ExtResource("5_0y7y4"), ExtResource("7_h717f"), ExtResource("8_l8eod")])
+documents = Array[ExtResource("3_5ke18")]([ExtResource("6_gruok"), ExtResource("5_0y7y4"), ExtResource("7_h717f"), ExtResource("8_l8eod"), ExtResource("8_j14br")])
 dialogue_resource = ExtResource("9_j14br")
 opening_dialogue = &"start"
 

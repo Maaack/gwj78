@@ -13,8 +13,9 @@ special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([ExtResource("1_rc864")])
 content = "[center][b]Contract Termination[/b][/center]
 
-B.F.I.S determined you are a \"useless prick\". You're fired.
-B.F.I.S adds \"why did you even come in today?\"
+B.F.I.S, our new ruler, determined you are a \"useless prick\". You're fired.
+
+B.F.I.S adds \"It was so obvious. Why did you even come in today?\"
 
 You got a medal though. Nice."
 content_page_2 = ""

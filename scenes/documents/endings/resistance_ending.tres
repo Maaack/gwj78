@@ -10,13 +10,17 @@ is_dangerous = true
 is_resistance = true
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
-content = "GG you are a resistant!
+content = "[center][b]LONG.LIVE.CHAOS.[/b][/center]
 
-But nothing much has changed really.
+Thank you for service, camarade.
 
-Bitter, but better than the alternative. I think.
+The Resistance salutes your dedication and celebrates its temporary victory.
 
-Congratulations, Goodest of the Good Cops."
+Nothing much has changed really. Bitter, but better than the alternative. I think?
+
+Congratulations.
+
+[center][b]LONG.LIVE.CHAOS.[/b][/center]"
 content_page_2 = ""
 triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"
