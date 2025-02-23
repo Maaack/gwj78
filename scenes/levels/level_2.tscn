@@ -27,7 +27,7 @@ content_page_2 = ""
 triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"
 
-[node name="GameScene" instance=ExtResource("1_ibugp")]
+[node name="GameScene2" instance=ExtResource("1_ibugp")]
 documents = Array[ExtResource("3_nt80m")]([SubResource("Resource_nt80m"), ExtResource("5_brxtv"), ExtResource("4_nt80m"), ExtResource("6_nt80m"), ExtResource("7_brxtv")])
 dialogue_resource = ExtResource("4_8qukl")
 opening_dialogue = &"start"

@@ -8,7 +8,7 @@ is_processable = true
 is_messageable = false
 is_dangerous = true
 is_resistance = true
-special_flags = Array[String](["resistance_joined"])
+special_flags = Array[String](["resistance_help"])
 document_scenes = Array[PackedScene]([])
 content = "[center][b] LONG. LIVE. CHAOS. [/b][/center]
 

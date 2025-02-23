@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://ua3bu1ypap3p"]
+[gd_resource type="Resource" script_class="DocumentData" load_steps=3 format=3 uid="uid://ua3bu1ypap3p"]
 
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_5bqwp"]
+[ext_resource type="PackedScene" uid="uid://7b7x74mc2qym" path="res://scenes/documents/goverment_memo.tscn" id="1_rc864"]
 
 [resource]
 script = ExtResource("1_5bqwp")
@@ -9,7 +10,7 @@ is_messageable = false
 is_dangerous = true
 is_resistance = false
 special_flags = Array[String]([])
-document_scenes = Array[PackedScene]([])
+document_scenes = Array[PackedScene]([ExtResource("1_rc864")])
 content = "[center][b]Contract Termination[/b][/center]
 
 B.F.I.S determined you are a \"useless prick\". You're fired.

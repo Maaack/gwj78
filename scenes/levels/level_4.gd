@@ -4,7 +4,7 @@ extends GameScene
 func _archived_resistance():
 	var prev_level_state : LevelState = GameState.get_level_state("level_3")
 	if prev_level_state:
-		return prev_level_state.special_flags.has("resistance_joined")
+		return prev_level_state.special_flags.has("resistance_helped")
 	return false
 
 
@@ -17,7 +17,7 @@ func _helped_boss():
 func _play_opening_dialogue():
 	if _archived_resistance():
 		GameEventsState.resistance_path_level_3 = true
-		_documents.append(load("res://scenes/documents/day4/resistance_instructions.tres"))
+		_documents.push_front(load("res://scenes/documents/day4/resistance_instructions.tres"))
 	else:
 		GameEventsState.resistance_path_level_3 = false
 		

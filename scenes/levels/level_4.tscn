@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcbxhhdmtusgi"]
+[gd_scene load_steps=15 format=3 uid="uid://dcbxhhdmtusgi"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ts8eg"]
 [ext_resource type="Script" uid="uid://d34866atpohd6" path="res://scenes/levels/level_4.gd" id="2_4wsov"]
@@ -13,8 +13,9 @@
 [ext_resource type="Resource" uid="uid://c5qcsmqk7oy2g" path="res://resources/dialogues/level_4.dialogue" id="8_hsvsk"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="8_ov8fk"]
 [ext_resource type="Resource" uid="uid://b805g7uqabku" path="res://scenes/documents/day4/resistance_tabula_rasa.tres" id="8_pmra4"]
+[ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="13_fcb7b"]
 
-[node name="GameScene" instance=ExtResource("1_ts8eg")]
+[node name="GameScene2" instance=ExtResource("1_ts8eg")]
 script = ExtResource("2_4wsov")
 documents = Array[ExtResource("3_4wsov")]([ExtResource("5_fcb7b"), ExtResource("5_hsvsk"), ExtResource("4_qvnao"), ExtResource("8_pmra4")])
 dialogue_resource = ExtResource("8_hsvsk")
@@ -55,6 +56,10 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 [node name="ArchiveValid" type="Node" parent="Rules" index="6"]
 script = ExtResource("6_hsvsk")
 instruction = "Archive all remaining documents."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="HIDDENHelpResistance" type="Node" parent="Rules" index="7"]
+script = ExtResource("13_fcb7b")
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("8_ov8fk")]

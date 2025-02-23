@@ -11,6 +11,7 @@ is_resistance = false
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
 content = "Cher Roger,
+
 I can not wait to meet with you again, mon petit lapin.
 
 What we did was so wrong, but also so good. So was it really wrong?

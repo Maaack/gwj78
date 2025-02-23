@@ -3,7 +3,7 @@ extends GameScene
 func _archived_resistance():
 	var prev_level_state : LevelState = GameState.get_level_state("level_4")
 	if prev_level_state:
-		return prev_level_state.special_flags.has("resistance_path_archived")
+		return prev_level_state.special_flags.has("resistance_helped")
 	return false
 
 

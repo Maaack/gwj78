@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ykwboaiox3l8"]
+[gd_scene load_steps=14 format=3 uid="uid://ykwboaiox3l8"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_2bnyt"]
 [ext_resource type="Script" uid="uid://bsi8itgwtjkhw" path="res://scenes/levels/level_3.gd" id="2_ugcn1"]
@@ -12,8 +12,9 @@
 [ext_resource type="Resource" uid="uid://egvjqisveq4q" path="res://scenes/documents/day2/news_outside_tensions.tres" id="6_qi5uv"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="9_n6eey"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="10_vmg1d"]
+[ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="11_f6egh"]
 
-[node name="GameScene" instance=ExtResource("1_2bnyt")]
+[node name="GameScene2" instance=ExtResource("1_2bnyt")]
 script = ExtResource("2_ugcn1")
 documents = Array[ExtResource("3_n6eey")]([ExtResource("4_qi5uv"), ExtResource("5_f6egh"), ExtResource("6_qi5uv")])
 dialogue_resource = ExtResource("3_pimnq")
@@ -41,7 +42,11 @@ script = ExtResource("5_t4txi")
 instruction = "Redact any suspicious document."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
-[node name="ArchiveValid" type="Node" parent="Rules" index="4"]
+[node name="HIDDENArchiveResistance" type="Node" parent="Rules" index="4"]
+script = ExtResource("11_f6egh")
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="5"]
 script = ExtResource("6_apo5x")
 instruction = "Archive all remaining documents."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
