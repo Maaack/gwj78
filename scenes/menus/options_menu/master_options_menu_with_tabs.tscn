@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://d052niiit6e1b"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_fqpxk"]
-[ext_resource type="Script" path="res://scenes/menus/options_menu/master_options_menu.gd" id="2_w1dvr"]
-[ext_resource type="PackedScene" path="res://scenes/menus/options_menu/input/input_options_menu_with_mouse_sensitivity.tscn" id="3_bn2s3"]
-[ext_resource type="PackedScene" path="res://scenes/menus/options_menu/audio/audio_options_menu.tscn" id="4_6wkjv"]
-[ext_resource type="PackedScene" path="res://scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="5_kr6xa"]
-[ext_resource type="PackedScene" path="res://scenes/menus/options_menu/game/game_options_menu.tscn" id="6_n2uhm"]
+[ext_resource type="PackedScene" uid="uid://bvwl11s2p0hd" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_fqpxk"]
+[ext_resource type="Script" uid="uid://c40ypk3i6vlvg" path="res://scenes/menus/options_menu/master_options_menu.gd" id="2_w1dvr"]
+[ext_resource type="PackedScene" uid="uid://cub10vxvfejl5" path="res://scenes/menus/options_menu/input/input_options_menu.tscn" id="3_fqpxk"]
+[ext_resource type="PackedScene" uid="uid://2i052p2w161x" path="res://scenes/menus/options_menu/audio/audio_options_menu.tscn" id="4_6wkjv"]
+[ext_resource type="PackedScene" uid="uid://bbylcytol6ekw" path="res://scenes/menus/options_menu/video/video_options_menu.tscn" id="5_fqpxk"]
+[ext_resource type="PackedScene" uid="uid://donk687nyvqhr" path="res://scenes/menus/options_menu/game/game_options_menu.tscn" id="6_n2uhm"]
 
 [node name="MasterOptionsMenu" instance=ExtResource("1_fqpxk")]
 script = ExtResource("2_w1dvr")
@@ -13,8 +13,9 @@ script = ExtResource("2_w1dvr")
 [node name="TabContainer" parent="." index="0"]
 current_tab = 0
 
-[node name="Controls" parent="TabContainer" index="1" instance=ExtResource("3_bn2s3")]
+[node name="Controls" parent="TabContainer" index="1" instance=ExtResource("3_fqpxk")]
 layout_mode = 2
+remapping_mode = 1
 metadata/_tab_index = 0
 
 [node name="Audio" parent="TabContainer" index="2" instance=ExtResource("4_6wkjv")]
@@ -22,7 +23,7 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Video" parent="TabContainer" index="3" instance=ExtResource("5_kr6xa")]
+[node name="Video" parent="TabContainer" index="3" instance=ExtResource("5_fqpxk")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
