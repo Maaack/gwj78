@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://b03u468roiu1g"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_jfcva"]
+
+[resource]
+script = ExtResource("1_jfcva")
+is_processable = true
+is_messageable = false
+is_dangerous = true
+is_resistance = true
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[center][b]LONG. LIVE. CHAOS.[/b][/center]
+
+Welcome initiate. You have passed our petit test.
+Do not worry, this letter left no traces on its way.
+[b]Make sure it does not leave traces on its way out.[/b]
+
+Now serve la cause and disserve your boss. By now I think you understand Richard is a dick.
+
+We need you to pass the law bill.
+You don't risk anything. Trust us, we are everywhere. How could this letter arrive otherwise?
+
+[center][b]LONG. LIVE. CHAOS.[/b][/center]
+
+"
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

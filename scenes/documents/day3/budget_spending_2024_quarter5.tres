@@ -6,7 +6,7 @@
 script = ExtResource("1_6l3aa")
 is_processable = true
 is_messageable = false
-is_dangerous = false
+is_dangerous = true
 is_resistance = false
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
@@ -33,5 +33,6 @@ content = "[b]Budget Report 2024 Quarter 5[/b]
 [cell border=black][b]Thankfully[/b], the cocktails were on the house.[/cell]
 [/table]
 "
+content_page_2 = ""
 triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"

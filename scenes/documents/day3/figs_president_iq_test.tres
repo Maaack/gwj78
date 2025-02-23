@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://darn87r521fuy"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_mgaae"]
+
+[resource]
+script = ExtResource("1_mgaae")
+is_processable = true
+is_messageable = false
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[b]F[/b]ederal [b]I[/b]ntelligence [b]G[/b]athering [b]S[/b]ervice
+[center][b]Presidents IQ Test RapportP[/b][/center]
+
+Undercover FIGS Agents have conducted IQ tests unbeknownst to the current president and candidate.
+
+The résultats do not look great. The IQ of the current president is way too high.  Consensus is that such a high number is deemed dangerous, when so far from the average citizen.
+
+Immediate action is to be taken to ensure a much more suitable Président takes over. The other IQ résultats suggest the former president and current candidate ████. 
+
+[right]Agent Hamilton[/right]"
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

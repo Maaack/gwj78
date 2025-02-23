@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://cq2tqcncx4awi"
+path="res://.godot/imported/oignon_news.dialogue-1e44d9f25654bf595195f55338410b81.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/oignon_news.dialogue"
+dest_files=["res://.godot/imported/oignon_news.dialogue-1e44d9f25654bf595195f55338410b81.tres"]
+
+[params]
+
+defaults=true

@@ -6,15 +6,23 @@
 script = ExtResource("1_vpk3k")
 is_processable = true
 is_messageable = false
-is_dangerous = false
+is_dangerous = true
 is_resistance = false
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
-content = "WIP
+content = "[u]L'Oignon News[/u]
 
-[b]B[/b]ig [b]D[/b]. [b]N[/b]ews
-Today, people tried to get inside the Gray House.
-Journalists claim this insurrection was instilled by candidate to the Présidence D. Duck Confit."
+[center][b]A RIOT happened au PALACE du CAPITAL - Insurrection Gone Wrong![/b][/center]
+
+Supporters of the candidat to the Présidence D. Duck have stormed the Palace du Capital today.
+
+A couple thousand rioters have been arrêtés. 
+D. Duck, confident of his future victory, promises to issue pardons to these \"victimes of the Deep État\".
+
+(As if the idiots working for the gouvernement would be good enough to manipulate us, ha good one.)
+
+[right]2022/21/01 - Robert Dylan, éditeur-en-chef[/right]
+"
 content_page_2 = ""
-triggers_dialogue = &""
+triggers_dialogue = &"oignon_news.dialogue"
 metadata/_custom_type_script = "uid://v65pvda1q6en"

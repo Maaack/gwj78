@@ -33,6 +33,8 @@ var _pickup_offset : Vector2
 var _last_mouse_position : Vector2
 var _in_dialogues: int = 0
 
+var has_moved_picked_doc := false
+
 func _ready():
 	_documents = documents.duplicate()
 	_connect_document_signals()
@@ -117,8 +119,11 @@ func _update_active_document_position():
 				CursorFollower.instance.set_text(outbox.hover_label)
 			return
 	#else:
-	CursorFollower.instance.clear_text()
+	if is_instance_valid(CursorFollower.instance):
+		CursorFollower.instance.clear_text()
 	_active_document.modulate_state("normal")
+	has_moved_picked_doc = true
+
 
 func is_level_complete():
 	#to account for messageable but not processable documents
@@ -160,6 +165,7 @@ func drop_document():
 	_active_document.reparent(%Container)
 	_highlighted_document = _active_document
 	_active_document = null
+	has_moved_picked_doc = false
 
 func document_processed(document_data : DocumentData):
 	_processed_documents.append(document_data)
@@ -266,18 +272,22 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		_last_mouse_position = event.position
 		_update_active_document_position()
+		has_moved_picked_doc = true
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if _active_document:
 				if _active_document.has_second_page():
-					_active_document.turn_page()
+					if Input.is_action_just_released("click") and not has_moved_picked_doc:
+						_active_document.turn_page()
 					drop_document()
 				else:
 					drop_document()
 			elif _highlighted_document:
 				pickup_highlighted_document()
+				has_moved_picked_doc = false
 			elif %Inbox2D.is_mouse_over:
 				pickup_inbox_document()
+				has_moved_picked_doc = false
 
 func _on_outbox_2d_document_processed(document_data: DocumentData) -> void:
 	_on_document_archived(document_data)

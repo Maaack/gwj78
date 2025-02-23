@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://gi0goc7hkpob"]
+
+[ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_3t8gl"]
+[ext_resource type="Script" uid="uid://bs7jis3tenw7w" path="res://scenes/levels/ending.gd" id="2_ixjwx"]
+[ext_resource type="Resource" uid="uid://bypqpb6sedop0" path="res://resources/dialogues/ending.dialogue" id="6_3t8gl"]
+[ext_resource type="AudioStream" uid="uid://iv226rii6bx7" path="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg" id="7_u0qhm"]
+[ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="8_h154d"]
+[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="9_bqc3y"]
+[ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="10_r07ud"]
+
+[node name="GameScene" instance=ExtResource("1_3t8gl")]
+script = ExtResource("2_ixjwx")
+dialogue_resource = ExtResource("6_3t8gl")
+opening_dialogue = &"start"
+
+[node name="BackgroundMusicPlayer" parent="." index="0"]
+stream = ExtResource("7_u0qhm")
+
+[node name="RedactDangerous" type="Node" parent="Rules" index="0"]
+script = ExtResource("8_h154d")
+instruction = "Redact everything."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="1"]
+script = ExtResource("9_bqc3y")
+instruction = "Archive all remaining documents."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="Rulebook" parent="Container" index="0" instance=ExtResource("10_r07ud")]
+unique_name_in_owner = true
+position = Vector2(125, 140)
+
+[editable path="Outboxes/Furnace"]
+[editable path="Outboxes/ArchivePipe"]
+[editable path="Outboxes/MessagePipe"]

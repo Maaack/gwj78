@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://bn4teytyeb2uo"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_fpg68"]
+
+[resource]
+script = ExtResource("1_fpg68")
+is_processable = true
+is_messageable = false
+is_dangerous = true
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[center]Chère Mrs. Cox,[/center]
+
+Thank you so much for offering me this great opportunity to be part of the B.F.I.S. team. 
+
+I'm starting today! I'm so excited [b]I forgot to prepare Christmas for my kids tomorrow[/b]. Oh well, there's always next year!
+
+By the way, I must say you make the meanest saucisse au cheddar I've ever tasted.
+
+[right]Roger R. from [b]A[/b]rtificial [b]I[/b]ntelligence [b]R[/b]esearch.[/right]
+
+2021-24-12"
+content_page_2 = ""
+triggers_dialogue = &"oignon_news.dialogue"
+metadata/_custom_type_script = "uid://v65pvda1q6en"
