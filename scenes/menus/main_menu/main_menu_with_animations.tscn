@@ -381,7 +381,11 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
 theme_override_fonts/font = ExtResource("6_2k5l7")
+theme_override_font_sizes/font_size = 80
 text = "Furnace in the Archive"
+
+[node name="SubTitleMargin" parent="MenuContainer" index="1"]
+theme_override_constants/margin_top = 112
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
