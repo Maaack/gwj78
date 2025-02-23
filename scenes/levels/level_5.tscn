@@ -1,22 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://el8enlw50nny"]
+[gd_scene load_steps=15 format=3 uid="uid://el8enlw50nny"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_mxx4w"]
 [ext_resource type="Script" uid="uid://cgeo21ddlcxlt" path="res://scenes/levels/level_5.gd" id="2_hldbq"]
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="3_5ke18"]
 [ext_resource type="AudioStream" uid="uid://iv226rii6bx7" path="res://assets/music/Horror Vol5 Stalked Intensity 2.ogg" id="4_dwyms"]
+[ext_resource type="Resource" uid="uid://ckh7sesx4475l" path="res://scenes/documents/day5/outsider_doc2.tres" id="4_j14br"]
+[ext_resource type="Resource" uid="uid://dg5y74bin163q" path="res://scenes/documents/day5/resistance_report.tres" id="5_0y7y4"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_6xwso"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_5ke18"]
+[ext_resource type="Resource" uid="uid://dkjduvug35748" path="res://scenes/documents/day5/figs_election_tampering.tres" id="6_gruok"]
+[ext_resource type="Resource" uid="uid://kt2v56sldete" path="res://scenes/documents/day5/budget_spending_2024_quarter3.tres" id="7_h717f"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_j14br"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="8_0y7y4"]
+[ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day5/internal_correspondance_michel_roger.tres" id="8_l8eod"]
+[ext_resource type="Resource" uid="uid://crhi7xbd50pxk" path="res://resources/dialogues/level_5.dialogue" id="9_j14br"]
 
 [node name="GameScene" instance=ExtResource("1_mxx4w")]
 script = ExtResource("2_hldbq")
-helped_boss_dialogue = &"alternate_start"
-document_scene = null
-resistance_document_scene = null
-dialogue_balloon_scene = null
+documents = Array[ExtResource("3_5ke18")]([ExtResource("6_gruok"), ExtResource("4_j14br"), ExtResource("5_0y7y4"), ExtResource("7_h717f"), ExtResource("8_l8eod")])
+dialogue_resource = ExtResource("9_j14br")
 opening_dialogue = &"start"
-dialogue_misarchival = null
-dialogue_misredaction = null
 
 [node name="BackgroundMusicPlayer" parent="." index="0"]
 stream = ExtResource("4_dwyms")
@@ -28,7 +31,7 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="DateFormats" type="Node" parent="Rules" index="1"]
 script = ExtResource("5_6xwso")
-instruction = "Redact documents which do not follow date format YYYY/MM/DD."
+instruction = "Redact documents which do not follow date format YYYY-MM-DD."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="MessageBoss" type="Node" parent="Rules" index="2"]
@@ -41,8 +44,8 @@ instruction = "Redact documents written by outsiders."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="ReportResistance" type="Node" parent="Rules" index="4"]
-script = ExtResource("5_6xwso")
-instruction = "REPORT any suspicious document from a so-called Résistance."
+script = ExtResource("7_j14br")
+instruction = "REPORT any document that could be from a so-called Résistance."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="RedactLibs" type="Node" parent="Rules" index="5"]

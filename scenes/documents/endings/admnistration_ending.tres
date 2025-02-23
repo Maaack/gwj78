@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://ua3bu1ypap3p"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_5bqwp"]
+
+[resource]
+script = ExtResource("1_5bqwp")
+is_processable = true
+is_messageable = false
+is_dangerous = true
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[center][b]Contract Termination[/b][/center]
+
+B.F.I.S determined you are a \"useless prick\". You're fired.
+B.F.I.S adds \"why did you even come in today?\"
+
+You got a medal though. Nice."
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

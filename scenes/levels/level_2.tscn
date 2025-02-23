@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqwllk37ecnrb"]
+[gd_scene load_steps=14 format=3 uid="uid://cqwllk37ecnrb"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ibugp"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="3_3p04p"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="4_qsp8v"]
 [ext_resource type="Resource" uid="uid://ba5oharx5p1st" path="res://scenes/documents/day2/figs_report_president_secretary.tres" id="5_brxtv"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="6_brxtv"]
+[ext_resource type="Resource" uid="uid://egvjqisveq4q" path="res://scenes/documents/day2/news_outside_tensions.tres" id="6_nt80m"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="6_qsp8v"]
+[ext_resource type="Resource" uid="uid://d3s5adaoi80m8" path="res://scenes/documents/day2/internal_correspondance_cox.tres" id="7_brxtv"]
 
 [sub_resource type="Resource" id="Resource_nt80m"]
 script = ExtResource("3_nt80m")
@@ -26,7 +28,7 @@ triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"
 
 [node name="GameScene" instance=ExtResource("1_ibugp")]
-documents = Array[ExtResource("3_nt80m")]([SubResource("Resource_nt80m"), ExtResource("5_brxtv"), ExtResource("4_nt80m")])
+documents = Array[ExtResource("3_nt80m")]([SubResource("Resource_nt80m"), ExtResource("5_brxtv"), ExtResource("4_nt80m"), ExtResource("6_nt80m"), ExtResource("7_brxtv")])
 dialogue_resource = ExtResource("4_8qukl")
 opening_dialogue = &"start"
 
@@ -37,19 +39,14 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="DateFormats" type="Node" parent="Rules" index="1"]
 script = ExtResource("3_3p04p")
-instruction = "Redact documents which do not follow date format YYYY/MM/DD."
+instruction = "Redact documents which do not follow date format YYYY-MM-DD."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
-[node name="OutsiderDocs" type="Node" parent="Rules" index="2"]
-script = ExtResource("3_3p04p")
-instruction = "Burn any documents written by other countries."
-metadata/_custom_type_script = "uid://dpad5op2xmung"
-
-[node name="MessageBoss" type="Node" parent="Rules" index="3"]
+[node name="MessageBoss" type="Node" parent="Rules" index="2"]
 script = ExtResource("6_qsp8v")
 instruction = "Report any compromising material about Michel Cox to your boss Richard."
 
-[node name="ArchiveValid" type="Node" parent="Rules" index="4"]
+[node name="ArchiveValid" type="Node" parent="Rules" index="3"]
 script = ExtResource("4_qsp8v")
 instruction = "Archive all remaining documents."
 metadata/_custom_type_script = "uid://dpad5op2xmung"

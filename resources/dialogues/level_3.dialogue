@@ -1,8 +1,11 @@
 ~ start
+- skip dialogue
+	=> END
+- continue
 if GameEventsState.helped_boss_level_2:
 	Richard: Salut. I got your document. Thanks a lot for that. I need more however.
 else:
-	Richard: Hmph. Bonjour. We got new rules today. 
+	Richard: Hmph, the useless guy. Bonjour, I guess. We got new rules today. 
 Richard: By the way I must say I'm impressed by your performance.
 Richard: Non really, the previous schmucks at your position didn't last as long as you.
 - That's what she said, Richard!

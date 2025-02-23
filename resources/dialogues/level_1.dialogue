@@ -1,4 +1,7 @@
 ~ start
+- skip dialogue
+	=> END
+- continue
 ???: So you're the new blood. Sorry what's your name again?
 - My name is Jeffrey, sir!
 	???: Non, don't tell me. I don't care. You guys come and go all the time, I can't keep up.

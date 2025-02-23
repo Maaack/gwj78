@@ -8,7 +8,7 @@ is_processable = true
 is_messageable = false
 is_dangerous = true
 is_resistance = true
-special_flags = Array[String]([])
+special_flags = Array[String](["resistance_joined"])
 document_scenes = Array[PackedScene]([])
 content = "[center][b] LONG. LIVE. CHAOS. [/b][/center]
 
@@ -26,5 +26,6 @@ content = "[center][b] LONG. LIVE. CHAOS. [/b][/center]
 [b]TO BURN THE WORLD. TOGETHER.[/b]
 
 [center][b]LONG. LIVE. CHAOS.[/b][/center]"
+content_page_2 = ""
 triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"
