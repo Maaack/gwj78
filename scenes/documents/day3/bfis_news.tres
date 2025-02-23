@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://bx6jteonyqw3g"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_jxiok"]
+
+[resource]
+script = ExtResource("1_jxiok")
+is_processable = true
+is_messageable = false
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[center][b]Public Communication from L'Administration - Department of Artifical Intelligence Research[/b][/center]
+
+Our teams present to you B.F.I.S, for Big Fucking Intelligent System. The first Artificial General Intelligence humankind has ever created. 
+
+L'Administration is glad to be the first to benefit from its infinite possibilities (and to start saving on their budgets after sustaining our research effort for so long). God Bless L'Administration, and you, for being such loyal users of our partnered apps. 
+
+[right]Roger R., Head of AIR[/right]
+
+
+"
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

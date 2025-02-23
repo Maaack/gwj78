@@ -1,7 +1,5 @@
 extends GameScene
 
-@export var helped_boss_dialogue : StringName
-
 func _helped_boss_previous_level():
 	var prev_level_state : LevelState = GameState.get_level_state("level_2")
 	if prev_level_state:
@@ -10,6 +8,7 @@ func _helped_boss_previous_level():
 
 func _play_opening_dialogue():
 	if _helped_boss_previous_level():
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, helped_boss_dialogue)
+		GameEventsState.helped_boss_level_2 = true
 	else:
-		super._play_opening_dialogue()
+		GameEventsState.helped_boss_level_2 = false
+	super._play_opening_dialogue()

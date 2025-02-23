@@ -1,24 +1,86 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjs0htfljo1bs"]
+[gd_scene load_steps=32 format=3 uid="uid://bjs0htfljo1bs"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ueq8l"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="2_4h3kw"]
 [ext_resource type="Resource" uid="uid://dkjduvug35748" path="res://scenes/documents/day5/figs_election_tampering.tres" id="4_q6k7f"]
 [ext_resource type="Resource" uid="uid://dpq6lgcr7do0e" path="res://scenes/documents/day4/gender_law_bill.tres" id="5_g6fil"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="6_fq2by"]
+[ext_resource type="Resource" uid="uid://bxryhcngsakvm" path="res://scenes/documents/day1/budget_spending_2024_quarter1.tres" id="6_gt3jv"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_14v1m"]
-[ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day4/internal_correspondance_michel_roger.tres" id="7_dmf3x"]
-[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="7_ueq8l"]
-[ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="8_o634j"]
+[ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day5/internal_correspondance_michel_roger.tres" id="7_dmf3x"]
+[ext_resource type="Resource" uid="uid://c71o4lud7ovid" path="res://scenes/documents/day1/budget_spending_2024_quarter2.tres" id="7_e7nja"]
+[ext_resource type="Resource" uid="uid://cpaljp2qbmw2e" path="res://scenes/documents/day1/insurrection_news_report.tres" id="8_cof22"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="9_gp0hq"]
+[ext_resource type="Resource" uid="uid://bn4teytyeb2uo" path="res://scenes/documents/day1/internal_correspondence.tres" id="9_ly8ra"]
 [ext_resource type="Texture2D" uid="uid://b7w8sjvxr73on" path="res://assets/images/book-pile.png" id="10_712of"]
+[ext_resource type="Resource" uid="uid://d15vh20c3fd83" path="res://scenes/documents/day2/budget_spending_2024_quarter4.tres" id="10_ukk4t"]
+[ext_resource type="Resource" uid="uid://ba5oharx5p1st" path="res://scenes/documents/day2/figs_report_president_secretary.tres" id="11_auvfg"]
+[ext_resource type="Resource" uid="uid://d3s5adaoi80m8" path="res://scenes/documents/day2/internal_correspondance_cox.tres" id="12_e4mub"]
+[ext_resource type="Resource" uid="uid://egvjqisveq4q" path="res://scenes/documents/day2/news_outside_tensions.tres" id="13_6utcp"]
+[ext_resource type="Resource" uid="uid://bx6jteonyqw3g" path="res://scenes/documents/day3/bfis_news.tres" id="14_g018p"]
+[ext_resource type="Resource" uid="uid://b222gjr6do5qt" path="res://scenes/documents/day3/budget_spending_2024_quarter5.tres" id="15_qul7v"]
+[ext_resource type="Resource" uid="uid://darn87r521fuy" path="res://scenes/documents/day3/figs_president_iq_test.tres" id="17_hvr5a"]
+[ext_resource type="Resource" uid="uid://buudygv5qaylk" path="res://scenes/documents/day3/resistance_chaos_copypasta.tres" id="18_n7stc"]
+[ext_resource type="Resource" uid="uid://gojwfpqpr0ek" path="res://scenes/documents/day4/news_evidence_current_president.tres" id="19_sga28"]
+[ext_resource type="Resource" uid="uid://b03u468roiu1g" path="res://scenes/documents/day4/resistance_instructions.tres" id="21_ij00x"]
+[ext_resource type="Resource" uid="uid://b805g7uqabku" path="res://scenes/documents/day4/resistance_tabula_rasa.tres" id="22_fds8h"]
+[ext_resource type="Resource" uid="uid://mmbey6k7lwgq" path="res://scenes/documents/endings/resistance_ending.tres" id="23_xdr5x"]
+[ext_resource type="Resource" uid="uid://br2geajugpec6" path="res://scenes/documents/endings/neutral_ending.tres" id="24_8th0s"]
+[ext_resource type="Resource" uid="uid://ua3bu1ypap3p" path="res://scenes/documents/endings/admnistration_ending.tres" id="25_wfu4o"]
+[ext_resource type="Resource" uid="uid://dg5y74bin163q" path="res://scenes/documents/day5/resistance_report.tres" id="26_mawnw"]
+
+[sub_resource type="Resource" id="Resource_1wxt2"]
+script = ExtResource("2_4h3kw")
+is_processable = true
+is_messageable = true
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String](["boss_evidence"])
+document_scenes = Array[PackedScene]([])
+content = "[center][b]FIGS Rapport C27O12X[/b][/center]
+[right]2023-11-15[/right]
+
+Michèle Cox has been "
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"
+
+[sub_resource type="Resource" id="Resource_1a33e"]
+script = ExtResource("2_4h3kw")
+is_processable = true
+is_messageable = false
+is_dangerous = true
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[b]Pétition for the recognition of Tanames[/b]
+
+[right]
+To L'Administration of Les Unifiés,
+For too long have we endured your economical oppression.
+For too long have we suffered from your unending schemes.
+
+Far too long is your reach in our country.
+
+Today, we, Tanamians, claim our Indépendance.
+
+All your envoys will be repatriated following this.
+All traités and deals are to be renegociated.
+
+We shall not, and will not falter.
+
+[/right]
+[left]Chíton Cabrera, King of Tanamia.[/left]"
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"
 
 [sub_resource type="LabelSettings" id="LabelSettings_oc4kc"]
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [node name="GameScene" instance=ExtResource("1_ueq8l")]
-documents = Array[ExtResource("2_4h3kw")]([ExtResource("7_dmf3x"), ExtResource("4_q6k7f"), ExtResource("5_g6fil")])
-dialogue_balloon_scene = null
+documents = Array[ExtResource("2_4h3kw")]([ExtResource("5_g6fil"), ExtResource("7_dmf3x"), ExtResource("4_q6k7f"), ExtResource("6_gt3jv"), ExtResource("7_e7nja"), ExtResource("8_cof22"), ExtResource("9_ly8ra"), ExtResource("10_ukk4t"), ExtResource("11_auvfg"), ExtResource("12_e4mub"), ExtResource("13_6utcp"), ExtResource("14_g018p"), ExtResource("15_qul7v"), SubResource("Resource_1wxt2"), ExtResource("17_hvr5a"), ExtResource("18_n7stc"), ExtResource("5_g6fil"), ExtResource("19_sga28"), SubResource("Resource_1a33e"), ExtResource("21_ij00x"), ExtResource("22_fds8h"), ExtResource("21_ij00x"), ExtResource("23_xdr5x"), ExtResource("24_8th0s"), ExtResource("25_wfu4o"), ExtResource("26_mawnw"), ExtResource("7_dmf3x")])
 
 [node name="RightJustifiedNumbers" type="Node" parent="Rules" index="0"]
 script = ExtResource("6_fq2by")
@@ -28,15 +90,6 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 [node name="ForwardToBoss" type="Node" parent="Rules" index="1"]
 script = ExtResource("7_14v1m")
 instruction = "Forward evidence against the Président to Richard."
-metadata/_custom_type_script = "uid://dpad5op2xmung"
-
-[node name="ArchiveValid" type="Node" parent="Rules" index="2"]
-script = ExtResource("7_ueq8l")
-instruction = "Archivez all remaining documents."
-metadata/_custom_type_script = "uid://dpad5op2xmung"
-
-[node name="HiddenCollectEvidence" type="Node" parent="Rules" index="3"]
-script = ExtResource("8_o634j")
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("9_gp0hq")]
@@ -67,8 +120,6 @@ label_settings = SubResource("LabelSettings_oc4kc")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[connection signal="evidence_collected" from="Rules/HiddenCollectEvidence" to="Container/EvidenceMarker" method="show"]
-
 [editable path="Outboxes/Furnace"]
-[editable path="Outboxes/ArchiveHole"]
+[editable path="Outboxes/ArchivePipe"]
 [editable path="Outboxes/MessagePipe"]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://gojwfpqpr0ek"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_ranyu"]
+
+[resource]
+script = ExtResource("1_ranyu")
+is_processable = true
+is_messageable = true
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String](["boss_evidence"])
+document_scenes = Array[PackedScene]([])
+content = "[u]L'Oignon News[/u]
+[center][b]Our money buys prostitutes for the Président[/b][/center]
+[right]2024-07-05[/right]
+
+Wow, the current president Michèle Cox did a very bad bad thing!
+No really, our Intelligence reports said he ordered a prostitute.
+And he was undercover paid as a secretary.
+
+At least that's what my little gobelin of a sous-chef said to my ear.
+Trust the little gobelin.
+
+Robert Dylan, éditeur-en-chef.
+"
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

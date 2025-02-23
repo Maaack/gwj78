@@ -6,20 +6,18 @@
 script = ExtResource("1_04jao")
 is_processable = true
 is_messageable = false
-is_dangerous = false
+is_dangerous = true
 is_resistance = false
-special_flags = Array[String]([])
+special_flags = Array[String](["resistance_help"])
 document_scenes = Array[PackedScene]([])
-content = "[center]Amendment 14.S1.8.8.3 General Approach To Gender Classifications[/center]
+content = "[b][center]Amendment 14.S1.8.8.3 General Approach To Gender Classifications[/center][/b]
 [right][b]JUST-ICE[/b][/right]
-[right]2024-12-30[/right]
-All citizens are now female. Fuck it, YOLO.
-The notion of gender is simply deleted in favor of sex. There are two sex: male, and non-male. Deal with it, bitches.
+
+From today 2025-17-01, All citizens are now of female gender. Fuck it, YOLO.
+Nah fam, I'm cappin. The notion of gender is too complex, yo. Simply deleted in favor of sex. How many sexes? Idk, deal with it 😎
 
 Notes:
-[b]If you don't archive this, you're a lil' B. Are you a lil' B?[/b]
-Damn, it would so nice if all laws were written that simply and clearly, wouldn't it?
-No room for misinterpretation for the benefit of the trolls, the powerful, and the lucky-to-be-educated. "
+This new law writing style has been deemed superior by JUST-ICE, and shall be used for all future laws. No room for misinterpretation for the benefit of the trolls, the powerful, or the lucky-to-be-educated. "
 content_page_2 = ""
 triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"

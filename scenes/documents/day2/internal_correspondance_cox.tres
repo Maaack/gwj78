@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://d3s5adaoi80m8"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_ijgdw"]
+
+[resource]
+script = ExtResource("1_ijgdw")
+is_processable = true
+is_messageable = true
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "Cher Roger,
+
+I can not wait to meet with you again, mon petit lapin.
+
+What we did was so wrong, but also so good. So was it really wrong?
+
+[right]Michèle.[/right]"
+content_page_2 = ""
+triggers_dialogue = &"oignon_news.dialogue"
+metadata/_custom_type_script = "uid://v65pvda1q6en"
