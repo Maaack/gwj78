@@ -44,7 +44,7 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="MessageBoss" type="Node" parent="Rules" index="2"]
 script = ExtResource("6_qsp8v")
-instruction = "Report any compromising material about Michel Cox to your boss Richard."
+instruction = "Report any compromising material about Michèle Cox to your boss Richard."
 
 [node name="ArchiveValid" type="Node" parent="Rules" index="3"]
 script = ExtResource("4_qsp8v")

@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="MessageBoss" type="Node" parent="Rules" index="2"]
 script = ExtResource("7_j14br")
-instruction = "REPORT any compromising material about Michel Cox to your boss."
+instruction = "REPORT any compromising material about Michèle Cox to your boss."
 
 [node name="OutsiderDocs" type="Node" parent="Rules" index="3"]
 script = ExtResource("5_6xwso")
