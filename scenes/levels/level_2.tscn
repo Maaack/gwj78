@@ -30,18 +30,29 @@ documents = Array[ExtResource("3_nt80m")]([SubResource("Resource_nt80m"), ExtRes
 dialogue_resource = ExtResource("4_8qukl")
 opening_dialogue = &"start"
 
-[node name="RedactDangerous" type="Node" parent="Rules" index="0"]
+[node name="RightJustifiedNumbers" type="Node" parent="Rules" index="0"]
 script = ExtResource("3_3p04p")
-instruction = "Redact any so-called \"evidence\" against our great administration."
+instruction = "Redact documents where numbers in tables are not right-aligned."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
-[node name="ArchiveValid" type="Node" parent="Rules" index="1"]
+[node name="DateFormats" type="Node" parent="Rules" index="1"]
+script = ExtResource("3_3p04p")
+instruction = "Redact documents which do not follow date format YYYY/MM/DD."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="OutsiderDocs" type="Node" parent="Rules" index="2"]
+script = ExtResource("3_3p04p")
+instruction = "Burn any documents written by other countries."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="MessageBoss" type="Node" parent="Rules" index="3"]
+script = ExtResource("6_qsp8v")
+instruction = "Report any compromising material about Michel Cox to your boss Richard."
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="4"]
 script = ExtResource("4_qsp8v")
 instruction = "Archive all remaining documents."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
-
-[node name="MessageBoss" type="Node" parent="Rules" index="2"]
-script = ExtResource("6_qsp8v")
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("6_brxtv")]
 unique_name_in_owner = true

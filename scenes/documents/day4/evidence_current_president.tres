@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://gojwfpqpr0ek"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_hxh8c"]
+
+[resource]
+script = ExtResource("1_hxh8c")
+is_processable = true
+is_messageable = false
+is_dangerous = false
+is_resistance = false
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "L'Oignon News
+
+Wow the current president did a bad bad thing!
+At least that's what Mrs. X said to my ear.
+D. Duck is ravi.
+
+Jesaisplus, éditeur-en-chef.
+"
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"

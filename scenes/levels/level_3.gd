@@ -10,6 +10,7 @@ func _helped_boss_previous_level():
 
 func _play_opening_dialogue():
 	if _helped_boss_previous_level():
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_scene, dialogue_resource, helped_boss_dialogue)
+		GameEventsState.helped_boss_level_2 = true
 	else:
-		super._play_opening_dialogue()
+		GameEventsState.helped_boss_level_2 = false
+	super._play_opening_dialogue()

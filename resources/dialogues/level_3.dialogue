@@ -1,10 +1,19 @@
 ~ start
-Richard : Hey there. We got new rules today. By the way I must say I'm impressed by your performance.
-Richard: No really, the previous schmucks at your position didn't last as long as you.
-Richard: There would always be some nonsensical documents passing through to the archives.
-Richard: So if it hasn't happened already, burn it or report it. It's up to your judgement, depending on the dangerosity.
+if GameEventsState.helped_boss_level_2:
+	Richard: Salut. I got your document. Thanks a lot for that. I need more however.
+else:
+	Richard: Hmph. Bonjour. We got new rules today. 
+Richard: By the way I must say I'm impressed by your performance.
+Richard: Non really, the previous schmucks at your position didn't last as long as you.
+- That's what she said, Richard!
+	Richard: HAHAHA. Oh you, you're one of the good ones, you know?
+- Thank you Sir! Means a lot.
+	Richard: No problem, but easen up dude. We're all just like a big family here, you know?
+Richard: Anyway. These fuckers would always let some nonsensical documents pass through to the archives.
+Richard: So if it hasn't happened already, burn it or report it when you see some whackery. It's up to your jugement, based on the dangerosité. So analyze them well.
 Richard: You can call me Dick by the way. It's my nickname. Dick from DIC! Sounds great doesn't it?
 - Uh yeaaah, it sure does Dick!
-	Dick from DIC: Great. Back to it. 
+	Dick from DIC: Great. Back to it. God Bless L'Administration.
 - Whatever you say, Sir Boss!
-	Sir Boss The Dick: Oh you. You're growing on me, idiot. Now work.
+	Sir Boss The Dick: Oh you. You're growing on me, idiot. God Bless L'Administration.
+You: God Bless L'Administration! 🫡

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://yj4m4m3v5c0m"]
 
-[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_ccthm"]
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_bn05a"]
 
 [resource]
-script = ExtResource("1_ccthm")
+script = ExtResource("1_bn05a")
 is_processable = true
 is_messageable = false
 is_dangerous = true
@@ -12,7 +12,7 @@ special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
 content = "[center][b]Chère Michèle,[/b][/center]
 
-I have seen the inside of [b]PMC[/b]. It is… beyond words... They are [b]actual MONKEYS[/b]! Thought t'was just an inside joke. Just like everyone, right? … Right?
+I have been inside of the [b]P[/b]rime [b]M[/b]inistres [b]C[/b]hamber. It is… beyond words... They are [b]actual MONKEYS[/b]! Thought t'was just an inside joke. Just like everyone, right? … Right?
 
 I don’t know who or what to believe anymore. [b]What are we even doing here[/b]? I spend my days redirecting emails or data to B.A.R.F.I.S. I'm a glorifiée standardiste. 
 
@@ -22,10 +22,10 @@ content_page_2 = "L'Administration is filled with... [b]P[/b]uppet [b]M[/b]onkey
 
 It’s all a farce, and not a good one. Not one fit for a thick, veineuse saucisse. 
 
-I... miss your saucisse au cheddar, Michel. [u]Please reconsider your resignation[/u].
+I... miss your saucisse au cheddar, Michèle. [u]Please reconsider your resignation[/u].
 
 Something has to be done, and I'll do it. Fuck it if they kill me. Plus rien à foutre.
-[right]Roger R.[/right]
+[right]Roger R from [b]A[/b]rtificial [b]I[/b]ntelligence [b]R[/b]esearch[/right]
 
 [right]2/2[/right]"
 triggers_dialogue = &""

@@ -6,7 +6,7 @@
 script = ExtResource("1_pspmi")
 is_processable = true
 is_messageable = false
-is_dangerous = false
+is_dangerous = true
 is_resistance = false
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
@@ -23,7 +23,7 @@ content = "[b]Budget Report 2024 Quarter 2[/b]
 [cell border=black][right]63 050 243 123.16[/right][/cell]
 [cell border=black][center]TRANS[/center][/cell]
 [cell border=black]The coal-fueled planes are so efficient![/cell]
-[cell border=black]Data for B.A.R.F.I.S.[/cell]
+[cell border=black]Data for B.A.F.R.I.S.[/cell]
 [cell border=black][right]112 358 132 134.01[/right][/cell]
 [cell border=black][center]AIR[/center][/cell]
 [cell border=black][/cell]
@@ -33,5 +33,6 @@ content = "[b]Budget Report 2024 Quarter 2[/b]
 [cell border=black]Patrick is satisfied with his castle.[/cell]
 [/table]
 "
+content_page_2 = ""
 triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"

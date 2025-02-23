@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ykwboaiox3l8"]
+[gd_scene load_steps=12 format=3 uid="uid://ykwboaiox3l8"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_2bnyt"]
 [ext_resource type="Script" uid="uid://bsi8itgwtjkhw" path="res://scenes/levels/level_3.gd" id="2_ugcn1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://buudygv5qaylk" path="res://scenes/documents/day3/resistance_chaos_copypasta.tres" id="5_f6egh"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="5_t4txi"]
 [ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="6_apo5x"]
+[ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="9_n6eey"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="10_vmg1d"]
 
 [node name="GameScene" instance=ExtResource("1_2bnyt")]
@@ -21,12 +22,31 @@ opening_dialogue = &"start"
 [node name="BackgroundMusicPlayer" parent="." index="0"]
 stream = ExtResource("4_ugcn1")
 
-[node name="RedactDangerous" type="Node" parent="Rules" index="0"]
+[node name="RightJustifiedNumbers" type="Node" parent="Rules" index="0"]
 script = ExtResource("5_t4txi")
-instruction = "Redact any so-called \"evidence\" against our great administration."
+instruction = "Redact documents where numbers in tables are not right-aligned."
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
-[node name="ArchiveValid" type="Node" parent="Rules" index="1"]
+[node name="DateFormats" type="Node" parent="Rules" index="1"]
+script = ExtResource("5_t4txi")
+instruction = "Redact documents which do not follow date format YYYY/MM/DD."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="MessageBoss" type="Node" parent="Rules" index="2"]
+script = ExtResource("9_n6eey")
+instruction = "REPORT any compromising material about Michel Cox to your boss."
+
+[node name="OutsiderDocs" type="Node" parent="Rules" index="3"]
+script = ExtResource("5_t4txi")
+instruction = "Burn documents written by outsiders."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="RedactResistance" type="Node" parent="Rules" index="4"]
+script = ExtResource("5_t4txi")
+instruction = "Redact any suspicious document."
+metadata/_custom_type_script = "uid://dpad5op2xmung"
+
+[node name="ArchiveValid" type="Node" parent="Rules" index="5"]
 script = ExtResource("6_apo5x")
 instruction = "Archive all remaining documents."
 metadata/_custom_type_script = "uid://dpad5op2xmung"

@@ -10,27 +10,28 @@ is_dangerous = true
 is_resistance = false
 special_flags = Array[String]([])
 document_scenes = Array[PackedScene]([])
-content = "FIGS Election Tampering Report
+content = "[center][b]FIGS Election Tampering - Rapport d'Opération[/b][/center]
 
-Agent 74, reporting in.
+Agent #74, reporting in.
 The operation [b]Global Demoralization[/b] is complete.
 
-President... what's-his-name... whatever, you know [b]Aelon Dusk Puppet n12[/b].
+President... what's-his-name... whatever, you know, [b]Aelon Dusk's Puppet n12[/b], is next-in-line.
 We rigged everything. [b]Erased the problems.[/b] [b]Nothing can go wrong[/b]. 
 
 The people are just showered with crap from us, from the Brotherland on the other side of the ocean, and from its Sisterland right next to it.
 
 [right]1/2 ↪[/right]
 "
-content_page_2 = "They think they're connected to the rest of the world. But they're stuck in their little bubbles. The well-oiled algorithms have been at worked for decades.
+content_page_2 = "They think they're connected to the rest of the world. But they're stuck in their little tribal bubbles. 
 
-[b]We have won.[/b]
+[b]The well-oiled algorithms have been at worked for decades. B.A.R.F.I.S is going to rule the world. We have won.[/b]
 
 ... Or have we?
 
-Sorry don't worry, wrote that just because it sounded badass. I'm FIGS Agent #74, after all.
+Sorry, don't worry, wrote that just because it sounded badass. I'm [b]FIGS Agent #74[/b], after all.
 
 [right]Agent #74[/right]
-[right]of the [b]F[/b]ederal [b]I[/b]ntelligence [b]G[/b]athering [b]S[/b]ervice.[/right]"
+[right]of the [b]F[/b]ederal [b]I[/b]ntelligence [b]G[/b]athering [b]S[/b]ervice.[/right]
+[right]2/2[/right]"
 triggers_dialogue = &""
 metadata/_custom_type_script = "uid://v65pvda1q6en"

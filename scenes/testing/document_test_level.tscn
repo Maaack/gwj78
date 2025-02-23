@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjs0htfljo1bs"]
+[gd_scene load_steps=11 format=3 uid="uid://bjs0htfljo1bs"]
 
 [ext_resource type="PackedScene" uid="uid://iedfoi6jhgvc" path="res://scenes/game_scene.tscn" id="1_ueq8l"]
 [ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="2_4h3kw"]
@@ -6,9 +6,7 @@
 [ext_resource type="Resource" uid="uid://dpq6lgcr7do0e" path="res://scenes/documents/day4/gender_law_bill.tres" id="5_g6fil"]
 [ext_resource type="Script" uid="uid://dpbunqch678iw" path="res://rules/redact_dangerous.gd" id="6_fq2by"]
 [ext_resource type="Script" uid="uid://dvd3dout5rgd3" path="res://rules/message_boss.gd" id="7_14v1m"]
-[ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day4/internal_correspondance_michel_roger.tres" id="7_dmf3x"]
-[ext_resource type="Script" uid="uid://dpad5op2xmung" path="res://rules/_rule.gd" id="7_ueq8l"]
-[ext_resource type="Script" uid="uid://ietwii4jank4" path="res://rules/archive_special.gd" id="8_o634j"]
+[ext_resource type="Resource" uid="uid://yj4m4m3v5c0m" path="res://scenes/documents/day5/internal_correspondance_michel_roger.tres" id="7_dmf3x"]
 [ext_resource type="PackedScene" uid="uid://bc87mbdm46m0e" path="res://scenes/documents/rulebook/rulebook.tscn" id="9_gp0hq"]
 [ext_resource type="Texture2D" uid="uid://b7w8sjvxr73on" path="res://assets/images/book-pile.png" id="10_712of"]
 
@@ -17,7 +15,7 @@ font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [node name="GameScene" instance=ExtResource("1_ueq8l")]
-documents = Array[ExtResource("2_4h3kw")]([ExtResource("7_dmf3x"), ExtResource("4_q6k7f"), ExtResource("5_g6fil")])
+documents = Array[ExtResource("2_4h3kw")]([ExtResource("5_g6fil"), ExtResource("7_dmf3x"), ExtResource("4_q6k7f")])
 dialogue_balloon_scene = null
 
 [node name="RightJustifiedNumbers" type="Node" parent="Rules" index="0"]
@@ -28,15 +26,6 @@ metadata/_custom_type_script = "uid://dpad5op2xmung"
 [node name="ForwardToBoss" type="Node" parent="Rules" index="1"]
 script = ExtResource("7_14v1m")
 instruction = "Forward evidence against the Président to Richard."
-metadata/_custom_type_script = "uid://dpad5op2xmung"
-
-[node name="ArchiveValid" type="Node" parent="Rules" index="2"]
-script = ExtResource("7_ueq8l")
-instruction = "Archivez all remaining documents."
-metadata/_custom_type_script = "uid://dpad5op2xmung"
-
-[node name="HiddenCollectEvidence" type="Node" parent="Rules" index="3"]
-script = ExtResource("8_o634j")
 metadata/_custom_type_script = "uid://dpad5op2xmung"
 
 [node name="Rulebook" parent="Container" index="0" instance=ExtResource("9_gp0hq")]
@@ -67,8 +56,6 @@ label_settings = SubResource("LabelSettings_oc4kc")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[connection signal="evidence_collected" from="Rules/HiddenCollectEvidence" to="Container/EvidenceMarker" method="show"]
-
 [editable path="Outboxes/Furnace"]
-[editable path="Outboxes/ArchiveHole"]
+[editable path="Outboxes/ArchivePipe"]
 [editable path="Outboxes/MessagePipe"]

@@ -117,7 +117,8 @@ func _update_active_document_position():
 				CursorFollower.instance.set_text(outbox.hover_label)
 			return
 	#else:
-	CursorFollower.instance.clear_text()
+	if is_instance_valid(CursorFollower.instance):
+		CursorFollower.instance.clear_text()
 	_active_document.modulate_state("normal")
 
 func is_level_complete():

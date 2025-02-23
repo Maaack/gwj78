@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3 uid="uid://b805g7uqabku"]
+
+[ext_resource type="Script" uid="uid://v65pvda1q6en" path="res://resources/document_data.gd" id="1_fci3j"]
+
+[resource]
+script = ExtResource("1_fci3j")
+is_processable = true
+is_messageable = false
+is_dangerous = true
+is_resistance = true
+special_flags = Array[String]([])
+document_scenes = Array[PackedScene]([])
+content = "[center][b]LONG. LIVE. CHAOS.[/b][/center]
+[center][b]LONG. LIVE. CHAOS.[/b][/center]
+[center][b]LONG. LIVE. CHAOS.[/b][/center]
+[center][b]LONG. LIVE. CHAOS.[/b][/center]
+
+[center][b]WE ARE LEGION.[/b][/center]
+
+[center][b]LONG. LIVE. CHAOS.[/b][/center]
+[center][b]LONG. LIVE. CHAOS.[/b][/center]
+[center][b]LONG. LIVE. CHAOS.[/b][/center]
+[center][b]LONG. LIVE. CHAOS.[/b][/center]"
+content_page_2 = ""
+triggers_dialogue = &""
+metadata/_custom_type_script = "uid://v65pvda1q6en"
