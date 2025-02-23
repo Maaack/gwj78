@@ -14,3 +14,9 @@ images = Array[Texture2D]([ExtResource("3_kt5v3"), ExtResource("4_w60c0")])
 [node name="BackgroundMusicPlayer" parent="." index="0"]
 stream = ExtResource("6_ynkyy")
 parameters/looping = true
+
+[node name="ImagesContainer" parent="." index="1"]
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
